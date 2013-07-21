@@ -15,6 +15,13 @@
 <%= link_to "Home", controller: "static_pages", action: "home" %>
 <%= link_to "History", controller: "static_pages", action: "history" %>
 <%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %>
+
+<% if session[:username] %>
+  Welcome, <%= session[:username] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
+<% else %>  
+  <%= link_to "Login", controller: "static_pages", action: "login" %>
+<% end %>
+
 <% end -%>
 
 <%= yield %>
