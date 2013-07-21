@@ -4,6 +4,9 @@ Brsite::Application.routes.draw do
   get "static_pages/history"
 
   get "static_pages/sponsorship"
+  
+  get "static_pages/login"
+  get "static_pages/logout"
 
   resources :users
 
