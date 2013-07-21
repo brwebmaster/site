@@ -11,3 +11,14 @@
  *= require_self
  *= require_tree .
  */
+
+.header {
+	font-family: 'Dancing Script', Georgia, Times, serif;
+	font-size: 59px;
+	line-height: 60px;
+}
+
+.center {
+	float: none; 
+	margin: auto; 
+}
