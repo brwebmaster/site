@@ -14,11 +14,18 @@
 
 .header {
 	font-family: 'Dancing Script', Georgia, Times, serif;
-	font-size: 59px;
-	line-height: 60px;
+	font-size: 65px;
+	line-height: 75px;
+	font-weight: bolder;
 }
 
 .center {
 	float: none; 
-	margin: auto; 
+	margin: auto;
+	text-align: center;
+	color: #E81E0B; 
+}
+
+.container{
+	text-align: center;
 }
