@@ -10,19 +10,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="container">
-<h1 class="header center">Basmati Raas</h1>
-<%= content_tag :div, class: "linkCenter" do-%>
-<%= link_to "Home", controller: "static_pages", action: "home" %>
-<%= link_to "History", controller: "static_pages", action: "history" %>
-<%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %>
-
-<% if session[:username] %>
-  Welcome, <%= session[:username] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
-<% else %>  
-  <%= link_to "Login", controller: "static_pages", action: "login" %>
-<% end %>
-
-<% end -%>
+<h1 class="header center">Stanford Basmati Raas</h1>
+<div class = "navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+		<a class="btn btn-navbar" data-toggle="collapse" data-target=".collapse">  
+        <span class="icon-bar"></span>  
+        <span class="icon-bar"></span>  
+        <span class="icon-bar"></span>  
+        </a>	
+		<a class="brand">Basmati Raas</a>
+		<div class="nav-collapse">
+			<ul class="nav">
+				<li class="divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
+				<li class="divider-vertical"><%= link_to "History", controller: "static_pages", action: "history" %></li>
+				<li class="divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
+				<li class="divider-vertical">
+				<% if session[:username] %>
+			  Welcome, <%= session[:username] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
+				<% else %>  
+				  <%= link_to "Login", controller: "static_pages", action: "login" %>
+				<% end %>
+				</li>				
+			</ul>
+		</div>
+	</div>
+</div>
+ 
+>>>>>>> upstream/master
 
 <%= yield %>
 
