@@ -2,14 +2,22 @@
 <html>
 <head>
   <title>Basmati Raas</title>
+  <link href="http://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">
   <%= favicon_link_tag '/assets/br_icon.png', :rel => 'icon', :type => 'image/png' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="container">
+<h1 class="header center">Basmati Raas</h1>
+<%= link_to "Home", controller: "static_pages", action: "home" %>
+<%= link_to "History", controller: "static_pages", action: "history" %>
+<%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %>
 
 <%= yield %>
 
+2013-2014 Basmati Raas
+<%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %>
 </body>
 </html>
