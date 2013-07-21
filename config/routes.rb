@@ -1,4 +1,10 @@
 Brsite::Application.routes.draw do
+  get "static_pages/home"
+
+  get "static_pages/history"
+
+  get "static_pages/sponsorship"
+
   resources :users
 
 

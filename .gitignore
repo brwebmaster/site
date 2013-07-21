@@ -24,6 +24,7 @@
 # Ignore swp files
 *.swp
 *.swo
+*.DS_Store
 
 # Ignore the config files
 /config/s3.yml
