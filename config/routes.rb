@@ -8,7 +8,9 @@ Brsite::Application.routes.draw do
   get "static_pages/login"
   get "static_pages/logout"
 
-  resources :users
+  resources :users do
+    resources :photos
+  end
 
 
   # The priority is based upon order of creation:

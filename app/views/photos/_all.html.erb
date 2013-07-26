@@ -1,0 +1,7 @@
+<% if photos.empty? %>
+	<p>This user has no photos</p>
+<% else %>
+	<% photos.each do |p| %>
+		<%= link_to image_tag(p.filename, :size => "100x60", :alt => "Edit Entry"), :controller => :photos, :user_id => user.id, :id => p.id, :action => :edit %>
+	<% end %>
+<% end %>

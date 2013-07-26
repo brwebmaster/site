@@ -9,10 +9,10 @@ class StaticPagesController < ApplicationController
   end
 
   def login
-  	puts "hello"
-  	puts params[:user]
   	if params[:user]
   		session[:username] = params[:user]
+  		session[:name] = params[:name]
+  		session[:test] = {:a => 5, :b => 7}
   		redirect_to :controller => :users and return
   	end
   	return_url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
