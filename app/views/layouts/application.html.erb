@@ -5,41 +5,48 @@
   <link href="http://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">
   <%= favicon_link_tag '/assets/br_icon.png', :rel => 'icon', :type => 'image/png' %>
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
 </head>
 <body class="container">
-<h1 class="header center">Stanford Basmati Raas</h1>
-<div class = "navbar navbar-fixed-top navbar-inverse">
-	<div class="navbar-inner">
-		<a class="btn btn-navbar" data-toggle="collapse" data-target=".collapse">  
-        <span class="icon-bar"></span>  
-        <span class="icon-bar"></span>  
-        <span class="icon-bar"></span>  
-        </a>	
-		<a class="brand">Basmati Raas</a>
-		<div class="nav-collapse">
-			<ul class="nav">
-				<li class="divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
-				<li class="divider-vertical"><%= link_to "History", controller: "static_pages", action: "history" %></li>
-				<li class="divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
-				<li class="divider-vertical"><%= link_to "Team", controller: "users" %></li>
-				<li class="divider-vertical">
-				<% if session[:username] %>
-          Welcome, <%= session[:username] %>. <%= link_to "Logout", :controller => "static_pages", :action => "logout" %>
-        <% else %>  
-          <%= link_to "Login", :controller => "static_pages", :action => "login" %>
-        <% end %>
-				</li>
-			</ul>
+<h1 class="header center">Basmati Raas</h1>
+<div class="navbar-wrapper">
+	<div class="container">
+		<div class = "navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".collapse">  
+        		<span class="icon-bar"></span>  
+        		<span class="icon-bar"></span>  
+        		<span class="icon-bar"></span>  
+        		</a>	
+				<a class="brand" href="home">Basmati Raas</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
+						<li class="divider-vertical"><%= link_to "History", controller: "static_pages", action: "history" %></li>
+						<li class="divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
+						<li class="divider-vertical"><%= link_to "Team", controller: "users" %></li>
+					</ul>
+					<ul class="nav pull-right">
+						<li class="divider-vertical">
+						<% if session[:username] %>
+			  			Welcome, <%= session[:username] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
+						<% else %>  
+				  		<%= link_to "Login", controller: "static_pages", action: "login" %>
+						<% end %>
+						</li>				
+					</ul>
+				</div>
 		</div>
 	</div>
 </div>
 
 <%= yield %>
-
+<div class="linkCenter2">
 2013-2014 Basmati Raas
+<br></br>
 <%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %>
+</div>
 </body>
 </html>
