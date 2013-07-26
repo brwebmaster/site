@@ -1,0 +1,35 @@
+<% if @photo.errors[:profiled] %>
+	<p> Profile pic is not unique </p>
+<% end %>
+
+<%= image_tag(@photo.filename, :size => "200x200", :alt => "User picture") %>
+<%= form_for [@user, @photo] do |f| %>
+	<fieldset>
+		<legend>Edit photo for <%= @user.full_name %>:</legend>
+	  <div class="control-group">
+	  	<%= f.label :description, :class => "control-label" %>
+	  	<div class="controls">
+	  		<%= f.text_field :description, :class => "text_field" %>
+	  	</div>
+	  </div>
+
+	  <div class="control-group">
+	  	<%= f.label :location, :class => "control-label" %>
+	  	<div class="controls">
+	  		<%= f.text_field :location, :class => "text_field" %>
+	  	</div>
+	  </div>
+
+	  <div class="control-group">
+	  	<%= f.label "Is profile picture?", :class => "control-label" %>
+	  	<div class="controls">
+	  		<%= f.check_box :profile, :class => "checkbox" %>
+	  	</div>
+	  </div>
+
+	  <div class="form-actions">
+	  	<%= f.submit :class => "btn btn-primary" %>
+	  	<%= link_to "Cancel", user_photos_path, :class => "btn" %>
+	  </div>
+	</fieldset>
+<% end %>

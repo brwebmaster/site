@@ -1,15 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Bio:</b>
-  <%= @user.bio %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h3><%= @user.full_name %></h3>
+<p>An image will go here</p>
+<p>Year: <strong><%= @user.year %></strong></p>
+<p>Bio: <strong><%= @user.bio %></strong></p>
+<%= link_to "Edit Profile", :action => :edit %>

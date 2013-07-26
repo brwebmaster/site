@@ -1,35 +1,22 @@
-<h1>Listing users</h1>
+<h3>Members 2013-14</h3>
 
-<table>
+<table class="table table-striped">
+  <% @users.each do |u| %>
   <tr>
-    <th>Name</th>
-    <th>Bio</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td class="small">
+      <%= image_tag("defaultRaas.jpg", :class => "member")%>
+    </td>
+    <td class="large">
+      <p>Name: <strong>
+      <% if session[:username] %>
+        <%= link_to u.full_name, :action => "edit", :id => u.id %>
+      <% else %>
+        <%= u.full_name %>
+      <% end %>
+      </strong></p>
+      <p>Year: <strong><%= u.year %></strong></p>
+      <p>Bio: <strong><%= u.bio %></strong></p>
+    </td>
   </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.bio %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New User', new_user_path %>
-
-<div id="users"></div>
-<script type="text/javascript">
-  
-  $(function() {
-    window.router = new Brsite.Routers.UsersRouter({users: 
-      <%=@users.to_json.html_safe -%>});
-    Backbone.history.start();
-  });
-</script>

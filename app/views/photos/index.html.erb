@@ -1,0 +1,2 @@
+<p>Here are all the photos for <%=@user.full_name %>.</p>
+<%= render :partial => "photos/all", :locals => {:photos => @photos, :user => @user} %>

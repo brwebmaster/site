@@ -1,0 +1,6 @@
+<p>Show image</p>
+
+<%= image_tag(@photo.filename, :size => "300x300", :alt => "User picture") %>
+<p>Description: <%= @photo.description%> </p>
+<p>Location: <%= @photo.location %></p>
+<p>Is profile picture? <%= @photo.profile %> </p>
