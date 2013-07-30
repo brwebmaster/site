@@ -1,3 +1,5 @@
+require 'json'
+
 class StaticPagesController < ApplicationController
   def home
   end
@@ -9,10 +11,13 @@ class StaticPagesController < ApplicationController
   end
 
   def login
-  	if params[:user]
-  		session[:username] = params[:user]
-  		session[:name] = params[:name]
-  		session[:test] = {:a => 5, :b => 7}
+  	if params[:info]
+  		user_hash = JSON.parse URI.unescape(params[:info])
+  		# eg. "user_hash"=>{"username"=>"rkpandey", "display_name"=>"Rahul Kumar Pandey", 
+  		#"org"=>"Computer Science", "postal_address"=>false, "sn"=>"pandey", "gn"=>"rahul", 
+  		#"description"=>false, "phone_number"=>false, "hash"=>"3bae8f0d4c51efd7093a4c18c94f9acb"}}
+  		session[:user_hash] = user_hash
+  		# TODO: verify hash is correct
   		redirect_to :controller => :users and return
   	end
   	return_url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
@@ -20,7 +25,7 @@ class StaticPagesController < ApplicationController
   end
 
   def logout
-  	session[:username] = nil
-  	redirect_to :controller => :static_pages, :action => :home
+  	session[:user_hash] = nil
+  	redirect_to :controller => :static_pages, :action => :home, :notice => "Logged out"
   end
 end
