@@ -1,0 +1,18 @@
+.displayed{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5;
+}
+
+.caption-heading{
+	font-family: 'Dancing_Script', Georgia, Times, serif;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba{0,0,0,.4};
+}
+
+.title{
+	text-align: center;
+	font-size: 45px;
+	font-weight: bolder;
+}

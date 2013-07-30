@@ -10,7 +10,6 @@
   <%= javascript_include_tag "application" %>
 </head>
 <body class="container">
-<h1 class="header center">Basmati Raas</h1>
 <div class="navbar-wrapper">
 	<div class="container">
 		<div class = "navbar navbar-fixed-top navbar-inverse">
@@ -22,8 +21,8 @@
         		</a>	
 				<a class="brand" href="home">Basmati Raas</a>
 				<div class="nav-collapse">
-					<ul class="nav">
-						<li class="divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
+					<ul class="nav nav-tabs">
+						<li class="thing dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
 						<li class="divider-vertical"><%= link_to "History", controller: "static_pages", action: "history" %></li>
 						<li class="divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
 						<li class="divider-vertical"><%= link_to "Team", controller: "users" %></li>

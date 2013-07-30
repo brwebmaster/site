@@ -14,7 +14,7 @@
 
 .header {
 	font-family: 'Elephant', Georgia, Times, serif;
-	font-size: 65px;
+	font-size: 60px;
 	line-height: 75px;
 	font-weight: bolder;
 }
@@ -33,6 +33,7 @@
 .linkCenter2{
 	text-align: center;
 	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 .linkCenter3{
@@ -43,4 +44,8 @@
 
 .navbar .brand{
 	padding-left: 200px;
+}
+
+.thing{
+	height: 80px;
 }
