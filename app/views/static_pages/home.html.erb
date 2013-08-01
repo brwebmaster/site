@@ -5,48 +5,18 @@
 </head>
 <div id="myCarousel" class="carousel slide">
 	<div class="carousel-inner">
-		<div class="item">
-			<img class="displayed" src='/assets/raas1.jpg' alt>
-			<div class="container">
-				<div class="carousel-caption">
-					<h1 class="caption-heading">One Team. One Dance</h1>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<img class="displayed" src='/assets/raas2.jpg' alt>
-			<div class="container">
-				<div class="carousel-caption">
-					<h1 class="caption-heading">One Team. One Dance</h1>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<img class="displayed" src='/assets/raas3.jpg' alt>
-			<div class="container">
-				<div class="carousel-caption">
-					<h1 class="caption-heading">One Team. One Dance</h1>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<img class="displayed" src='/assets/raas4.jpg' alt>
-			<div class="container">
-				<div class="carousel-caption">
-					<h1 class="caption-heading">One Team. One Dance</h1>
-				</div>
-			</div>
-		</div>
-		<div class="item">
-			<img class="displayed" src='/assets/raas5.jpg' alt>
-			<div class="container">
-				<div class="carousel-caption">
-					<h1 class="caption-heading">One Team. One Dance</h1>
-				</div>
-			</div>
-		</div>
+		<% @images.each do |image_name, caption|%>
+			<div class="item">
+				<%= image_tag "/assets/#{image_name}", class: "displayed" %>
+       			<div class="container">
+         			<div class="carousel-caption">
+                     	<h1 class="caption-heading"><%= caption %></h1>
+         			</div>
+       			</div>
+     		</div>
+		<%  end %>
 		<div class="item active">
-			<img class="displayed" src='/assets/IMG_1829.JPG' alt>
+			<%= image_tag '/assets/IMG_1829.JPG', class: "displayed" %>
 			<div class="container">
 				<div class="carousel-caption">
 					<h1 class="caption-heading">One Team. One Dance</h1>
@@ -57,5 +27,4 @@
 	<a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
 	<a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
 </div>
-<h1 class="title">Basmati Raas</h1>
 <p>Welcome to Basmati Raas. We are a co-ed, 16-member Indian dance team that competes across the country in a form of dance known as Garba Raas.  With an unforgettable routine, we combine powerful moves, intricate costumes, and a colorful storyline. Our performances have taken us to competitions and shows in New York City, Miami, Ann Arbor, New Jersey, and Los Angeles. With the contagious laughter and serious work ethic that grace our every practice, we dare you to try and not fall in love with Basmati Raas.</p>

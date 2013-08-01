@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+ body{
+ 	color: black;
+ } 
+
 .header {
 	font-family: 'Elephant', Georgia, Times, serif;
 	font-size: 60px;
@@ -44,8 +48,12 @@
 
 .navbar .brand{
 	padding-left: 200px;
+	padding-top: 20px;
 }
 
 .thing{
 	height: 80px;
+	line-height: 30px;
+	text-align: -webkit-match-parent;
 }
+

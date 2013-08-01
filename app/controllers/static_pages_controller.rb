@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @images = {"raas1.jpg" => "caption1", "raas2.jpg" => "caption2", "raas3.jpg" => "caption3", "raas4.jpg" => "caption4", "raas5.jpg" => "caption5"}
   end
 
   def history

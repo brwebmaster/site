@@ -12,22 +12,21 @@
 <body class="container">
 <div class="navbar-wrapper">
 	<div class="container">
-		<div class = "navbar navbar-fixed-top navbar-inverse">
+		<div class = "navbar navbar-inverse">
 			<div class="navbar-inner">
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".collapse">  
         		<span class="icon-bar"></span>  
         		<span class="icon-bar"></span>  
         		<span class="icon-bar"></span>  
         		</a>	
-				<a class="brand" href="home">Basmati Raas</a>
 				<div class="nav-collapse">
 					<ul class="nav nav-tabs">
-						<li class="thing dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
-						<li class="divider-vertical"><%= link_to "History", controller: "static_pages", action: "history" %></li>
-						<li class="divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
-						<li class="divider-vertical"><%= link_to "Team", controller: "users" %></li>
+						<li class="<%= 'active' if current_page?('/static_pages/home') %> dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
+						<li class="<%= 'active' if current_page?('/static_pages/history') %> dropdown divider-vertical"><%= link_to "About Us", controller: "static_pages", action: "history" %></li>
+						<li class="<%= 'active' if current_page?('/static_pages/sponsorship') %> dropdown divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
+						<li class="<%= 'active' if current_page?('/users') %> dropdown divider-vertical"><%= link_to "Team", controller: "users" %></li>
 					</ul>
-					<ul class="nav pull-right">
+					<ul class="nav nav-tabs pull-right">
 						<li class="divider-vertical">
 						<% if session[:username] %>
 			  			Welcome, <%= session[:username] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
@@ -40,7 +39,6 @@
 		</div>
 	</div>
 </div>
-
 <%= yield %>
 <div class="linkCenter2">
 2013-2014 Basmati Raas
