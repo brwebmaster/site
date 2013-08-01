@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_login, :only=>[:destroy, :create, :new]
+  include ApplicationHelper
   
   # show all users
   def index

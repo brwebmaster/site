@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  include ApplicationHelper
+  
   before_filter :require_login, :only=>[:create, :destroy]
   #Get all photos for this user
   def index
