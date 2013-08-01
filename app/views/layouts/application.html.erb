@@ -28,8 +28,8 @@
 					</ul>
 					<ul class="nav nav-tabs pull-right">
 						<li class="divider-vertical">
-						<% if session[:username] %>
-			  			Welcome, <%= session[:username] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
+						<% if is_logged_in(session) %>
+			  			Welcome, <%= session[:user_hash]["display_name"] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
 						<% else %>  
 				  		<%= link_to "Login", controller: "static_pages", action: "login" %>
 						<% end %>

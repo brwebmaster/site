@@ -8,12 +8,13 @@
     </td>
     <td class="large">
       <p>Name: <strong>
-      <% if session[:username] %>
+      <% if is_logged_in(session) %>
         <%= link_to u.full_name, :action => "edit", :id => u.id %>
       <% else %>
         <%= u.full_name %>
       <% end %>
-      </strong></p>
+      </strong>
+      </p>
       <p>Year: <strong><%= u.year %></strong></p>
       <p>Bio: <strong><%= u.bio %></strong></p>
     </td>
