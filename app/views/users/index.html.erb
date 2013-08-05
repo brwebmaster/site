@@ -4,7 +4,11 @@
   <% @users.each do |u| %>
   <tr>
     <td class="small">
-      <%= image_tag("defaultRaas.jpg", :class => "member")%>
+      <% if u.avatar.exists? %>
+        <%= image_tag u.avatar.url(:square) %>
+      <% else %>
+        <%= image_tag("defaultRaas.jpg", :class => "member")%>
+      <% end %>
     </td>
     <td class="large">
       <p>Name: <strong>

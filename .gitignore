@@ -28,7 +28,8 @@
 
 # Ignore the config files
 /config/s3.yml
-/config/database.yml
 
 # Heroku Procfile
 Procfile
+# Ignore application configuration
+/config/application.yml

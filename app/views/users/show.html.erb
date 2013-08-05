@@ -1,5 +1,9 @@
 <h3><%= @user.full_name %></h3>
-<p>An image will go here</p>
+<% if @user.avatar.exists? %>
+  <%= image_tag @user.avatar.url(:square) %>
+<% else %>
+  <%= image_tag("defaultRaas.jpg", :class => "member")%>
+<% end %>
 <p>Year: <strong><%= @user.year %></strong></p>
 <p>Bio: <strong><%= @user.bio %></strong></p>
 <%= link_to "Edit Profile", :action => :edit %>
