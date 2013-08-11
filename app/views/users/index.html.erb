@@ -1,14 +1,18 @@
+<head>
+<%= stylesheet_link_tag    "userStyles", :media => "all" %>
+</head>
+
 <h3>Members 2013-14</h3>
 
 <table class="table table-striped">
   <% @users.each do |u| %>
-  <tr>
-    <td class="small">
+    <tr>
+    <td class="small circular">
       <% if u.avatar.exists? %>
         <%= image_tag u.avatar.url(:square) %>
       <% else %>
         <%= image_tag("defaultRaas.jpg", :class => "member")%>
-      <% end %>
+      <% end %> 
     </td>
     <td class="large">
       <p>Name: <strong>
@@ -25,3 +29,4 @@
   </tr>
   <% end %>
 </table>
+
