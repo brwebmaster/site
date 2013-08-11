@@ -9,3 +9,13 @@
 .circular{
 	text-align: center;
 }
+
+#htext {
+	padding-top: 10px;
+	display: none;
+	color: red;
+}
+
+td.user:hover #htext {
+  display: block;
+}

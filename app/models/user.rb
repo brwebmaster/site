@@ -17,9 +17,9 @@ class User < ActiveRecord::Base
 
   def get_picture
     if self.avatar.exists?
-      ActionController::Base.helpers.image_tag self.avatar.url(:square), :title => "John Bisbis"
+      ActionController::Base.helpers.image_tag self.avatar.url(:square)
     else
-      ActionController::Base.helpers.image_tag("defaultRaas.jpg", :class => "member")
+      ActionController::Base.helpers.image_tag "defaultRaas.jpg"
     end
   end
 end

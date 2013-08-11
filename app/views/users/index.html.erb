@@ -8,10 +8,13 @@
   <% @users.each_slice(4) do |users_row| %>
     <tr>
       <% users_row.each do |u| %>
-        <td class="small circular">
+        <td class="user circular">
           <a href="#">
             <%= u.get_picture %>
           </a>
+          <span id="htext">
+            <%= u.full_name %>
+          </span>
         </td>
       <% end %>
     </tr>
