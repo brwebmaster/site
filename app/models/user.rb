@@ -14,4 +14,12 @@ class User < ActiveRecord::Base
   def full_name
   	self.first_name + " " + self.last_name
   end
+
+  def get_picture
+    if self.avatar.exists?
+      ActionController::Base.helpers.image_tag self.avatar.url(:square), :title => "John Bisbis"
+    else
+      ActionController::Base.helpers.image_tag("defaultRaas.jpg", :class => "member")
+    end
+  end
 end

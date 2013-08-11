@@ -4,15 +4,25 @@
 
 <h3>Members 2013-14</h3>
 
+<table class="table table-striped table-bordered table-condensed">
+  <% @users.each_slice(4) do |users_row| %>
+    <tr>
+      <% users_row.each do |u| %>
+        <td class="small circular">
+          <a href="#">
+            <%= u.get_picture %>
+          </a>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
 <table class="table table-striped">
   <% @users.each do |u| %>
     <tr>
     <td class="small circular">
-      <% if u.avatar.exists? %>
-        <%= image_tag u.avatar.url(:square) %>
-      <% else %>
-        <%= image_tag("defaultRaas.jpg", :class => "member")%>
-      <% end %> 
+      <%= u.get_picture %>
     </td>
     <td class="large">
       <p>Name: <strong>
