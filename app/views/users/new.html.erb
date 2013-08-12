@@ -3,6 +3,7 @@
 <%= form_for(User.new) do |f| %>
 	First name: <%= f.text_field :first_name %><br />
   Last name: <%= f.text_field :last_name %><br />
+  SUNet ID: <%= f.text_field :sunet %><br />
   Year: <%= f.text_field :year %><br />
   Biography: <%= f.text_area :bio %><br />
   <%= f.submit %>

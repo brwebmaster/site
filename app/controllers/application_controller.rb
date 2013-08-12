@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   
   def require_login
-		if is_logged_in
+		if not is_logged_in session
 			flash[:error] = "You must be logged in to do that."
-			redirect_to :controller => :static, :action => :index
+			redirect_to :controller => :static_pages, :action => :home
 		end
 	end
 end

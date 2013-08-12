@@ -27,11 +27,14 @@ class UsersController < ApplicationController
   # Show member of specific id
   def show 
     @user = User.find_by_id(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   # return an HTML form for editing a user
   def edit
-    puts "hi"
     @user = User.find_by_id(params[:id])
     @photos = Photo.find_all_by_user_id(params[:id])
   end
