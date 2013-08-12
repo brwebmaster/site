@@ -4,29 +4,32 @@
 
 <h3>Members 2013-14</h3>
 
-<table class="table table-striped">
-  <% @users.each do |u| %>
-<tr>
-    <td class="small circular">
-      <% if u.avatar.exists? %>
-        <%= image_tag u.avatar.url(:square) %>
-      <% else %>
-        <%= image_tag("defaultRaas.jpg", :class => "member")%>
-      <% end %> 
-    </td>
-    <td class="large">
-      <p>Name: <strong>
-      <% if is_logged_in(session) %>
-        <%= link_to u.full_name, :action => "edit", :id => u.id %>
-      <% else %>
-        <%= u.full_name %>
+<div ng-app>
+<div ng-controller="UserCtrl">
+<table class="table">
+  <% @users.each_slice(4) do |users_row| %>
+    <tr>
+      <% users_row.each do |u| %>
+        <td class="user circular">
+          <a href="#" ng-click="showUser(<%= u.id %>)">
+            <div class="image">
+              <%= u.get_picture %>
+              <h2 id="htext">
+                <span><%= u.full_name %></span>
+              </h2>
+            </div>
+          </a>
+        </td>
       <% end %>
-      </strong>
-      </p>
-      <p>Year: <strong><%= u.year %></strong></p>
-      <p>Bio: <strong><%= u.bio %></strong></p>
-    </td>
-  </tr>
+    </tr>
   <% end %>
 </table>
 
+<div>
+  <p>{{user.first_name + " " + user.last_name}} </p>
+  <p>Year: <strong>{{user.year}}</strong></p>
+  <p>Bio: <strong>{{user.bio}}</strong></p>
+</div>
+
+</div>
+</div>

@@ -6,6 +6,32 @@
 	-moz-border-radius: 150px;
 }
 
-.circular{
+.image {
+	position: relative;
 	text-align: center;
+  vertical-align:middle;
+  display: table-cell;
+}
+
+.circular {
+	text-align: center;
+}
+
+#htext {
+	position: absolute;
+	background: black;
+	color: white;
+	display: none;
+}
+
+td.user:hover #htext {
+  display: block;
+}
+
+td.user div {
+	text-align: center;
+}
+
+.table th, .table td { 
+  border-top: none; 
 }
