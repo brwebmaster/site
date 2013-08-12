@@ -13,7 +13,8 @@
  */
 
  body{
- 	color: black;
+ 	background-image:url('/assets/bullseyes.png');
+	background-repeat:repeat;
  } 
 
 .header {
@@ -55,5 +56,15 @@
 	height: 80px;
 	line-height: 30px;
 	text-align: -webkit-match-parent;
+}
+
+.titleText{
+	text-align: right;
+	font-family: 'Elephant';
+}
+
+.right{
+	text-align: right;
+	font-size: 15px;
 }
 

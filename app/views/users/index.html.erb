@@ -6,7 +6,7 @@
 
 <table class="table table-striped">
   <% @users.each do |u| %>
-    <tr>
+<tr>
     <td class="small circular">
       <% if u.avatar.exists? %>
         <%= image_tag u.avatar.url(:square) %>

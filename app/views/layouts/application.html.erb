@@ -10,6 +10,22 @@
   <%= javascript_include_tag "application" %>
 </head>
 <body class="container">
+
+<div id="fb-root"></div>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=378954368857140";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="titleText">
+	<% if is_logged_in(session) %>
+		Welcome, <%= session[:user_hash]["display_name"] %>
+	<%end %>
+</div>
 <div class="navbar-wrapper">
 	<div class="container">
 		<div class = "navbar navbar-inverse">
@@ -29,7 +45,7 @@
 					<ul class="nav nav-tabs pull-right">
 						<li class="divider-vertical">
 						<% if is_logged_in(session) %>
-			  			Welcome, <%= session[:user_hash]["display_name"] %>. <%= link_to "Logout", controller: "static_pages", action: "logout" %>
+			  			<%= link_to "Logout", controller: "static_pages", action: "logout" %>
 						<% else %>  
 				  		<%= link_to "Login", controller: "static_pages", action: "login" %>
 						<% end %>
@@ -41,9 +57,15 @@
 </div>
 <%= yield %>
 <div class="linkCenter2">
-2013-2014 Basmati Raas
-<br></br>
-<%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %>
+<div class="row-fluid">
+	<div class="span5">
+  		<p class="right">2013-2014 Basmati Raas</p>
+		<p class="right"><%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %></p>
+	</div>
+	<div class="span5">
+		<div class="fb-like-box" data-href="https://www.facebook.com/basmatiraas" data-width="292" data-show-faces="false" data-header="true" data-stream="false" data-show-border="true"></div>
+	</div>
+</div>
 </div>
 </body>
 </html>
