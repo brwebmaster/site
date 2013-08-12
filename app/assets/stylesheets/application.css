@@ -42,6 +42,7 @@
 	vertical-align: center;
 	margin-left: 0;
 	margin-right: 0;
+	text-size: 12px;
 }
 
 .linkCenter3{
@@ -66,8 +67,9 @@
 	font-family: 'Elephant';
 }
 
-.right{
-	text-align: right;
-	font-size: 15px;
+.centeredText{
+	text-align: center;
+	text-size: 12px;
 }
+
 
