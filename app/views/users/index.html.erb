@@ -3,26 +3,19 @@
 </head>
 
 <h3>Members 2013-14</h3>
-<script src="angular.min.js"></script>
 
 <div ng-app>
-  <label>Name:</label>
-  <input type="text" ng-model="yourName" placeholder="Enter a name here">
-  <hr>
-  <h1>Hello {{yourName}}!</h1>
-</div>
+<div ng-controller="UserCtrl">
 <table class="table">
   <% @users.each_slice(4) do |users_row| %>
     <tr>
       <% users_row.each do |u| %>
         <td class="user circular">
-          <a href="#">
+          <a href="#" ng-click="showUser(<%= u.id %>)">
             <div class="image">
               <%= u.get_picture %>
               <h2 id="htext">
-                <span>
-                <%= u.full_name %>
-                </span>
+                <span><%= u.full_name %></span>
               </h2>
             </div>
           </a>
@@ -31,26 +24,12 @@
     </tr>
   <% end %>
 </table>
-<!-- 
-<table class="table table-striped">
-  <% @users.each do |u| %>
-    <tr>
-    <td class="small circular">
-      <%= u.get_picture %>
-    </td>
-    <td class="large">
-      <p>Name: <strong>
-      <% if is_logged_in(session) %>
-        <%= link_to u.full_name, :action => "edit", :id => u.id %>
-      <% else %>
-        <%= u.full_name %>
-      <% end %>
-      </strong>
-      </p>
-      <p>Year: <strong><%= u.year %></strong></p>
-      <p>Bio: <strong><%= u.bio %></strong></p>
-    </td>
-  </tr>
-  <% end %>
-</table>
- -->
+
+<div>
+  <p>{{user.first_name + " " + user.last_name}} </p>
+  <p>Year: <strong>{{user.year}}</strong></p>
+  <p>Bio: <strong>{{user.bio}}</strong></p>
+</div>
+
+</div>
+</div>
