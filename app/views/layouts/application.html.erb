@@ -38,9 +38,9 @@
 				<div class="nav-collapse">
 					<ul class="nav nav-tabs">
 						<li class="<%= 'active' if current_page?('/static_pages/home') %> dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
-						<li class="<%= 'active' if current_page?('/static_pages/history') %> dropdown divider-vertical"><%= link_to "About Us", controller: "static_pages", action: "history" %></li>
-						<li class="<%= 'active' if current_page?('/static_pages/sponsorship') %> dropdown divider-vertical"><%= link_to "Sponsorship", controller: "static_pages", action: "sponsorship" %></li>
-						<li class="<%= 'active' if current_page?('/users') %> dropdown divider-vertical"><%= link_to "Team", controller: "users" %></li>
+						<li class="<%= 'active' if current_page?('/users') %> dropdown divider-vertical"><%= link_to "The Team", controller: "users"%></li>
+						<li class="<%= 'active' if current_page?('/static_pages/sponsorship') %> dropdown divider-vertical"><%= link_to "Performances and Awards", controller: "static_pages", action: "sponsorship" %></li>
+						<li class="<%= 'active' if current_page?('/static_pages/history') %> dropdown divider-vertical"><%= link_to "Contact Us", controller: "static_pages", action: "history" %></li>
 					</ul>
 					<ul class="nav nav-tabs pull-right">
 						<li class="divider-vertical">
