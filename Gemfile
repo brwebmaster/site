@@ -44,3 +44,4 @@ gem "twitter-bootstrap-rails"
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'mail_form'

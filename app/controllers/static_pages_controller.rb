@@ -4,7 +4,13 @@ class StaticPagesController < ApplicationController
 	include ApplicationHelper
   
   def home
-    @images = {"raas1.jpg" => "caption1", "raas2.jpg" => "caption2", "raas3.jpg" => "caption3", "raas4.jpg" => "caption4", "raas5.jpg" => "caption5"}
+    @images = {"raas1.jpg" => {"caption" => "Stanford Basmati Raas", "active" => true}, 
+    "raas2.jpg" => {"caption" => "One of the Nation's Finest Indian Dance Teams", "active" => false},
+    "raas3.jpg" => {"caption" => "A Chance to Make Lifelong Friends", "active" => false},
+    "raas4.jpg" => {"caption" => "A Chance to Compete Across the Country", "active" => false},
+    "raas5.jpg" => {"caption" => "A Chance to Celebrate Indian Culture", "active" => false},
+    "raas6.jpg" => {"caption" => "One Team. One Dance.", "active" => false},
+    "raas7.jpg" => {"caption" => "Who's Your Boss?", "active" => false}}
   end
 
   def history
