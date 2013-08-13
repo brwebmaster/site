@@ -74,4 +74,16 @@ Brsite::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+ActionMailer::Base.delivery_method = :smtp 
+ActionMailer::Base.smtp_settings = { 
+  :address => "smtp.stanford.edu", 
+  :port => 465, 
+  :domain => "basmatiraas.herokuapp.com",
+  :user_name => ENV['EMAIL_USERNAME'],
+  :password => ENV['EMAIL_PASSWORD'],
+  :autentication => "plain",
+  :enable_starttles_auto => true
+}
+
 end

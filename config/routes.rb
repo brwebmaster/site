@@ -1,4 +1,9 @@
 Brsite::Application.routes.draw do
+  get "contact_form/new"
+
+  get "contact_form/create"
+  post "contact_form/create"
+
   get "static_pages/home"
 
   get "static_pages/history"

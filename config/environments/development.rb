@@ -45,4 +45,12 @@ Brsite::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address => "localhost",
+  :port => 1025,
+  :domain => "basmatiraas.herokuapp.com"
+}
+
 end
