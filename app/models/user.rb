@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :photos
-  attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet
+  attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin
 
   validates :first_name, :last_name, :year, :presence => true
 
