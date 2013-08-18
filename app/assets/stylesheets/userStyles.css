@@ -6,30 +6,28 @@
 	-moz-border-radius: 150px;
 }
 
-.image {
+.imgWrap {
 	position: relative;
-	text-align: center;
-  vertical-align:middle;
-  display: table-cell;
+	width: 250px;
+	height: 250px;
 }
 
-.circular {
-	text-align: center;
-}
-
-#htext {
+/*sigh... try this when more time: 
+http://css-tricks.com/snippets/css/absolute-center-vertical-horizontal-an-image/; */
+.imgDescription {
 	position: absolute;
-	background: black;
-	color: white;
-	display: none;
+	left: 50%; 
+	border: dotted red 1px;
+	background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  /*-webkit-transition: visibility opacity 0.02s;*/
 }
 
-td.user:hover #htext {
-  display: block;
-}
-
-td.user div {
-	text-align: center;
+.imgWrap:hover .imgDescription {
+  visibility: visible;
+  opacity: 1;
 }
 
 .table th, .table td { 

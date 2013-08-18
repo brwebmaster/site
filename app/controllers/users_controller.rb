@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   # show all users
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @users.to_json(:methods => [:avatar_url]) }
+    end
   end
 
   # return an HTML form for creating a new user
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     respond_to do |format|
       format.html
-      format.json { render json: @user }
+      format.json { render json: @user.to_json(:methods => [:avatar_url]) }
     end
   end
 
