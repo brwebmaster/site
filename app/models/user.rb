@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include ApplicationHelper
 	has_many :photos
   attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin
 
@@ -12,6 +13,16 @@ class User < ActiveRecord::Base
     square: '200x200#',
     medium: '300x300>',
   }
+
+  # These users can edit/delete any prodile
+  def power_sunet_users
+    Set.new [
+      # "rkpandey",
+      "tdoshi",
+      "namir",
+      "patels"
+    ]
+  end
 
   def full_name
   	self.first_name + " " + self.last_name
@@ -30,4 +41,13 @@ class User < ActiveRecord::Base
     avatar.url
   end
 
+  def can_edit(session)
+    # if not logged in, no permission
+    return false if not is_logged_in(session)
+    logged_in_sunet = session[:user_hash]["username"]
+    # if looking at own profile, you have permission
+    # if you are admin, you have permission
+    return true if self.sunet == logged_in_sunet or self.power_sunet_users.member?(logged_in_sunet)
+    false
+  end
 end
