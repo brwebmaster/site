@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812000828) do
+ActiveRecord::Schema.define(:version => 20130818203820) do
 
   create_table "photos", :force => true do |t|
     t.string   "filename"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130812000828) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "sunet"
+    t.string   "gender"
+    t.boolean  "is_admin"
   end
 
 end

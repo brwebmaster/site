@@ -10,6 +10,7 @@ function UserListCtrl($scope, $http) {
   $http.get('/users.json').success(function(data) {
     $scope.users = data;
     count = 0;
+    // apply filtering here?
     copyArr = $scope.users.slice(0);
     $scope.groupedUsers = []
     while (copyArr.length > 0) {
@@ -19,15 +20,9 @@ function UserListCtrl($scope, $http) {
     console.log($scope.users);
   });
 
+  // (users | filter:userFilter(query) | orderBy:orderProp) 
   // Return array of arrays splitting the data in itemsPerRow per array
-  $scope.getRows = function(orderedUsers) {
-		// groupedUsers = [];
-  //   count = 0;
-  //   while (orderedUsers.length > 0) {
-  //     groupedUsers[count] = orderedUsers.splice(0, $scope.usersPerRow);
-  //     count++;
-  //   }
-  //   return groupedUsers;
+  $scope.getRows = function() {
     return $scope.groupedUsers;
   }
 
@@ -38,14 +33,11 @@ function UserListCtrl($scope, $http) {
       || user.last_name.toLowerCase().indexOf(query) != -1; 
     }
   }
-
-  $scope.getOrderedUsers = function() {
-    
-  }
 }
 
 function UserDetailCtrl($scope, $routeParams, $http) {
   $scope.userId = $routeParams.userId;
+  $scope.users = [];
   $scope.user = {
     "id": 0,
     "first_name": "John",
@@ -57,7 +49,19 @@ function UserDetailCtrl($scope, $routeParams, $http) {
   };
 
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
-    console.log(data);
     $scope.user = data; 
-  })
+  });
+
+  $http.get('/users.json').success(function(data) {
+    console.log(data);
+    $scope.users = data; 
+  });
+
+  $scope.open = function(u){
+    $scope.user = u;
+  };
+
+  $scope.getFullName = function(u) {
+    return u.first_name + " " + u.last_name;
+  }
 }
