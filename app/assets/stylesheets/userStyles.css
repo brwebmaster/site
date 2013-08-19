@@ -25,6 +25,11 @@ http://css-tricks.com/snippets/css/absolute-center-vertical-horizontal-an-image/
   /*-webkit-transition: visibility opacity 0.02s;*/
 }
 
+.mainImg {
+	max-width: 350px;
+	max-height: 400px;
+}
+
 .imgWrap:hover .imgDescription {
   visibility: visible;
   opacity: 1;
@@ -32,4 +37,52 @@ http://css-tricks.com/snippets/css/absolute-center-vertical-horizontal-an-image/
 
 .table th, .table td { 
   border-top: none; 
+}
+
+.userList {
+	background-color: #E86359;
+	border-radius: 10px;
+	padding: 10px;
+	box-shadow: 5px 5px 5px #222;
+	max-width: 200px;
+}
+
+.userList li {
+	list-style: none;
+	cursor: pointer;
+}
+
+.userDetail {
+	position: relative;
+	background-image: url("/assets/cork2.jpg");
+	background-color: #af7c4a;
+	background-size: 500px 500px;
+	-webkit-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
+	-moz-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
+	-ms-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
+	-o-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
+	box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
+	padding: 60px 40px 20px;
+}
+
+.seeAll {
+	font-size: 16px;
+	font-style: bold;
+	padding-bottom: 5px;
+}
+
+.userWritten {
+	padding: 10px;
+}
+
+.genderMale {
+	background-color: blue;
+}
+
+.genderFemale {
+	background-color: yellow;
+}
+
+.genderUnknown {
+	background-color: gray;
 }

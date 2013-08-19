@@ -1,12 +1,19 @@
 <div class="row-fluid">
-  <div class="span3">
-    <li ng-repeat="u in users">
+  <div class="span3 userList">
+    <li class="seeAll">
+      <a href="/users">&lsaquo;&lsaquo; See All</a>
+    </li>
+    <li class="userClick" ng-repeat="u in users">
     	<div ng-click="open(u)">{{getFullName(u)}}</div>
     </li>
   </div>
-  <div class="span9">
-		<img ng-src="{{user.avatar_url}}">
-	  <p>{{getFullName(user)}} </p>
-	  <p>Year: <strong>{{user.year}}</strong></p>
-	  <p>Bio: <strong>{{user.bio}}</strong></p>
+  <div class="span9 userDetail">
+    <div class="span6">
+      <img class="mainImg" ng-src="{{user.avatar_url}}">
+    </div>
+    <div class="span6 userWritten genderUnknown">
+      <h2>{{getFullName(user)}}</h2>
+      <p>Year: <strong>{{user.year}}</strong></p>
+      <p>Bio: <strong>{{user.bio}}</strong></p>
+    </div>
 </div>
