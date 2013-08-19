@@ -1,0 +1,21 @@
+<div>
+  <p>Search by name:</p> <input ng-model="query">
+</div>
+<p>Sort by:</p>
+<select ng-model="orderProp">
+  <option value="first_name">First Name</option>
+  <option value="last_name">Last Name</option>
+  <option value="year">Year</option>
+</select>
+<table class="table">
+  <tr ng-repeat="userRow in getRows()">
+    <td class="user circular" ng-repeat="user in userRow | filter:userFilter(query) | orderBy:orderProp">
+      <a href="#/users/{{user.id}}">
+        <div class="imgWrap">
+          <img ng-src="{{user.avatar_url}}">
+          <p class="imgDescription">{{user.first_name}}</p>
+        </div>
+      </a>
+    </td>
+  </tr>
+</table>

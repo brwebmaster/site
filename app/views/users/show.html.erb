@@ -1,9 +1,8 @@
 <h3><%= @user.full_name %></h3>
-<% if @user.avatar.exists? %>
-  <%= image_tag @user.avatar.url(:square) %>
-<% else %>
-  <%= image_tag("defaultRaas.jpg", :class => "member")%>
+<% if @user.can_edit(session) %>
+	<%= button_to "Edit Profile", :action => :edit, :method => "get" %>
 <% end %>
+<%= @user.get_picture %>
 <p>Year: <strong><%= @user.year %></strong></p>
 <p>Bio: <strong><%= @user.bio %></strong></p>
-<%= link_to "Edit Profile", :action => :edit %>
+<p><%= mail_to "#{@user.sunet}@stanford.edu", "Email me!" %> </p>
