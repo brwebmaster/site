@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :require_login, :only=>[:destroy, :create, :new]
+  before_filter :require_login, :only=>[:destroy, :create, :new, :edit]
+  # TODO: should not allow logged in user from editing ALL profiles
   include ApplicationHelper
   
   # show all users
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @users.to_json(:methods => [:avatar_url]) }
+    end
   end
 
   # return an HTML form for creating a new user
@@ -29,8 +34,13 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     respond_to do |format|
       format.html
-      format.json { render json: @user }
+      format.json { render json: @user.to_json(:methods => [:avatar_url]) }
     end
+  end
+
+  def sunet
+    @user = User.find_by_sunet(params[:sunet])
+    redirect_to :action => :show, :id => @user.id
   end
 
   # return an HTML form for editing a user

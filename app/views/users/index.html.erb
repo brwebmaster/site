@@ -1,35 +1,8 @@
 <head>
-<%= stylesheet_link_tag    "userStyles", :media => "all" %>
+<%= stylesheet_link_tag "userStyles", :media => "all" %>
 </head>
 
-<h3>Members 2013-14</h3>
-
-<div ng-app>
-<div ng-controller="UserCtrl">
-<table class="table">
-  <% @users.each_slice(4) do |users_row| %>
-    <tr>
-      <% users_row.each do |u| %>
-        <td class="user circular">
-          <a href="#" ng-click="showUser(<%= u.id %>)">
-            <div class="image">
-              <%= u.get_picture %>
-              <h2 id="htext">
-                <span><%= u.full_name %></span>
-              </h2>
-            </div>
-          </a>
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
-
-<div>
-  <p>{{user.first_name + " " + user.last_name}} </p>
-  <p>Year: <strong>{{user.year}}</strong></p>
-  <p>Bio: <strong>{{user.bio}}</strong></p>
-</div>
-
-</div>
+<div ng-app="usersbr">
+  <h1>Members 2013-14</h1>
+  <div ng-view></div>
 </div>

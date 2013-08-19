@@ -1,5 +1,3 @@
-
-
 <table class="table table-striped">
 <tr>
 	<td>
@@ -34,16 +32,23 @@
 		  </div>
 		  
 		  <div class="control-group">
-		  	<%= f.label :bio, :class => "control-label" %>
+		  	<%= f.label :sunet, :class => "control-label" %>
 		  	<div class="controls">
-		  		<%= f.text_area :bio, :class => "text_area small" %>
+		  		<%= f.text_field :sunet, :class => "text_field" %>
 		  	</div>
 		  </div>
 		  
 		  <div class="control-group">
-		  	<%= f.label :sunet, :class => "control-label" %>
+		  	<%= f.label "Gender", :class => "control-label" %>
 		  	<div class="controls">
-		  		<%= f.text_area :sunet, :class => "text_field" %>
+		  		 <%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'})%>
+		  	</div>
+		  </div>
+
+		  <div class="control-group">
+		  	<%= f.label :bio, :class => "control-label" %>
+		  	<div class="controls">
+		  		<%= f.text_area :bio, :class => "text_area small", :size => "30x5" %>
 		  	</div>
 		  </div>
 

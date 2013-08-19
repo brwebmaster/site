@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130812000828) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "sunet"
+    t.string   "gender"
+    t.boolean  "is_admin"
   end
 
 end
