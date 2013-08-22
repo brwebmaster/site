@@ -1,38 +1,31 @@
-.circular img {
+.circular {
+	/*background-size: 100%; doesn't work!*/ 
 	width: 200px;
 	height: 200px;
 	border-radius: 150px;
 	-webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
+	vertical-align: middle;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 
-.imgWrap {
-	position: relative;
-	width: 250px;
-	height: 250px;
-}
-
-/*sigh... try this when more time: 
-http://css-tricks.com/snippets/css/absolute-center-vertical-horizontal-an-image/; */
 .imgDescription {
-	position: absolute;
-	left: 50%; 
-	border: dotted red 1px;
-	background: rgba(29, 106, 154, 0.72);
-  color: #fff;
+	border: solid black 2px;
+	background: #E86359;
+  text-transform: uppercase;
+  font: bold 24px Helvetica;
+  color: black;
   visibility: hidden;
   opacity: 0;
-  /*-webkit-transition: visibility opacity 0.02s;*/
+	vertical-align: middle;
+  text-align: center;
 }
 
-.mainImg {
-	max-width: 350px;
-	max-height: 400px;
-}
-
-.imgWrap:hover .imgDescription {
+.circular:hover .imgDescription {
   visibility: visible;
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .table th, .table td { 
