@@ -1,6 +1,6 @@
 /* Controllers */
 
-function UserListCtrl($scope, $http) {
+var UserListCtrl = function($scope, $http) {
   $scope.users = [];
   $scope.groupedUsers = [];
   $scope.usersPerRow = 4;
@@ -35,7 +35,9 @@ function UserListCtrl($scope, $http) {
   }
 }
 
-function UserDetailCtrl($scope, $routeParams, $http) {
+UserListCtrl.$inject = ['$scope', '$http'];
+
+var UserDetailCtrl = function($scope, $routeParams, $http) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
   $scope.user = {
@@ -65,3 +67,6 @@ function UserDetailCtrl($scope, $routeParams, $http) {
     return u.first_name + " " + u.last_name;
   }
 }
+
+UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http'];
+
