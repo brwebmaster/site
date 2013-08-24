@@ -1,4 +1,6 @@
-Brsite::Application.routes.draw do
+Brsite::Application.routes.draw do  
+  root to: 'static_pages#home'
+
   get "contact_form/new"
 
   get "contact_form/create"
@@ -17,7 +19,6 @@ Brsite::Application.routes.draw do
   resources :users do
     resources :photos
   end
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

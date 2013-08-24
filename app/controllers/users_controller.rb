@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
   def sunet
     @user = User.find_by_sunet(params[:sunet])
+    # do error checking here
     redirect_to :action => :show, :id => @user.id
   end
 
