@@ -1,7 +1,5 @@
 class ContactFormController < ApplicationController
   def new
-  	@contact_form = ContactForm.new
-  	@my_variable = 'HelloJLKLKJLKJ'
   end
 
   def create
@@ -10,6 +8,7 @@ class ContactFormController < ApplicationController
   		@contact_form.request = request
   		if @contact_form.deliver
   			flash.now[:notice] = 'Thank You for Your Message!'
+        render :action => :new
   		else
   			redirect_to :action => :new
   		end
