@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812000828) do
+ActiveRecord::Schema.define(:version => 20130825204256) do
+
+  create_table "performances", :force => true do |t|
+    t.string   "place"
+    t.string   "event"
+    t.string   "description"
+    t.datetime "time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "photos", :force => true do |t|
     t.string   "filename"

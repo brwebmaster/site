@@ -6,7 +6,7 @@
 	<%= f.label :Name %><%= f.text_field :name %><br />
 	<%= f.label :Email %><%= f.text_field :email %><br />
 	<%= f.label :Subject %><%= f.select :inquiry, options_for_select(["Performance", "Sponsorship", "Involvement", "Other"])%><br />
-	<%= f.label :Message %><%= f.text_area :message, :cols => "10", :rows => "10" %><br />
+	<%= f.label :Message %><%= f.text_area :message, :cols => "30", :rows => "10" %><br />
     <%= f.submit "Submit"%>
 <% end %>
 </div>

@@ -115,3 +115,16 @@ div.boolean, .simple_form input[type='submit'] {
 	height: 200px;
 }
 
+.upcoming{
+	width: 200px;
+	border-color: red;
+	border-style: solid;
+	text-align: center;
+	height:250px;
+	overflow:scroll;
+	background-color: white;
+}
+
+.upcoming p{
+	text-align: center;
+}
