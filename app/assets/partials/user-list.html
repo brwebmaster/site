@@ -1,15 +1,16 @@
 <div>
-  <p>Search by name:</p> <input ng-model="query">
+  <p>Search by name:</p> <input ng-change="getRows(query, orderProp)" ng-model="query">
 </div>
 <p>Sort by:</p>
-<select ng-model="orderProp">
+<select ng-change="getRows(query, orderProp)" ng-model="orderProp">
   <option value="first_name">First Name</option>
   <option value="last_name">Last Name</option>
   <option value="year">Year</option>
 </select>
+
 <table class="table">
-  <tr ng-repeat="userRow in getRows()">
-    <td ng-repeat="user in userRow | filter:userFilter(query) | orderBy:orderProp">
+  <tr ng-repeat="userRow in groupedUsers">
+    <td ng-repeat="user in userRow">
       <a href="#/users/{{user.id}}">
         <div class="circular" style="background: url({{user.avatar_url}}) no-repeat center">
           <p class="imgDescription">{{user.first_name}}</p>
