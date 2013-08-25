@@ -34,7 +34,7 @@
 					<li class="<%= 'active' if current_page?('/static_pages/home') %> dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
 					<li class="<%= 'active' if current_page?('/users') %> dropdown divider-vertical"><%= link_to "The Team", controller: "users"%></li>
 					<li class="<%= 'active' if current_page?('/static_pages/sponsorship') %> dropdown divider-vertical"><%= link_to "Performances and Awards", controller: "static_pages", action: "sponsorship" %></li>
-					<li class="<%= 'active' if current_page?('/static_pages/history') %> dropdown divider-vertical"><%= link_to "Contact Us", controller: "static_pages", action: "history" %></li>
+					<li class="<%= 'active' if current_page?('/contact_form/new') %> dropdown divider-vertical"><%= link_to "Contact Us", controller: "contact_form", action: "new" %></li>
 				</ul>
 				<ul class="nav nav-tabs pull-right">
 					<li class="divider-vertical">
