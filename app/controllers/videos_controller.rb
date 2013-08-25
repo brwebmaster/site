@@ -18,15 +18,18 @@ class VideosController < ApplicationController
   def create
   	vid = extract_id(params[:video][:link])
   	params[:video][:vid] = vid
+  	params[:video][:uploader] = session[:user_hash]["username"]
   	@video = Video.new(params[:video])
-  	if @video.save
+  	if @video.valid?
+  		@video.save
   		respond_to do |format|
   			format.html
   			format.json{ render :json => @video}
   		end
   	else
-  		flash[:alert] = "There was an error in validating the new video"
-      render :action => :index
+  		# TODO: does not work
+  		flash[:alert] = "There was an error in validating the new video (was it a kosher youtube link?)"
+      redirect_to :action => :index
   	end
   end
 

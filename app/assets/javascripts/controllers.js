@@ -92,9 +92,10 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.click = function() {
     var videoData = {
       'description': $scope.description,
-      'link': $scope.link,
-      'uploader': 'rkpandey'
+      'link': $scope.link
     };
+    $scope.link = '';
+    $scope.description = '';
 
     $http.post('/videos.json', videoData).success(function(data) {
       console.log(data);
