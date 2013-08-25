@@ -1,0 +1,13 @@
+<form>
+	<input ng-model="link" type="text" placeholder="Youtube link"></input> <br />
+	<input ng-model="description" type="text" placeholder="Description"></input> <br />
+	<button ng-click="click()">Add video!</button>
+</form>
+
+<div class="vidContainer" ng-repeat="video in videos">
+	<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="0">
+	</iframe>
+  <p>Uploaded by: <a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a></p>
+  <p>{{video.description}}</p>
+ 	<p>Added {{video.created_at | fromNow}}</p>
+</td>

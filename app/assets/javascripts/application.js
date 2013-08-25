@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require underscore
 //= require twitter/bootstrap
+//= require moment.min
 //= require_tree .
