@@ -37,7 +37,7 @@ var UserListCtrl = function($scope, $http) {
 
 UserListCtrl.$inject = ['$scope', '$http'];
 
-var UserDetailCtrl = function($scope, $routeParams, $http) {
+var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
   $scope.user = {
@@ -60,6 +60,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http) {
   });
 
   $scope.open = function(u){
+    $location.path('/users/' + u.id);
     $scope.user = u;
   };
 
@@ -68,5 +69,5 @@ var UserDetailCtrl = function($scope, $routeParams, $http) {
   }
 }
 
-UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http'];
+UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
 
