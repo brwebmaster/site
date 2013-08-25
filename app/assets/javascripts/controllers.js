@@ -68,7 +68,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
     $scope.users = data; 
   });
 
-  $scope.open = function(u){
+  $scope.open = function(u) {
     $location.path('/users/' + u.id);
     $scope.user = u;
   };
@@ -80,3 +80,20 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
 
+var VideoCtrl = function($scope, $http, $filter) {
+  $scope.hello = "Hello good sir";
+  $scope.videos = [];
+
+  $http.get('/videos.json').success(function(data) {
+    $scope.videos = data;
+  });
+
+  $scope.click = function() {
+    var params = {
+      
+    }
+    $scope.hello = "yessss";
+  }
+}
+
+VideoCtrl.$inject = ['$scope', '$http', '$filter'];
