@@ -1,0 +1,10 @@
+<h1>Add an Event!</h1>
+<br></br>
+<%= simple_form_for Performance.new, url: {action: "create"} do |f| %>
+	<%= f.label :Event %><%= f.text_field :event %><br />
+	<%= f.label :Date %><%= f.text_field :time %><br />
+	<%= f.label :Place %><%= f.text_field :place%><br />
+	<%= f.label :Description %><%= f.text_area :description, :cols => "30", :rows => "10" %><br />
+    <%= f.submit "Submit"%>
+<% end %>
+

@@ -19,6 +19,8 @@ Brsite::Application.routes.draw do
   get "static_pages/logout"
   get "users/sunet"
 
+  resources :performances 
+
   resources :users do
     resources :photos
   end
