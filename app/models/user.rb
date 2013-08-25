@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # These users can edit/delete any prodile
   def power_sunet_users
     Set.new [
-      # "rkpandey",
+      "rkpandey",
       "tdoshi",
       "namir",
       "patels"

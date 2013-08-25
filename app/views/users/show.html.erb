@@ -1,6 +1,6 @@
 <h3><%= @user.full_name %></h3>
 <% if @user.can_edit(session) %>
-	<%= button_to "Edit Profile", :action => :edit, :method => "get" %>
+	<%= button_to "Edit Profile", {:action => :edit}, :method => :get %>
 <% end %>
 <%= @user.get_picture %>
 <p>Year: <strong><%= @user.year %></strong></p>
