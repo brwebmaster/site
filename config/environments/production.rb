@@ -77,13 +77,13 @@ Brsite::Application.configure do
 
 ActionMailer::Base.delivery_method = :smtp 
 ActionMailer::Base.smtp_settings = { 
-  :address => "smtp.stanford.edu", 
-  :port => 465, 
+  :address => "smtp.gmail.com", 
+  :port => 587, 
   :domain => "basmatiraas.herokuapp.com",
   :user_name => ENV['EMAIL_USERNAME'],
   :password => ENV['EMAIL_PASSWORD'],
   :autentication => "plain",
-  :enable_starttles_auto => true
+  :enable_starttls_auto => true
 }
 
 end
