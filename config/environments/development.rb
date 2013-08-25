@@ -46,6 +46,11 @@ Brsite::Application.configure do
     }
   }
 
-
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address => "localhost",
+  :port => 1025,
+  :domain => "basmatiraas.herokuapp.com"
+}
 
 end
