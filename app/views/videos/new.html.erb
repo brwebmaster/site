@@ -1,0 +1,15 @@
+<%= form_for Video.new do |f| %>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
+ 
+  <p>
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
