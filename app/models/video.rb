@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  attr_accessible :description, :link, :uploader
+  attr_accessible :description, :link, :uploader, :vid
 
   def video_id
   	#TODO: better error checking here

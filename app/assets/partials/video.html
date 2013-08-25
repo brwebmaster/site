@@ -1,17 +1,15 @@
-{{hello}}
-
 {{videos}}
 
 <form>
-	Youtube link: <input type="text"></input> <br />
-	Description: <input type="text"></input> <br />
+	Youtube link: <input ng-model="link" type="text"></input> <br />
+	Description: <input ng-model="description" type="text"></input> <br />
 	<button ng-click="click()">Add video!</button>
 </form>
 
 <div ng-repeat="video in videos">
-	<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/{{video.video_id}}" allowfullscreen frameborder="0">
+	<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="0">
 	</iframe>
   <p>Uploaded by: {{video.uploader}}</p>
   <p>{{video.description}}</p>
-  <p>Added {{video.created_at}} ago</p>
+ 	<p>Added {{video.created_at | fromNow}}</p>
 </td>

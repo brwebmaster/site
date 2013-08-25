@@ -11,5 +11,10 @@ angular.module('videosbr', []).
   $routeProvider.
       when('/videos', {templateUrl: '/assets/video.html', controller: VideoCtrl}).
       otherwise({redirectTo: '/videos'});
-}]);
-  
+}]).config(["$httpProvider", function(provider) {
+  provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+}]).filter('fromNow', function() {
+  return function(date) {
+    return moment(date).fromNow();
+  }
+});

@@ -81,18 +81,27 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
 
 var VideoCtrl = function($scope, $http, $filter) {
-  $scope.hello = "Hello good sir";
   $scope.videos = [];
+  $scope.link = '';
+  $scope.description = '';
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
   });
 
   $scope.click = function() {
-    var params = {
-      
-    }
-    $scope.hello = "yessss";
+    var videoData = {
+      'description': $scope.description,
+      'link': $scope.link,
+      'uploader': 'rkpandey'
+    };
+
+    $http.post('/videos.json', videoData).success(function(data) {
+      console.log(data);
+      $scope.videos.unshift(data);
+    }).error(function(data) {
+      console.log('error in video adding');
+    });
   }
 }
 
