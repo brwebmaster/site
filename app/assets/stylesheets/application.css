@@ -17,6 +17,10 @@
 	background-repeat:repeat;
  } 
 
+ .duh{
+ 	font-family: 'Elephant';
+ }
+
 .header {
 	font-family: 'Elephant', Georgia, Times, serif;
 	font-size: 60px;
