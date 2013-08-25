@@ -68,7 +68,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
     $scope.users = data; 
   });
 
-  $scope.open = function(u){
+  $scope.open = function(u) {
     $location.path('/users/' + u.id);
     $scope.user = u;
   };
@@ -80,3 +80,30 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
 
+var VideoCtrl = function($scope, $http, $filter) {
+  $scope.videos = [];
+  $scope.link = '';
+  $scope.description = '';
+
+  $http.get('/videos.json').success(function(data) {
+    $scope.videos = data;
+  });
+
+  $scope.click = function() {
+    var videoData = {
+      'description': $scope.description,
+      'link': $scope.link
+    };
+    $scope.link = '';
+    $scope.description = '';
+
+    $http.post('/videos.json', videoData).success(function(data) {
+      console.log(data);
+      $scope.videos.unshift(data);
+    }).error(function(data) {
+      console.log('error in video adding');
+    });
+  }
+}
+
+VideoCtrl.$inject = ['$scope', '$http', '$filter'];

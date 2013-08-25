@@ -46,4 +46,13 @@ ActiveRecord::Schema.define(:version => 20130825204256) do
     t.boolean  "is_admin"
   end
 
+  create_table "videos", :force => true do |t|
+    t.string   "link"
+    t.string   "description"
+    t.string   "uploader"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "vid"
+  end
+
 end
