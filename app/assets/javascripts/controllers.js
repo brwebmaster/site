@@ -84,6 +84,8 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.videos = [];
   $scope.link = '';
   $scope.description = '';
+  $scope.successStatus = '';
+  $scope.errorStatus = '';
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
@@ -96,13 +98,32 @@ var VideoCtrl = function($scope, $http, $filter) {
     };
     $scope.link = '';
     $scope.description = '';
+    $scope.successStatus = '';
+    $scope.errorStatus = '';
 
     $http.post('/videos.json', videoData).success(function(data) {
       console.log(data);
+      $scope.successStatus = 'Added video successfully!';
       $scope.videos.unshift(data);
     }).error(function(data) {
+      $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
       console.log('error in video adding');
     });
+  }
+
+  $scope.deleteVid = function(id) {
+    var r = confirm("Are you sure you want to remove this video?");
+    if (r == true){
+      $http.delete('/videos/' + id).success(function() {
+        $scope.successStatus = 'Deleted video.';
+        for (var i = 0; i < $scope.videos.length; i++) {
+          if ($scope.videos[i].id == id) {
+            // remove element from array
+            $scope.videos.splice(i, 1);
+          }
+        }
+      });
+    }    
   }
 }
 
