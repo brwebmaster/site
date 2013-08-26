@@ -3,16 +3,21 @@
  		<div class="upcoming">
  			<h3>Upcoming Performances</h3>	
 			<% @performances.each do |p| %>
- 				<p> <span class="eventTitle"><%=p.event%></span> <br> 
- 				<%=p.time%> <br> 
- 				<a href='http://maps.google.com/maps?q= + <%=p.place%>'><%=p.place%></a><br> 
- 				<%=p.description%> </p>
+ 				<p> 
+	 				<span class="eventTitle"><%=p.event%></span> 
+	 				<br> 
+	 				<%= p.time.to_formatted_s(:long) %> 
+	 				<br> 
+	 				<a href='http://maps.google.com/maps?q= + <%=p.place%>'><%= p.place %></a>
+	 				<br> 
+	 				<%= p.description %>
+ 				</p>
 			<% end %>
  		</div>
  		<br>
 		<% if is_logged_in(session) %>
 			<a href="/performances/new"><button>Add New Performance</button></a>
-		<%end %>
+		<% end %>
 	</div>
 	<div class="span8">
 		<div class="row-fluid">
