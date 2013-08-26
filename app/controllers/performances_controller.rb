@@ -3,7 +3,9 @@ class PerformancesController < ApplicationController
 
 
 def index
-	@performances = Performance.all
+	@performances = Performance
+    .where("time > ?", Time.now)
+    .order('time ASC')
 end
 
 def new
