@@ -1,3 +1,10 @@
+<!-- add class 'alert' below to have better look, but shows up all the time -->
+<div class="alert-error">
+	{{errrorStatus}}
+</div>
+<div class="alert-success">
+	{{successStatus}}
+</div>
 <form>
 	<input ng-model="link" type="text" placeholder="Youtube link"></input> <br />
 	<input ng-model="description" type="text" placeholder="Description"></input> <br />
@@ -5,6 +12,8 @@
 </form>
 
 <div class="vidContainer" ng-repeat="video in videos">
+	<!-- TODO: get a nice icon for delete instead of X -->
+	<div class="delete" ng-click="deleteVid(video.id)">X</div>
 	<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="0">
 	</iframe>
   <p>Uploaded by: <a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a></p>

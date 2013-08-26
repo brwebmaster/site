@@ -4,7 +4,8 @@ class VideosController < ApplicationController
   include VideosHelper
   
   def index
-  	@videos = Video.all
+    # TODO: implement pagination
+  	@videos = Video.limit(8).order("created_at DESC")
     respond_to do |format|
       format.html
       format.json { render json: @videos }
@@ -27,9 +28,8 @@ class VideosController < ApplicationController
   			format.json{ render :json => @video}
   		end
   	else
-  		# TODO: does not work
-  		flash[:alert] = "There was an error in validating the new video (was it a kosher youtube link?)"
-      redirect_to :action => :index
+      # error msg should be set in http.post error handler
+      render :status => 403, :layout => false
   	end
   end
 
@@ -43,5 +43,7 @@ class VideosController < ApplicationController
   end
 
   def destroy
+    Video.destroy(params[:id])
+    render nothing: true
   end
 end
