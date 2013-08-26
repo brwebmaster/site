@@ -1,20 +1,54 @@
-<div class="upcoming">
- 	<h3>Upcoming Performances</h3>	
-<% @performances.each do |p| %>
- 	<p> 
- 		<span class="eventTitle">
- 			<%= p.event %>
- 		</span> <br> 
- 		<span class="time">
- 			<%= p.time.to_formatted_s(:long) %>
- 		</span> <br> 
- 		<a href='http://maps.google.com/maps?q= + <%=p.place%>'>
- 			<%= p.place %>
- 		</a> <br>
- 		<%= p.description %> </p>
-<% end %>
- </div>
- <br>
- <% if is_logged_in(session) %>
-		<a href="/performances/new"><button>Add New Performance</button></a>
-	<%end %>
+<div class="row-fluid">
+	<div class="span3">
+ 		<div class="upcoming">
+ 			<h3>Upcoming Performances</h3>	
+			<% @performances.each do |p| %>
+ 				<p> 
+	 				<span class="eventTitle"><%=p.event%></span> 
+	 				<br> 
+	 				<%= p.time.to_formatted_s(:long) %> 
+	 				<br> 
+	 				<a href='http://maps.google.com/maps?q= + <%=p.place%>'><%= p.place %></a>
+	 				<br> 
+	 				<%= p.description %>
+ 				</p>
+			<% end %>
+ 		</div>
+ 		<br>
+		<% if is_logged_in(session) %>
+			<a href="/performances/new"><button>Add New Performance</button></a>
+		<% end %>
+	</div>
+	<div class="span8">
+		<div class="row-fluid">
+			<%@years.each do |date, info|%>
+			<div class="span1">
+				<a class="linkText" href="#<%=date%>"><%=date[2..3]+ '-' + date[7..8]%></a>
+			</div>
+			<% end %>
+		</div>
+		<% @years.each do |date, info|%>
+		<div class="year"> 	
+			<a name="<%=date%>"></a>
+			<h3><%=date%></h3>
+				<div class="row-fluid">
+					<div class="span7">
+						<% if info['videoID'] %>
+							<iframe class="youtube-player" type="text/html" width="400" height="250" src=<%="http://www.youtube.com/embed/#{info['videoID']}"%> allowfullscreen frameborder="0"></iframe>
+						<% else %>
+							<%= image_tag "/assets/#{info['photo']}", class: "displayed" %>
+						<% end %>
+					</div>
+					<div class="span5">
+						<h5>Highlights</h5>
+						<% info['awards'].each do |result|%>
+							<p><%=result%></p>
+						<% end %>
+					</div>
+				</div>
+			<br>
+		</div>
+		<% end %>
+	</div>
+</div>
+>>>>>>> upstream/master
