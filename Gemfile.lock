@@ -33,6 +33,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
+    bootstrap-datetimepicker-rails (0.0.11)
     builder (3.0.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -148,6 +149,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  bootstrap-datetimepicker-rails
   coffee-rails (~> 3.2.1)
   figaro
   jquery-rails
