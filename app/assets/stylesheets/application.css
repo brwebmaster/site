@@ -128,3 +128,12 @@ div.boolean, .simple_form input[type='submit'] {
 .upcoming p{
 	text-align: center;
 }
+
+.year{
+	border-bottom-style: dashed;
+	border-bottom-color: black;
+}
+
+.linkText{
+	font-size: 14px;
+}
