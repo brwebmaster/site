@@ -15,5 +15,4 @@
 //= require underscore
 //= require twitter/bootstrap
 //= require moment.min
-//= require bootstrap-datetimepicker
 //= require_tree .
