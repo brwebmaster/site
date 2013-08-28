@@ -102,12 +102,10 @@ var VideoCtrl = function($scope, $http, $filter) {
     $scope.errorStatus = '';
 
     $http.post('/videos.json', videoData).success(function(data) {
-      console.log(data);
       $scope.successStatus = 'Added video successfully!';
       $scope.videos.unshift(data);
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
-      console.log('error in video adding');
     });
   }
 
@@ -139,7 +137,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
   // These should match db columns
   $scope.form = {
     'event' : '',
-    'date' : '',
+    'time' : '',
     'place' : '',
     'description' : ''
   }
@@ -167,7 +165,6 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
       $scope.performances.unshift(data);
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
-      console.log('error in video adding');
     });
   }
 
@@ -178,5 +175,3 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
 }
 
 PerformanceCtrl.$inject = ['$scope', '$http', '$filter', 'authService'];
-
-
