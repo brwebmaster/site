@@ -69,4 +69,17 @@ class UsersController < ApplicationController
     redirect_to :action => :index
   end
 
+  # This endpoint should ONLY be hit with .json
+  # If user is logged in, returns them as json object
+  # else returns null
+  # TODO: (performance) don't need to return full user object
+  def get_cur_user
+    @user = nil
+    if is_logged_in session
+      @user = User.find_by_sunet(session[:user_hash]["username"])
+    end
+    respond_to do |format|
+      format.json { render json: @user }
+    end
+  end
 end

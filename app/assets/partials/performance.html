@@ -1,0 +1,30 @@
+<div ng-show="errorStatus" class="alert alert-error">
+	{{errorStatus}}
+</div>
+<div ng-show="successStatus" class="alert alert-success">
+	{{successStatus}}
+</div>
+<div class="upcoming">
+	<h3>Upcoming Performances</h3>
+	<button ng-show="allowCreate" ng-click="showPerfCreation()">
+		Add New Performance
+	</button>
+	<div ng-show="createNew">
+		<form name="perfForm">
+			<input type="text" placeholder="Title" ng-model="form.event" required/>
+			<input type="date" placeholder="YYYY-MM-DD" ng-model="form.time" required/>
+			<input type="text" placeholder="Location" ng-model="form.place" required/>
+			<textarea rows="2" placeholder="Description" ng-model="form.description"/>
+			<button ng-click="save()" ng-disabled="isSaveDisabled()">Add</button>
+		</form>
+	</div>
+	<p class="performance" ng-repeat="p in performances">
+		<span class="eventTitle">{{ p.event }}</span>
+		<br />
+		{{ p.time | fromNow}}
+		<br />
+		Location: <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a>
+		<br /> 
+		{{ p.description }}
+	</p>
+</div>
