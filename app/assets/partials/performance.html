@@ -12,15 +12,15 @@
 	<div ng-show="createNew">
 		<form name="perfForm">
 			<input type="text" placeholder="Title" ng-model="form.event" required/>
-			<input type="date" placeholder="Date" ng-model="form.time" required/>
+			<input type="date" placeholder="YYYY-MM-DD" ng-model="form.time" required/>
 			<input type="text" placeholder="Location" ng-model="form.place" required/>
 			<textarea rows="2" placeholder="Description" ng-model="form.description"/>
 			<button ng-click="save()" ng-disabled="isSaveDisabled()">Add</button>
-		</form>	
+		</form>
 	</div>
 	<p class="performance" ng-repeat="p in performances">
-		<span class="eventTitle">{{ p.event }}</span> 
-		<br /> 
+		<span class="eventTitle">{{ p.event }}</span>
+		<br />
 		{{ p.time | fromNow}}
 		<br />
 		Location: <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a>

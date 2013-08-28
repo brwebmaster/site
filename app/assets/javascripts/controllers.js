@@ -56,11 +56,12 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
     "sunet": "jbisbis",
     "year": "2015",
     "bio": "I am a member of Basmati Raas",
-    "avatar_url": "/assets/defaultRaas.jpg"
+    "avatar_url": "/assets/defaultRaas.jpg",
+    "gender": "M"
   };
 
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
-    $scope.user = data; 
+    $scope.user = data;
   });
 
   $http.get('/users.json').success(function(data) {
