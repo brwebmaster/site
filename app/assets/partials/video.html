@@ -1,8 +1,7 @@
-<!-- add class 'alert' below to have better look, but shows up all the time -->
-<div class="alert-error">
-	{{errrorStatus}}
+<div ng-show="errorStatus" class="alert alert-error">
+	{{errorStatus}}
 </div>
-<div class="alert-success">
+<div ng-show="successStatus" class="alert alert-success">
 	{{successStatus}}
 </div>
 <form>
