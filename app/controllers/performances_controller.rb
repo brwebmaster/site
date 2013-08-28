@@ -16,7 +16,11 @@ def index
 			"2005-2006" => {"videoID" => "13MWKWX_Wsg", "awards" => ["1st Place - Garba with Attitude", "Invitation to Best of the Best 2"]},
 			"2004-2005" => {"videoID" => "HxRG2yTNKuM", "awards" => ["1st Place - Garba with Attitude", "Invitation to Best of the Best 1"]},
 			"2003-2004" => {"videoID" => false, "awards" => ["2nd Place - Garba with Attitude"], "photo" => "2003-2004.jpg"}
-			} 
+			}
+	respond_to do |format|
+    format.html
+    format.json { render json: @performances }
+  end 
 end
 
 def new
@@ -27,11 +31,14 @@ def create
 	@performance = Performance.new(params[:performance])
     if @performance.valid?
       @performance.save
-      flash[:notice] = "Your event has been added!"
-      redirect_to :action => :index
+      respond_to do |format|
+  			format.html
+  			format.json{ render :json => @performance}
+  		end
     else
-      flash[:alert] = "There was an error in creating the new event"
-      render :action => :new
+    	render :status => 403, :layout => false
+      # flash[:alert] = "There was an error in creating the new event"
+      # render :action => :new
     end
   end
 end

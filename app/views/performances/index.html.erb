@@ -1,24 +1,8 @@
 <div class="row-fluid">
-	<div class="span3">
- 		<div class="upcoming">
- 			<h3>Upcoming Performances</h3>	
-			<% @performances.each do |p| %>
- 				<p> 
-	 				<span class="eventTitle"><%=p.event%></span> 
-	 				<br> 
-	 				<%= p.time.to_formatted_s(:long) %> 
-	 				<br> 
-	 				<a href='http://maps.google.com/maps?q= + <%=p.place%>'><%= p.place %></a>
-	 				<br> 
-	 				<%= p.description %>
- 				</p>
-			<% end %>
- 		</div>
- 		<br>
-		<% if is_logged_in(session) %>
-			<a href="/performances/new"><button>Add New Performance</button></a>
-		<% end %>
+	<div class="span3" ng-app="performancesbr">
+	  <div ng-view></div>
 	</div>
+
 	<div class="span8">
 		<div class="row-fluid">
 			<%@years.each do |date, info|%>

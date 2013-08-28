@@ -56,11 +56,12 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
     "sunet": "jbisbis",
     "year": "2015",
     "bio": "I am a member of Basmati Raas",
-    "avatar_url": "/assets/defaultRaas.jpg"
+    "avatar_url": "/assets/defaultRaas.jpg",
+    "gender": "M"
   };
 
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
-    $scope.user = data; 
+    $scope.user = data;
   });
 
   $http.get('/users.json').success(function(data) {
@@ -102,12 +103,10 @@ var VideoCtrl = function($scope, $http, $filter) {
     $scope.errorStatus = '';
 
     $http.post('/videos.json', videoData).success(function(data) {
-      console.log(data);
       $scope.successStatus = 'Added video successfully!';
       $scope.videos.unshift(data);
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
-      console.log('error in video adding');
     });
   }
 
@@ -128,3 +127,52 @@ var VideoCtrl = function($scope, $http, $filter) {
 }
 
 VideoCtrl.$inject = ['$scope', '$http', '$filter'];
+
+var PerformanceCtrl = function($scope, $http, $filter, authService) {
+  $scope.performances = [];
+  $scope.user = false;
+  $scope.createNew = false;
+  $scope.allowCreate = false;
+  $scope.successStatus = '';
+  $scope.errorStatus = '';
+  // These should match db columns
+  $scope.form = {
+    'event' : '',
+    'time' : '',
+    'place' : '',
+    'description' : ''
+  }
+
+  $http.get('/performances.json').success(function(data) {
+    $scope.performances = data;
+    var promise = authService.curUser;
+    promise.then(function(data) {
+      $scope.user = (data === 'null') ? false : data;
+      $scope.allowCreate = $scope.user;
+    });
+  });
+
+  $scope.showPerfCreation = function() {
+    $scope.createNew = true;
+    $scope.allowCreate = false;
+  }
+
+  $scope.save = function() {
+    $scope.allowCreate = true;
+    $scope.createNew = false;
+    $http.post('/performances.json', $scope.form).success(function(data) {
+      $scope.successStatus = 'Added performance successfully! (Refresh the page if things look weird)';
+      // TODO: insert in correct place in order
+      $scope.performances.unshift(data);
+    }).error(function(data) {
+      $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
+    });
+  }
+
+  // Source: http://docs.angularjs.org/cookbook/advancedform
+  $scope.isSaveDisabled = function() {
+    return $scope.perfForm.$invalid;
+  };
+}
+
+PerformanceCtrl.$inject = ['$scope', '$http', '$filter', 'authService'];

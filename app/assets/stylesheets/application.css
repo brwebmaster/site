@@ -116,13 +116,13 @@ div.boolean, .simple_form input[type='submit'] {
 }
 
 .upcoming{
-	width: 200px;
-	border-color: red;
-	border-style: solid;
+	width: 250px;
+	min-height: 300px;
 	text-align: center;
-	height:250px;
-	overflow:scroll;
-	background-color: white;
+	overflow: scroll;
+	overflow-x: auto;
+	background-color: #FFC5C0;
+	position:fixed;
 }
 
 .upcoming p{
@@ -155,4 +155,13 @@ div.boolean, .simple_form input[type='submit'] {
 	border-left-style: solid;
 	border-left-width: thin;
 	border-right-color: black;
+}
+
+.eventTitle {
+	font-weight: bold;
+}
+.performance {
+	margin: 5px;
+	border-top: black dotted 3px;
+
 }

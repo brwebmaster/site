@@ -69,11 +69,11 @@
 }
 
 .genderMale {
-	background-color: blue;
+	background-color: #E8ACA0;
 }
 
 .genderFemale {
-	background-color: yellow;
+	background-color: #FFB1FC;
 }
 
 .genderUnknown {
