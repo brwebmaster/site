@@ -1,21 +1,27 @@
+<h1>Team Videos <img ng-click ="showUploader()" class="icon" src="/assets/plus_icon.png"></img></h1>
+<br>
 <div ng-show="errorStatus" class="alert alert-error">
 	{{errorStatus}}
 </div>
 <div ng-show="successStatus" class="alert alert-success">
 	{{successStatus}}
 </div>
-<form>
+<form ng-show="isUploadable">
 	<input ng-model="link" type="text" placeholder="Youtube link"></input> <br />
 	<input ng-model="description" type="text" placeholder="Description"></input> <br />
 	<button ng-click="click()">Add video!</button>
 </form>
 
 <div class="vidContainer" ng-repeat="video in videos">
-	<!-- TODO: get a nice icon for delete instead of X -->
-	<div class="delete" ng-click="deleteVid(video.id)">X</div>
-	<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="0">
-	</iframe>
-  <p>Uploaded by: <a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a></p>
-  <p>{{video.description}}</p>
- 	<p>Added {{video.created_at | fromNow}}</p>
-</td>
+	<div class="row-fluid">
+		<div class="span8">
+			<iframe class="youtube-player" type="text/html" width="640" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="25"></iframe>
+			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>
+		</div>
+		<div class="span4">
+  			<p>Uploaded by: <a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a></p>
+  			<p>{{video.description}}</p>
+ 			<p>Added {{video.created_at | fromNow}}</p>
+ 		</div>
+ 	</div>
+ </div>
