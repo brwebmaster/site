@@ -44,6 +44,20 @@
 		  		 <%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'})%>
 		  	</div>
 		  </div>
+		  
+		  <div class="control-group">
+		  	<%= f.label "Captain", :class => "control-label" %>
+		  	<div class="controls">
+		  		 <%= f.check_box :is_captain %>
+		  	</div>
+		  </div>
+
+		  <div class="control-group">
+		  	<%= f.label "Alumni", :class => "control-label" %>
+		  	<div class="controls">
+		  		 <%= f.check_box :is_alumni %>
+		  	</div>
+		  </div>
 
 		  <div class="control-group">
 		  	<%= f.label :bio, :class => "control-label" %>

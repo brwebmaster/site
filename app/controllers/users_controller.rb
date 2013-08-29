@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   
   # show all users
   def index
-    @users = User.all
+    @users = []
+    if params[:is_alumni] == '0'
+      puts "not alumni"
+      @users = User.where("is_alumni = false")
+    elsif params[:is_alumni] == '1'
+      @users = User.where("is_alumni = true")
+    else
+      @users = User.all
+    end
     respond_to do |format|
       format.html
       format.json { render json: @users.to_json(:methods => [:avatar_url]) }

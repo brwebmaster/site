@@ -1,7 +1,9 @@
 <div ng-show="errorStatus" class="alert alert-error">
+	<a class="close" data-dismiss="alert">×</a>
 	{{errorStatus}}
 </div>
 <div ng-show="successStatus" class="alert alert-success">
+	<a class="close" data-dismiss="alert">×</a>
 	{{successStatus}}
 </div>
 <div class="upcoming">
@@ -21,7 +23,7 @@
 	<p class="performance" ng-repeat="p in performances">
 		<span class="eventTitle">{{ p.event }}</span>
 		<br />
-		{{ p.time | fromNow}}
+		{{ p.time | date:'yyyy-MM-dd'}}
 		<br />
 		Location: <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a>
 		<br /> 
