@@ -138,10 +138,28 @@ div.boolean, .simple_form input[type='submit'] {
 	font-size: 14px;
 }
 
+.announcement{
+	color: #8A1B07;
+	font-weight: bold;
+	text-align: center;
+	font-size: 20px;
+}
+
+.keepBorder{
+	border-right-style: solid;
+	border-right-color: black;
+	border-right-width: thin;
+}
+
+.keepBorderLeft{
+	border-left-style: solid;
+	border-left-width: thin;
+	border-right-color: black;
+}
+
 .eventTitle {
 	font-weight: bold;
 }
-
 .performance {
 	margin: 5px;
 	border-top: black dotted 3px;

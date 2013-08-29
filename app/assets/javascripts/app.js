@@ -1,5 +1,5 @@
 angular.module('AuthModule', []).
- 	factory('authService', function($q, $http) {
+ 	factory('authService', ['$q', '$http', function($q, $http) {
 	 	var currentUser = $q.defer();
 	 	$http.get('users/get_cur_user.json').success(function(data) {
 	  	currentUser.resolve(data);
@@ -16,7 +16,7 @@ angular.module('AuthModule', []).
 	    },
 	    // currentUser: function() { return currentUser; }
 	  };
-	});
+	}]);
 
 angular.module('usersbr', ['AuthModule']).
   config(['$routeProvider', function($routeProvider) {
@@ -39,7 +39,7 @@ angular.module('videosbr', ['AuthModule']).
   }
 });
 
-angular.module('performancesbr', ['AuthModule']).
+var perfApp = angular.module('performancesbr', ['AuthModule']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/performances', {templateUrl: '/assets/performance.html', controller: PerformanceCtrl}).
@@ -51,5 +51,3 @@ angular.module('performancesbr', ['AuthModule']).
     return moment(date).fromNow();
   }
 });
-
-
