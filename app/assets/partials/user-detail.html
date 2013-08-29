@@ -12,7 +12,12 @@
       <img class="mainImg" ng-src="{{user.avatar_url}}">
     </div>
     <div class="span6 userWritten" ng-class="{genderMale: user.gender == 'M', genderFemale: user.gender == 'F'}">
-      <h2>{{getFullName(user)}}</h2>
+      <h2>
+        <span ng-show="user.is_captain">
+          <img class="icon2" alt="Captain" src="/assets/star_icon.png">
+        </span>
+         {{getFullName(user)}}
+      </h2>
       <p>Year: <strong>{{user.year}}</strong></p>
       <p>Bio: <strong>{{user.bio}}</strong></p>
     </div>

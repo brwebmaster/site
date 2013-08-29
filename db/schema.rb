@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825204256) do
+ActiveRecord::Schema.define(:version => 20130829045650) do
 
   create_table "performances", :force => true do |t|
     t.string   "place"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20130825204256) do
     t.string   "sunet"
     t.string   "gender"
     t.boolean  "is_admin"
+    t.boolean  "is_alumni"
+    t.boolean  "is_captain"
   end
 
   create_table "videos", :force => true do |t|
