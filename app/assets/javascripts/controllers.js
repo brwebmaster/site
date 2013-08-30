@@ -83,7 +83,6 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
     "id": 0,
     "first_name": "John",
     "last_name": "Bisbis",
-    "sunet": "jbisbis",
     "year": "2015",
     "bio": "I am a member of Basmati Raas",
     "avatar_url": "/assets/defaultRaas.jpg",
@@ -93,7 +92,6 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
     $scope.user = data;
     $http.get('/users/can_edit.json?sunet=' + $scope.user.sunet).success(function(data) {
-        console.log(data);
         if (data.can_edit) {
           $scope.canEdit = true;
         }

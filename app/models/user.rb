@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	has_many :photos
   attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin, :is_captain, :is_alumni
 
-  validates :first_name, :last_name, :year, :presence => true
+  validates :first_name, :last_name, :presence => true
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, 

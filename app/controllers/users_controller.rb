@@ -23,6 +23,30 @@ class UsersController < ApplicationController
   def new
   end
 
+  # Hit this endpoint as soon as user logs in
+  # If user is already in the database, redirect to team page,
+  # otherwise go to edit page
+  def login_check
+    if not is_logged_in session
+      # should never get in here
+      redirect_to :action => :index
+    end
+    sunet = session[:user_hash]["username"]
+    if User.find_by_sunet(sunet)
+      redirect_to :action => :index
+    else
+      # create new user in table
+      gn = session[:user_hash]["gn"]
+      gn = "" if gn.nil?
+      sn = session[:user_hash]["sn"]
+      sn = "" if sn.nil?
+      @user = User.new(:sunet => sunet, :first_name => gn.titlecase, :last_name => sn.titlecase, :bio => "I dance for BR!")
+      @user.save
+      flash[:notice] = "Welcome! We started filling out your profile. Please upload a picture and update your information."
+      redirect_to "/users/#{@user.id}/edit"
+    end
+  end
+
   # POST: create a new user
   def create
     @user = User.new(params[:user])
@@ -70,12 +94,10 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "Updated member!"
-      # redirect_to :action => :show, :id => @user.id
-      redirect_to "/users#/users/#{@user.id}"
     else
-      flash[:alert] = "Unable to update member. Try again"
-      redirect_to :action => :edit
+      flash[:alert] = "Unable to update member."
     end
+    redirect_to "/users#/users/#{@user.id}"
   end
 
   # DELETE: delete a specific user
