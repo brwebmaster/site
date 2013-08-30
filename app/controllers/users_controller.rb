@@ -48,12 +48,20 @@ class UsersController < ApplicationController
   def sunet
     @user = User.find_by_sunet(params[:sunet])
     # do error checking here
-    redirect_to :action => :show, :id => @user.id
+    # TODO: ensure this is safe
+    redirect_to "/users#/users/#{@user.id}"
   end
 
   # return an HTML form for editing a user
   def edit
     @user = User.find_by_id(params[:id])
+    logged_in_user = session[:user_hash]["username"]
+    if logged_in_user != @user.sunet and not 
+      User.is_power_user(logged_in_user)
+      # permission denied
+      flash[:error] = "Your privileges don't allow you to edit  profiles other than your own."
+      redirect_to "/users#/users/"
+    end
     @photos = Photo.find_all_by_user_id(params[:id])
   end
 
@@ -62,7 +70,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "Updated member!"
-      redirect_to :action => :show, :id => @user.id
+      # redirect_to :action => :show, :id => @user.id
+      redirect_to "/users#/users/#{@user.id}"
     else
       flash[:alert] = "Unable to update member. Try again"
       redirect_to :action => :edit
@@ -89,9 +98,9 @@ class UsersController < ApplicationController
 
   def can_edit
     editable = false
-    # if looking at own profile, you have permission
-    # if you are admin, you have permission
     if is_logged_in session
+      # if looking at own profile, you have permission
+      # if you are admin, you have permission
       logged_in_user = session[:user_hash]["username"]
       if logged_in_user == params[:sunet] or 
         User.is_power_user(logged_in_user)

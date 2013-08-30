@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
     ["rkpandey", "tdoshi", "namir", "patels"].include? sunet
   end
 
+  def full_name
+  	self.first_name + " " + self.last_name
+  end
+
+  def get_picture
+    if self.avatar.exists?
+      ActionController::Base.helpers.image_tag self.avatar.url(:square)
+    else
+      ActionController::Base.helpers.image_tag "defaultRaas.jpg"
+    end
+  end
+
   # This is called in the json response so we have access to the file url (stored in Amazon S3). 
   def avatar_url
     avatar.url
