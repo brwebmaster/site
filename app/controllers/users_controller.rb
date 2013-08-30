@@ -35,11 +35,9 @@ class UsersController < ApplicationController
     if User.find_by_sunet(sunet)
       redirect_to :action => :index
     else
-      # create new user in table
-      gn = session[:user_hash]["gn"]
-      gn = "" if gn.nil?
-      sn = session[:user_hash]["sn"]
-      sn = "" if sn.nil?
+      # create new user
+      gn = session[:user_hash]["gn"] || ""
+      sn = session[:user_hash]["sn"] || ""
       @user = User.new(:sunet => sunet, :first_name => gn.titlecase, :last_name => sn.titlecase, :bio => "I dance for BR!")
       @user.save
       flash[:notice] = "Welcome! We started filling out your profile. Please upload a picture and update your information."
