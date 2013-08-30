@@ -4,7 +4,7 @@
 	<%= form_for(@user) do |f| %>
 		<fieldset>
 			<legend>Edit profile for <%= @user.full_name %>:</legend>
-
+			
 			<div class="control-group">
 			  <%= f.label :avatar %><br />
 			  <%= f.file_field :avatar %>

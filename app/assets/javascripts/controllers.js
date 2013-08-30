@@ -20,7 +20,7 @@ var UserListCtrl = function($scope, $http, $filter) {
     $scope.showSearch = !$scope.showSearch;
   }
 
-  $scope.toggleAlumni = function() {    
+  $scope.toggleAlumni = function() {
     $scope.showAlumni = !$scope.showAlumni;
     if ($scope.showAlumni) {
       $http.get('/users.json?is_alumni=1').success(function(data) {
@@ -30,8 +30,7 @@ var UserListCtrl = function($scope, $http, $filter) {
     }
   }
 
-  // (users | filter:userFilter(query) | orderBy:orderProp) 
-  // Return array of arrays splitting the data in itemsPerRow per array
+  // Return array of arrays grouping the data 4 at a time
   $scope.getRows = function(query, orderProp) {
     $scope.groupedUsers = $scope.groupArray(query, orderProp, $scope.users);
   }
@@ -79,6 +78,7 @@ UserListCtrl.$inject = ['$scope', '$http', '$filter'];
 var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
+  $scope.canEdit = false;
   $scope.user = {
     "id": 0,
     "first_name": "John",
@@ -92,10 +92,15 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
     $scope.user = data;
+    $http.get('/users/can_edit.json?sunet=' + $scope.user.sunet).success(function(data) {
+        console.log(data);
+        if (data.can_edit) {
+          $scope.canEdit = true;
+        }
+    });
   });
 
   $http.get('/users.json').success(function(data) {
-    console.log(data);
     $scope.users = data; 
   });
 

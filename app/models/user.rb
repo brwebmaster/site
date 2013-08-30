@@ -14,40 +14,13 @@ class User < ActiveRecord::Base
     medium: '300x300>',
   }
 
-  # These users can edit/delete any prodile
-  def power_sunet_users
-    Set.new [
-      "rkpandey",
-      "tdoshi",
-      "namir",
-      "patels"
-    ]
-  end
-
-  def full_name
-  	self.first_name + " " + self.last_name
-  end
-
-  def get_picture
-    if self.avatar.exists?
-      ActionController::Base.helpers.image_tag self.avatar.url(:square)
-    else
-      ActionController::Base.helpers.image_tag "defaultRaas.jpg"
-    end
+  # These users can edit/delete any profile
+  def self.is_power_user(sunet)
+    ["rkpandey", "tdoshi", "namir", "patels"].include? sunet
   end
 
   # This is called in the json response so we have access to the file url (stored in Amazon S3). 
   def avatar_url
     avatar.url
-  end
-
-  def can_edit(session)
-    # if not logged in, no permission
-    return false if not is_logged_in(session)
-    logged_in_sunet = session[:user_hash]["username"]
-    # if looking at own profile, you have permission
-    # if you are admin, you have permission
-    return true if self.sunet == logged_in_sunet or self.power_sunet_users.member?(logged_in_sunet)
-    false
   end
 end

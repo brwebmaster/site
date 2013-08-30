@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :require_login, :only=>[:destroy, :create, :new, :edit]
-  # TODO: should not allow logged in user from editing ALL profiles
   include ApplicationHelper
   
   # show all users
@@ -77,7 +76,6 @@ class UsersController < ApplicationController
     redirect_to :action => :index
   end
 
-  # This endpoint should ONLY be hit with .json
   # If user is logged in, returns them as json object
   # else returns null
   # TODO: (performance) don't need to return full user object
@@ -86,8 +84,20 @@ class UsersController < ApplicationController
     if is_logged_in session
       @user = User.find_by_sunet(session[:user_hash]["username"])
     end
-    respond_to do |format|
-      format.json { render json: @user }
+    render json: @user
+  end
+
+  def can_edit
+    editable = false
+    # if looking at own profile, you have permission
+    # if you are admin, you have permission
+    if is_logged_in session
+      logged_in_user = session[:user_hash]["username"]
+      if logged_in_user == params[:sunet] or 
+        User.is_power_user(logged_in_user)
+        editable = true
+      end
     end
+    render json: {"can_edit" => editable}
   end
 end

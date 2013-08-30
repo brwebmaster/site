@@ -14,11 +14,15 @@
     <div class="span6 userWritten" ng-class="{genderMale: user.gender == 'M', genderFemale: user.gender == 'F'}">
       <h2>
         <span ng-show="user.is_captain">
-          <img class="icon2" alt="Captain" src="/assets/star_icon.png">
+          <img class="icon2" alt="Captain" title="Captain!" src="/assets/star_icon.png">
         </span>
          {{getFullName(user)}}
+         <a href="mailto:{{user.sunet}}@stanford.edu"><img class="icon" alt="Email" src="/assets/email_icon.png"></a>
       </h2>
       <p>Year: <strong>{{user.year}}</strong></p>
       <p>Bio: <strong>{{user.bio}}</strong></p>
+      <div ng-show="canEdit">
+        <a href="/users/{{user.id}}/edit">Edit</a>
+      </div>
     </div>
 </div>
