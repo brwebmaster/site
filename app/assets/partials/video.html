@@ -1,9 +1,11 @@
 <h1>Team Videos <img ng-click ="showUploader()" class="icon" src="/assets/plus_icon.png"></img></h1>
 <br>
 <div ng-show="errorStatus" class="alert alert-error">
+	<a class="close" data-dismiss="alert">×</a>
 	{{errorStatus}}
 </div>
 <div ng-show="successStatus" class="alert alert-success">
+	<a class="close" data-dismiss="alert">×</a>
 	{{successStatus}}
 </div>
 <form ng-show="isUploadable">

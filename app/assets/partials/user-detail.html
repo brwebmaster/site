@@ -12,8 +12,21 @@
       <img class="mainImg" ng-src="{{user.avatar_url}}">
     </div>
     <div class="span6 userWritten" ng-class="{genderMale: user.gender == 'M', genderFemale: user.gender == 'F'}">
-      <h2>{{getFullName(user)}}</h2>
-      <p>Year: <strong>{{user.year}}</strong></p>
-      <p>Bio: <strong>{{user.bio}}</strong></p>
+      <h2>
+        <span ng-show="user.is_captain">
+          <img class="icon2" alt="Captain" title="Captain!" src="/assets/star_icon.png">
+        </span>
+         {{getFullName(user)}}
+         <a href="mailto:{{user.sunet}}@stanford.edu">
+            <img class="icon" alt="Email" src="/assets/email_icon.png">
+         </a>
+      </h2>
+      <p ng-show="user.year">Year: {{user.year}}</p>
+      <p ng-show="user.hometown">Hometown: {{user.hometown}}</p>
+      <p ng-show="user.bio">Bio: {{user.bio}}</p>
+      <p ng-show="user.memory">Favorite Raas Memory: {{user.memory}}</p>
+      <div ng-show="canEdit">
+        <a href="/users/{{user.id}}/edit">Edit</a>
+      </div>
     </div>
 </div>

@@ -1,7 +1,5 @@
 Brsite::Application.routes.draw do  
   root to: 'static_pages#home'
-
-
   get "contact_form/new"
 
   get "contact_form/create"
@@ -10,15 +8,16 @@ Brsite::Application.routes.draw do
   get "contact_form/new2"
 
   get "static_pages/home"
-
   get "static_pages/history"
-
-  get "static_pages/sponsorship"
-  
+  get "static_pages/sponsorship" 
   get "static_pages/login"
   get "static_pages/logout"
+
   get "users/sunet"
   get "users/get_cur_user"
+  get "users/can_edit"
+  get "users/login_check"
+  get "users/raaster"
 
   resources :performances 
 

@@ -2,34 +2,63 @@
 
 var UserListCtrl = function($scope, $http, $filter) {
   $scope.users = [];
+  $scope.alumni = [];
   $scope.groupedUsers = [];
+  $scope.groupedAlumni = [];
+  $scope.showSearch = false;
+  $scope.showAlumni = false;
   $scope.usersPerRow = 4;
   $scope.orderProp = 'first_name';
   $scope.query = '';
 
-  $http.get('/users.json').success(function(data) {
+  $http.get('/users.json?is_alumni=0').success(function(data) {
     $scope.users = data;
     $scope.getRows();
   });
 
-  // (users | filter:userFilter(query) | orderBy:orderProp) 
-  // Return array of arrays splitting the data in itemsPerRow per array
+  $scope.toggleSearch = function() {    
+    $scope.showSearch = !$scope.showSearch;
+  }
+
+  $scope.toggleAlumni = function() {
+    $scope.showAlumni = !$scope.showAlumni;
+    if ($scope.showAlumni) {
+      $http.get('/users.json?is_alumni=1').success(function(data) {
+        $scope.alumni = data;
+        $scope.groupedAlumni = $scope.groupArray($scope.query, $scope.orderProp, $scope.alumni);
+      });
+    }
+  }
+
+  // Return array of arrays grouping the data 4 at a time
   $scope.getRows = function(query, orderProp) {
+    $scope.groupedUsers = $scope.groupArray(query, orderProp, $scope.users);
+  }
+
+  // private method
+  $scope.groupArray = function(query, orderProp, arr) {
     if (orderProp == undefined) {
       orderProp = $scope.orderProp;
     }
-    var filtered = $filter('filter')($scope.users, $scope.userFilter(query));
+    var filtered = $filter('filter')(arr, $scope.userFilter(query));
     filtered = $filter('orderBy')(filtered, orderProp);
     var numRows = Math.ceil(filtered.length / $scope.usersPerRow);
-    $scope.groupedUsers = [];
+    var grouped = [];
     for (var i = 0; i < numRows; i++) {
-      $scope.groupedUsers.push([]);
-      var numCols = (i == numRows - 1) ? 
-        filtered.length % $scope.usersPerRow : $scope.usersPerRow;
+      grouped.push([]);
+      var numCols = $scope.usersPerRow;
+      if (i == numRows - 1) {
+        if (filtered.length % 4 != 0) {
+          numCols = filtered.length % $scope.usersPerRow
+        } else {
+          numCols = $scope.usersPerRow;
+        }
+      }
       for (var j = 0; j < numCols; j++) {
-        $scope.groupedUsers[i][j] = filtered[$scope.usersPerRow * i + j];
+        grouped[i][j] = filtered[$scope.usersPerRow * i + j];
       }
     }
+    return grouped;
   }
 
   $scope.userFilter = function(query) {    
@@ -49,11 +78,11 @@ UserListCtrl.$inject = ['$scope', '$http', '$filter'];
 var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
+  $scope.canEdit = false;
   $scope.user = {
     "id": 0,
     "first_name": "John",
     "last_name": "Bisbis",
-    "sunet": "jbisbis",
     "year": "2015",
     "bio": "I am a member of Basmati Raas",
     "avatar_url": "/assets/defaultRaas.jpg",
@@ -62,15 +91,20 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
     $scope.user = data;
+    $http.get('/users/can_edit.json?sunet=' + $scope.user.sunet).success(function(data) {
+        if (data.can_edit) {
+          $scope.canEdit = true;
+        }
+    });
   });
 
   $http.get('/users.json').success(function(data) {
-    console.log(data);
     $scope.users = data; 
   });
 
   $scope.open = function(u) {
     $location.path('/users/' + u.id);
+    console.log(u);
     $scope.user = u;
   };
 
