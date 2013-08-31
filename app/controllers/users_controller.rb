@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_filter :require_login, :only=>[:destroy, :create, :new, :edit]
   include ApplicationHelper
   
@@ -128,5 +129,19 @@ class UsersController < ApplicationController
       end
     end
     render json: {"can_edit" => editable}
+  end
+
+  def raaster
+    @users = User.where("is_alumni = false").order(sort_column + " " + sort_direction)
+  end
+
+  private
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
+  end
+  
+  # must be either asc or desc
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
 end

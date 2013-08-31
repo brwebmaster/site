@@ -17,6 +17,7 @@ Brsite::Application.routes.draw do
   get "users/get_cur_user"
   get "users/can_edit"
   get "users/login_check"
+  get "users/raaster"
 
   resources :performances 
 

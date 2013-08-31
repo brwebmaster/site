@@ -1,47 +1,94 @@
 <%= form_for(@user) do |f| %>
 	<legend>Edit profile for <%= @user.full_name %>:</legend>
-	<div class="span4">
+	<table class="table table-bordered">
+		<tr><th>Public</th><th>Public</th><th>Raaster Only</th></tr>
+		<tr>
+		<td>
 			<p><strong>Current Picture</strong></p>
 			<%= @user.get_picture %>
-		<div class="control-group">
-		  New picture: <%= f.file_field :avatar %>
-		</div>
-	</div>
-	<div class="span6">
-		<div class="control-group">
-	  	<p>First name</p>
-	  	<%= f.text_field :first_name, :class => "text_field" %>
-	  </div>
+			<div class="control-group">
+			  <p>New picture:</p>
+			  <%= f.file_field :avatar %>
+			</div>
+		</td>
+			
+		<td>
+			<div class="control-group">
+		  	<div class="control-label">First name</div>
+		  	<%= f.text_field :first_name, :class => "text_field" %>
+		  </div>
 
-	  <div class="control-group">
-	  	<p>Last name</p>
-	  	<%= f.text_field :last_name, :class => "text_field" %>
-	  </div>
-	  
-	  <div class="control-group">
-	  	<p>Graduation Year</p>
-	  	<%= f.text_field :year, :class => "text_field" %>
-	  </div>
-	  
-	  <div class="control-group">
-	  	<p>SUNET id: <%= @user.sunet %></p>
-	  </div>
-	  
-	  <div class="control-group">
-	  	<p>Gender</p>
-	  	<%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'})%>
-	  </div>
+		  <div class="control-group">
+		  	<div class="control-label">Last name</div>
+		  	<%= f.text_field :last_name, :class => "text_field" %>
+		  </div>
+		  
+		  <div class="control-group">
+		  	<div class="control-label">SUNET ID: <strong><%= @user.sunet %></strong></div>
+		  </div>
 
-	  <div class="control-group">	  	
-	  	Alumni? <%= f.check_box :is_alumni %>
-	  </div>
+		  <div class="control-group">
+		  	<div class="control-label">Graduation Year</div>
+		  	<%= f.text_field :year, :class => "text_field" %>
+		  </div>
 
-	  <div class="control-group">
-	  	<p>Biography</p>
-	  	<%= f.text_area :bio, :rows => 3, :class => "input-xxlarge"%>
-	  </div>
+		  <div class="control-group">
+		  	<div class="control-label">Hometown</div>
+		  	<%= f.text_field :hometown, :class => "text_field" %>
+		  </div>
+		  
+		  <div class="control-group">
+		  	<div class="control-label">Gender</div>
+		  	<%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'})%>
+		  </div>
 
-	  <% if User.is_power_user (session[:user_hash]["username"]) %>
+		  <div class="control-group">	  	
+		  	Alumni? <%= f.check_box :is_alumni %>
+		  </div>
+
+		  <div class="control-group">
+		  	<div class="control-label">Biography</div>
+		  	<%= f.text_area :bio, :rows => 3, :class => "input-xlarge"%>
+		  </div>
+
+		  <div class="control-group">
+		  	<div class="control-label">Favorite Raas Memory</div>
+		  	<%= f.text_area :memory, :rows => 2, :class => "input-xlarge"%>
+		  </div>
+		</td>
+		<td>		
+		  <div class="control-group">
+		  	<div class="control-label">Birthday</div>		  	
+		  	<%= f.text_field :birthday, :class => "text_field", :type => "date" %>
+		  </div>		
+		  <div class="control-group">
+		  	<div class="control-label">Major</div>
+		  	<%= f.text_field :major, :class => "text_field" %>
+		  </div>
+		  <div class="control-group">
+		  	Undergrad? <%= f.check_box :undergrad %>
+		  </div>	
+		  <div class="control-group">
+		  	<%= f.select(:shirt_size, options_for_select([['XS', 'XS'], ['S', 'S'],['M', 'M'],['L', 'L'],['XL', 'XL']]), {:prompt => 'Shirt Size'})%>
+		  </div>			
+		  <div class="control-group">
+		  	<div class="control-label">Dorm and Room Number</div>
+		  	<%= f.text_field :residence, :class => "text_field" %>
+		  </div>			
+		  <div class="control-group">
+		  	<div class="control-label">Favorite Food</div>
+		  	<%= f.text_field :food, :class => "text_field" %>
+		  </div>		
+		  <div class="control-group">
+		  	<div class="control-label">Stanford ID</div>
+		  	<%= f.number_field :stanfordid, :class => "number" %>
+		  </div>
+		  <div class="control-group">
+		  	<div class="control-label">Committee</div>
+		  	<%= f.text_field :committee, :class => "text_field" %>
+		  </div>
+
+		<% if User.is_power_user (session[:user_hash]["username"]) %>
 	  	<div class="privileged">
 		  	<strong>Priviliged section</strong>
 			  <div class="control-group">
@@ -50,11 +97,11 @@
 		  	<%= link_to "Delete this member", @user, :method => :delete, :confirm => "Are you sure?", :class => "btn btn-mini btn-danger" %>
 	  	</div>
 	  <% end %>
-
-	  <div class="form-actions">
-	  	<%= f.submit :class => "btn btn-primary" %>
-	  	<%= link_to "Cancel", users_path, :class => "btn" %>
-	  </div>
-		
-	</div>
+		</td>
+		</tr>
+	</table>		
+  <div class="form-actions">
+  	<%= f.submit :class => "btn btn-primary" %>
+  	<%= link_to "Cancel", users_path, :class => "btn" %>
+  </div>		
 <% end %>

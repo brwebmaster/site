@@ -1,0 +1,30 @@
+<h1>Raaster</h1>
+
+<table class="table table-condensed table-hover table-bordered sortable">
+	<tr>
+    <th><%= sortable "first_name", "Name" %></th>
+    <th><%= sortable "year" %></th>
+    <th><%= sortable "email" %></th>
+    <th><%= sortable "hometown" %></th>
+    <th><%= sortable "residence" %></th>
+    <th>Shirt Size</th>
+    <th><%= sortable "stanfordid", "ID number" %></th>
+    <th>Favorite Food</th>
+    <th><%= sortable "birthday" %></th>
+    <th>Committee</th>
+  </tr>
+  <% @users.each do |u| %>
+  	<tr>
+	  	<td><a href="/users#/users/<%=u.id%>"><%= u.full_name %></a></td>
+	  	<td><%= u.year %></td>
+	  	<td><a href="mailto:<%=u.sunet%>@stanford.edu"><%= u.sunet %></a></td>
+	  	<td><%= u.hometown %></td>
+	  	<td><%= u.residence %></td>
+	  	<td><%= u.gender %></td>
+	  	<td><%= u.stanfordid %></td>
+	  	<td><%= u.food %></td>
+	  	<td><%= u.birthday %></td>
+	  	<td><%= u.committee %></td>
+	  </tr>	
+  <% end %>
+</table>

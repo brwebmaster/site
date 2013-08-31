@@ -104,6 +104,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
   $scope.open = function(u) {
     $location.path('/users/' + u.id);
+    console.log(u);
     $scope.user = u;
   };
 
