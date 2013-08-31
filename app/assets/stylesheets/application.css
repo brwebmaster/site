@@ -163,5 +163,18 @@ div.boolean, .simple_form input[type='submit'] {
 .performance {
 	margin: 5px;
 	border-top: black dotted 3px;
+}
 
+.sortable th .current {
+	padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.sortable th .asc {
+	background-image: url(/assets/up_arrow.png);  
+}
+
+.sortable th .desc {
+	background-image: url(/assets/down_arrow.png); 
 }
