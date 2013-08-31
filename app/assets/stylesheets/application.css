@@ -122,7 +122,6 @@ div.boolean, .simple_form input[type='submit'] {
 	overflow: scroll;
 	overflow-x: auto;
 	background-color: #FFC5C0;
-	position:fixed;
 }
 
 .upcoming p{
@@ -183,4 +182,41 @@ div.boolean, .simple_form input[type='submit'] {
 
 .sortable th .desc {
 	background-image: url(/assets/down_arrow.png); 
+}
+
+.privileged {
+	border: 2px solid black;
+	padding: 10px;
+}
+
+.displayed{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5;
+}
+
+.caption-heading{
+	font-family: 'Dancing_Script', Georgia, Times, serif;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba{0,0,0,.4};
+}
+
+.title{
+	padding-top: 60px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bolder;
+	font-family: 'Dancing_Script', Georgia, Times, serif;
+}
+
+p{
+	padding-top: 10px;
+	text-align: left;
+	font-family: 'Dancing_Script', Georgia, Times, serif;
+	font-size: 16px;
+}
+
+.icon2 { 
+	width: 25px;
 }
