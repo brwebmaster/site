@@ -27,7 +27,7 @@ class StaticPagesController < ApplicationController
   		#"description"=>false, "phone_number"=>false, "hash"=>"3bae8f0d4c51efd7093a4c18c94f9acb"}}
   		session[:user_hash] = user_hash
   		# TODO: verify hash is correct
-  		redirect_to :controller => :users and return
+  		redirect_to :controller => :users, :action => :login_check and return
   	end
   	return_url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
   	redirect_to "http://www.stanford.edu/~rkpandey/cgi-bin/brprotected/webauth?u=" + URI.encode(return_url)

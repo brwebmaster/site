@@ -20,7 +20,7 @@ var UserListCtrl = function($scope, $http, $filter) {
     $scope.showSearch = !$scope.showSearch;
   }
 
-  $scope.toggleAlumni = function() {    
+  $scope.toggleAlumni = function() {
     $scope.showAlumni = !$scope.showAlumni;
     if ($scope.showAlumni) {
       $http.get('/users.json?is_alumni=1').success(function(data) {
@@ -30,8 +30,7 @@ var UserListCtrl = function($scope, $http, $filter) {
     }
   }
 
-  // (users | filter:userFilter(query) | orderBy:orderProp) 
-  // Return array of arrays splitting the data in itemsPerRow per array
+  // Return array of arrays grouping the data 4 at a time
   $scope.getRows = function(query, orderProp) {
     $scope.groupedUsers = $scope.groupArray(query, orderProp, $scope.users);
   }
@@ -79,11 +78,11 @@ UserListCtrl.$inject = ['$scope', '$http', '$filter'];
 var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
+  $scope.canEdit = false;
   $scope.user = {
     "id": 0,
     "first_name": "John",
     "last_name": "Bisbis",
-    "sunet": "jbisbis",
     "year": "2015",
     "bio": "I am a member of Basmati Raas",
     "avatar_url": "/assets/defaultRaas.jpg",
@@ -92,15 +91,20 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
     $scope.user = data;
+    $http.get('/users/can_edit.json?sunet=' + $scope.user.sunet).success(function(data) {
+        if (data.can_edit) {
+          $scope.canEdit = true;
+        }
+    });
   });
 
   $http.get('/users.json').success(function(data) {
-    console.log(data);
     $scope.users = data; 
   });
 
   $scope.open = function(u) {
     $location.path('/users/' + u.id);
+    console.log(u);
     $scope.user = u;
   };
 

@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   include ApplicationHelper
 	has_many :photos
-  attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin, :is_captain, :is_alumni
+  attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin, :is_captain, :is_alumni, :hometown, :memory, :birthday, :major, :undergrad, :shirt_size, :residence, :food, :stanfordid, :committee
 
-  validates :first_name, :last_name, :year, :presence => true
+  validates :first_name, :last_name, :presence => true
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, 
@@ -14,14 +14,9 @@ class User < ActiveRecord::Base
     medium: '300x300>',
   }
 
-  # These users can edit/delete any prodile
-  def power_sunet_users
-    Set.new [
-      "rkpandey",
-      "tdoshi",
-      "namir",
-      "patels"
-    ]
+  # These users can edit/delete any profile
+  def self.is_power_user(sunet)
+    ["rkpandey", "tdoshi", "namir", "patels"].include? sunet
   end
 
   def full_name
@@ -39,15 +34,5 @@ class User < ActiveRecord::Base
   # This is called in the json response so we have access to the file url (stored in Amazon S3). 
   def avatar_url
     avatar.url
-  end
-
-  def can_edit(session)
-    # if not logged in, no permission
-    return false if not is_logged_in(session)
-    logged_in_sunet = session[:user_hash]["username"]
-    # if looking at own profile, you have permission
-    # if you are admin, you have permission
-    return true if self.sunet == logged_in_sunet or self.power_sunet_users.member?(logged_in_sunet)
-    false
   end
 end

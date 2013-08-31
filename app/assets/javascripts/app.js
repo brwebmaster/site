@@ -7,15 +7,6 @@ angular.module('AuthModule', []).
 	  return {
 	  	curUser: currentUser.promise
 	  }
-
-	  return {
-	    isLoggedIn: function(callback) {  
-	    	$http.get('users/get_cur_user.json').success(function(data) {
-			    callback(data);
-			  });
-	    },
-	    // currentUser: function() { return currentUser; }
-	  };
 	}]);
 
 angular.module('usersbr', ['AuthModule']).

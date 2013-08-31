@@ -1,8 +1,4 @@
-<h3><%= @user.full_name %></h3>
-<% if @user.can_edit(session) %>
-	<%= button_to "Edit Profile", {:action => :edit}, :method => :get %>
-<% end %>
-<%= @user.get_picture %>
+<h3><%= @user.first_name %></h3>
 <p>Year: <strong><%= @user.year %></strong></p>
 <p>Bio: <strong><%= @user.bio %></strong></p>
 <p><%= mail_to "#{@user.sunet}@stanford.edu", "Email me!" %> </p>
