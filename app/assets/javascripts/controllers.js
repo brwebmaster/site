@@ -121,6 +121,8 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.description = '';
   $scope.successStatus = '';
   $scope.errorStatus = '';
+  $scope.isUploadable = false;
+
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
@@ -157,6 +159,10 @@ var VideoCtrl = function($scope, $http, $filter) {
         }
       });
     }    
+  }
+
+  $scope.showUploader = function() {
+    $scope.isUploadable = !$scope.isUploadable;
   }
 }
 
