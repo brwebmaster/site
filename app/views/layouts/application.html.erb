@@ -30,15 +30,10 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="titleText">
-	<% if is_logged_in(session) %>
-		Welcome, <%= link_to session[:user_hash]["display_name"], {controller: "users", action: "sunet", sunet: session[:user_hash]["username"]} %>
-	<%end %>
-</div>
 
-<div class="heading">
-	<img src="/assets/banner3.jpg"></img>
-</div>
+
+<img class="imageHeader" src="/assets/banner6.jpg"></img>
+
 
 <div class="navbar-wrapper">
 	<div class = "navbar navbar-inverse">
@@ -64,6 +59,12 @@
 			</div>
 		</div>
 	</div>
+
+<div class="titleText">
+	<% if is_logged_in(session) %>
+		Welcome, <%= link_to session[:user_hash]["display_name"], {controller: "users", action: "sunet", sunet: session[:user_hash]["username"]} %>
+	<%end %>
+</div>
 
 <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">

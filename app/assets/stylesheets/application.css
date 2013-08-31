@@ -17,6 +17,11 @@
 	background-repeat:repeat;
  } 
 
+ .imageHeader{
+ 	padding-top: 0px;
+ 	margin-top: 0px;
+ }
+
  .duh{
  	font-family: 'Elephant';
  }
