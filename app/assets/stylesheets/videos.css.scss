@@ -3,15 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .vidContainer {
-	border: red 2px solid;
 	padding: 5px;
 	margin: 5px;
-	text-align: center;
 }
 
 .delete {
 	visibility: hidden;
-	text-align: right;
+	text-align: left;
 	font-size: 24px;
 	cursor: pointer;
 }

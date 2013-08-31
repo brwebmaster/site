@@ -160,9 +160,15 @@ div.boolean, .simple_form input[type='submit'] {
 .eventTitle {
 	font-weight: bold;
 }
+
 .performance {
 	margin: 5px;
 	border-top: black dotted 3px;
+}
+
+.icon {
+	width: 15px;
+	cursor: pointer;
 }
 
 .sortable th .current {
