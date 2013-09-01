@@ -12,68 +12,31 @@
  *= require_tree .
  */
 
- body{
- 	background-image:url('/assets/bullseyes.png');
-	background-repeat:repeat;
+ body {
+ 	background-image: url('/assets/bullseyes.png');
+	background-repeat: repeat;
+	font-family: 'Dancing_Script', Georgia, Times, serif;
  } 
 
- .duh{
- 	font-family: 'Elephant';
- }
-
-.header {
-	font-family: 'Elephant', Georgia, Times, serif;
-	font-size: 60px;
-	line-height: 75px;
-	font-weight: bolder;
+.box {
+  background-color: white;
+	padding: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
-.center {
-	float: none; 
-	margin: auto;
+.footer {
 	text-align: center;
-	color: #E81E0B; 
+	padding: 50px;
 }
 
-.linkCenter{
-	text-align: center;
-}
-
-.linkCenter2{
-	text-align: center;
-	padding-top: 50px;
-	padding-bottom: 50px;
-	vertical-align: center;
-	margin-left: 0;
-	margin-right: 0;
-	text-size: 12px;
-}
-
-.linkCenter3{
-	text-align: center;
-	padding-bottom: 20px;
-	padding-top: -20px;
-}
-
-.navbar .brand{
-	padding-left: 200px;
-	padding-top: 20px;
-}
-
-.thing{
-	height: 80px;
-	line-height: 30px;
-	text-align: -webkit-match-parent;
-}
-
-.titleText{
+.titleText {
 	text-align: right;
 	font-family: 'Elephant';
 }
 
-.centeredText{
+.centeredText {
 	text-align: center;
-	text-size: 12px;
 }
 
 .simple_form div.input {
@@ -92,29 +55,6 @@ div.boolean, .simple_form input[type='submit'] {
   margin-left: 120px;
 }
 
-.field_with_errors {
-  background-color: #ff3333;
-}
-
-.simple_form .error {
-  clear: left;
-  color: black;
-  display: block;
-  margin-left: 120px;
-}
-
-.simple_form .hint {
-  clear: left;
-  margin-left: 120px;
-  color: #555;
-  display: block;
-  font-style: italic;
-}
-
-.simple_form text_area{
-	height: 200px;
-}
-
 .upcoming{
 	width: 250px;
 	min-height: 300px;
@@ -124,36 +64,20 @@ div.boolean, .simple_form input[type='submit'] {
 	background-color: #FFC5C0;
 }
 
-.upcoming p{
+.upcoming p {
 	text-align: center;
 }
 
-.year{
+.year {
 	border-bottom-style: dashed;
 	border-bottom-color: black;
 }
 
-.linkText{
-	font-size: 14px;
-}
-
-.announcement{
+.announcement {
 	color: #8A1B07;
 	font-weight: bold;
 	text-align: center;
 	font-size: 20px;
-}
-
-.keepBorder{
-	border-right-style: solid;
-	border-right-color: black;
-	border-right-width: thin;
-}
-
-.keepBorderLeft{
-	border-left-style: solid;
-	border-left-width: thin;
-	border-right-color: black;
 }
 
 .eventTitle {
@@ -189,31 +113,27 @@ div.boolean, .simple_form input[type='submit'] {
 	padding: 10px;
 }
 
-.displayed{
+.displayed {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	border: 5;
 }
 
-.caption-heading{
-	font-family: 'Dancing_Script', Georgia, Times, serif;
+.caption-heading {
 	color: #fff;
 	text-shadow: 0 1px 1px rgba{0,0,0,.4};
 }
 
-.title{
+.title {
 	padding-top: 60px;
 	text-align: center;
 	font-size: 20px;
 	font-weight: bolder;
-	font-family: 'Dancing_Script', Georgia, Times, serif;
 }
 
-p{
+p {
 	padding-top: 10px;
-	text-align: left;
-	font-family: 'Dancing_Script', Georgia, Times, serif;
 	font-size: 16px;
 }
 
@@ -221,7 +141,7 @@ p{
 	width: 25px;
 }
 
-.titleText{
+.titleText {
 	position: relative;
 	margin-top: -20px;
 	margin-right: 10px;
@@ -231,11 +151,4 @@ p{
     	color: #fff;
   	}
 	}
-}
-
-.box {
-  background-color: white;
-	padding: 10px;
-	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
 }
