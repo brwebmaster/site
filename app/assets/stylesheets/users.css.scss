@@ -2,39 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin shadow($shadow) {
+	box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+}
+
+.box {
+/*	background-image: url('/assets/cork2.jpg');*/
+/*	box-shadow: 10px 10px 5px #888888;
+*/	background-color: white;
+	padding: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+
+}
 
 .circular {
-	/*background-size: 100%; doesn't work!*/ 
 	width: 200px;
 	height: 200px;
-	border-radius: 150px;
-	-webkit-border-radius: 150px;
-	-moz-border-radius: 150px;
-	vertical-align: middle;
-	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	@include rounded-corners(150px);
+	@include shadow(10px);
+}
+
+.imgWrap {
+	position: relative;
 }
 
 .imgDescription {
-	border: solid black 2px;
-	background: #E86359;
   text-transform: uppercase;
   font: bold 24px Helvetica;
   color: black;
   visibility: hidden;
-  opacity: 0;
-	vertical-align: middle;
-  text-align: center;
+  position: absolute;
+	margin-top: -124px;
+  margin-left: 100px;
 }
 
-.circular:hover .imgDescription {
+.imgWrap:hover .circular {
+  opacity: 0.3;
+}
+
+.imgWrap:hover .imgDescription {
   visibility: visible;
   opacity: 0.8;
 }
 
 .table th, .table td { 
   border-top: none; 
+  text-align: center;
 }
 
 .userList {
