@@ -129,7 +129,7 @@ div.boolean, .simple_form input[type='submit'] {
 	padding-top: 60px;
 	text-align: center;
 	font-size: 20px;
-	font-weight: bolder;
+	font-weight: bold;
 }
 
 p {
@@ -154,4 +154,15 @@ p {
 
 .headerDiv {
 	position: relative;
+}
+
+.container {
+	text-align: center;
+}
+
+.advertisement {
+	display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
 }
