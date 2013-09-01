@@ -31,16 +31,21 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-
+<div>
 <img class="imageHeader" src="/assets/banner6.jpg"></img>
-
+<div class="titleText">
+	<% if is_logged_in(session) %>
+		Welcome, <%= link_to session[:user_hash]["display_name"], {controller: "users", action: "sunet", sunet: session[:user_hash]["username"]} %>
+	<%end %>
+</div>
+</div>
 
 <div class="navbar-wrapper">
 	<div class = "navbar navbar-inverse">
 		<div class="navbar-inner">
 			<div class="nav-collapse">
 				<ul class="nav nav-tabs">
-					<li class="<%= 'active' if current_page?('/static_pages/home') %> dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
+					<li class="<%= 'active' if current_page?('/') %> dropdown divider-vertical"><%= link_to "Home", controller: "static_pages", action: "home" %></li>
 					<li class="<%= 'active' if current_page?('/users') %> dropdown divider-vertical"><%= link_to "The Team", controller: "users"%></li>
 					<li class="<%= 'active' if current_page?('/performances') %> dropdown divider-vertical"><%= link_to "Performances and Awards", controller: "performances"%></li>
 					<li class="<%= 'active' if current_page?('/contact_form/new') %> dropdown divider-vertical"><%= link_to "Contact Us", controller: "contact_form", action: "new" %></li>
@@ -59,12 +64,6 @@
 			</div>
 		</div>
 	</div>
-
-<div class="titleText">
-	<% if is_logged_in(session) %>
-		Welcome, <%= link_to session[:user_hash]["display_name"], {controller: "users", action: "sunet", sunet: session[:user_hash]["username"]} %>
-	<%end %>
-</div>
 
 <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
