@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       # create new user
       gn = session[:user_hash]["gn"] || ""
       sn = session[:user_hash]["sn"] || ""
-      @user = User.new(:sunet => sunet, :first_name => gn.titlecase, :last_name => sn.titlecase, :bio => "I dance for BR!")
+      @user = User.new(:sunet => sunet, :first_name => gn.titlecase, :last_name => sn.titlecase, :bio => "I dance for Basmati Raas!", :is_alumni => false, :undergrad => true)
       @user.save
       flash[:notice] = "Welcome! We started filling out your profile. Please upload a picture and update your information."
       redirect_to "/users/#{@user.id}/edit"
