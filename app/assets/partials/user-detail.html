@@ -1,18 +1,18 @@
+<div class="span3 userList">
+  <li class="seeAll bold">
+    <a href="/users">&lsaquo;&lsaquo; See All</a>
+  </li>
+  <li class="userClick" ng-repeat="u in users">
+  	<div ng-click="open(u)">{{getFullName(u)}}</div>
+  </li>
+</div>
 <div class="row-fluid">
-  <div class="span3 userList">
-    <li class="seeAll">
-      <a href="/users">&lsaquo;&lsaquo; See All</a>
-    </li>
-    <li class="userClick" ng-repeat="u in users">
-    	<div ng-click="open(u)">{{getFullName(u)}}</div>
-    </li>
-  </div>
   <div class="span9 userDetail">
-    <div class="span6">
+    <div class="span6" ng-class="{genderMale: user.gender == 'M', genderFemale: user.gender == 'F'}">
       <img class="mainImg" ng-src="{{user.avatar_url}}">
     </div>
-    <div class="span6 userWritten" ng-class="{genderMale: user.gender == 'M', genderFemale: user.gender == 'F'}">
-      <h2>
+    <div class="span6 userWritten" >
+      <h2 class="userTitle">
         <span ng-show="user.is_captain">
           <img class="icon2" alt="Captain" title="Captain!" src="/assets/star_icon.png">
         </span>
@@ -21,12 +21,13 @@
             <img class="icon" alt="Email" src="/assets/email_icon.png">
          </a>
       </h2>
-      <p ng-show="user.year">Year: {{user.year}}</p>
-      <p ng-show="user.hometown">Hometown: {{user.hometown}}</p>
-      <p ng-show="user.bio">Bio: {{user.bio}}</p>
-      <p ng-show="user.memory">Favorite Raas Memory: {{user.memory}}</p>
+      <p ng-show="user.year"><span class="bold">Year:</span> {{user.year}}</p>
+      <p ng-show="user.hometown"><span class="bold">Hometown:</span> {{user.hometown}}</p>
+      <p ng-show="user.bio"><span class="bold">Bio:</span> {{user.bio}}</p>
+      <p ng-show="user.memory"><span class="bold">Favorite Raas Memory:</span> {{user.memory}}</p>
       <div ng-show="canEdit">
         <a href="/users/{{user.id}}/edit">Edit</a>
       </div>
     </div>
+  </div>
 </div>
