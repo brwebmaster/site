@@ -12,6 +12,7 @@
 	box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
 	-webkit-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
 	-moz-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+	-o-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
 }
 
 .circular {
@@ -50,11 +51,9 @@
 }
 
 .userList {
-	background-color: #E86359;
-	border-radius: 10px;
 	padding: 10px;
-	box-shadow: 5px 5px 5px #222;
 	max-width: 200px;
+	text-align: left;
 }
 
 .userList li {
@@ -63,26 +62,25 @@
 }
 
 .userDetail {
-	position: relative;
-	background-image: url("/assets/cork2.jpg");
-	background-color: #af7c4a;
-	background-size: 500px 500px;
-	-webkit-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
-	-moz-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
-	-ms-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
-	-o-box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
-	box-shadow: inset 0 2px 5px rgba(0,0,0,0.5),inset 0 0 5px rgba(0,0,0,0.8);
-	padding: 60px 40px 20px;
+	padding: 40px;
 }
 
 .seeAll {
 	font-size: 16px;
-	font-style: bold;
 	padding-bottom: 5px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.mainImg {
+	width: 300px;
 }
 
 .userWritten {
 	padding: 10px;
+	text-align: left;
 }
 
 .genderMale {
