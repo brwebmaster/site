@@ -70,9 +70,10 @@
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   </div>
 <% end %>
-
+<div class="box">
 <%= yield %>
-<div class="linkCenter2">
+</div>
+<div class="footer">
 	<div class="fb-like-box" data-href="https://www.facebook.com/basmatiraas" data-width="150" data-show-faces="false" data-header="true" data-stream="false" data-show-border="true"></div>
 	<p class="centeredText"><%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %></p>
 </div>
