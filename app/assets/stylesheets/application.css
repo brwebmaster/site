@@ -144,11 +144,14 @@ p {
 .titleText {
 	position: relative;
 	margin-top: -20px;
-	margin-right: 10px;
+	margin-left: 1000px;
 	color: white;
-	a{
-		&:visited {
-    	color: #fff;
-  	}
-	}
+}
+
+.titleText>a {
+	color: #fff;
+}
+
+.headerDiv {
+	position: relative;
 }
