@@ -221,16 +221,20 @@ p{
 	width: 25px;
 }
 
-.titleText{
-	position: relative;
+.titleText {
+	position: absolute;
+	text-align: right;
 	margin-top: -20px;
-	margin-right: 10px;
+	margin-left: 1000px;
 	color: white;
-	a{
-		&:visited {
-    	color: #fff;
-  	}
-	}
+}
+
+.titleText>a {
+	color: #fff;
+}
+
+.headerDiv {
+	position: relative;
 }
 
 .box {
@@ -238,4 +242,8 @@ p{
 	padding: 10px;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
+}
+
+.descriptionText {
+	font-size: 17px;
 }
