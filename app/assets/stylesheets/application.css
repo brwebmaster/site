@@ -12,11 +12,26 @@
  *= require_tree .
  */
 
+@font-face {
+	font-family: CodeBold;
+	src: url("/assets/CodeBold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: CodeLight;
+	src: url("/assets/CodeLight.otf") format("opentype");
+}
+
  body {
  	background-image: url('/assets/bullseyes.png');
 	background-repeat: repeat;
 	font-family: 'Dancing_Script', Georgia, Times, serif;
  } 
+
+.codeBold {
+	font-family: CodeBold;
+	margin-left: 10px;
+}
 
 .box {
   background-color: white;
@@ -163,8 +178,6 @@ p {
 	position: absolute;
 	top: 80%;
 	left: 80%;
-	/*margin-top: -20px;
-	margin-left: 1000px;*/
 	color: white;
 }
 
