@@ -195,3 +195,132 @@ p {
   height: 100px;
   margin: 5px;
 }
+
+.vidContainer {
+	padding: 5px;
+	margin: 5px;
+}
+
+.delete {
+	visibility: hidden;
+	text-align: right;
+	font-size: 24px;
+	cursor: pointer;
+	float: right;
+}
+
+.vidContainer:hover .delete {
+	visibility: visible;
+}
+
+.videoText{
+	font-size: 24px;
+	margin-top: 125px;
+	text-align: center;
+}
+
+.videoDescription{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.videoTime{
+	font-size: 11px;
+	color: #a8a8a8;
+}
+
+iframe{
+	border: red;
+}
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin shadow($shadow) {
+	box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+	-o-box-shadow: 0 0 $shadow rgba(0, 0, 0, .8);
+}
+
+.circular {
+	width: 200px;
+	height: 200px;
+	@include rounded-corners(150px);
+	@include shadow(10px);
+}
+
+.imgWrap {
+	position: relative;
+}
+
+.imgDescription {
+  text-transform: uppercase;
+  font: bold 22px Helvetica;
+  color: black;
+  visibility: hidden;
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  right: 35%;
+  text-align: center;
+}
+
+.imgWrap:hover .circular {
+  opacity: 0.2;
+}
+
+.imgWrap:hover .imgDescription {/*
+.imgWrap .imgDescription {*/
+  visibility: visible;
+  opacity: 0.9;
+}
+
+.table th, .table td { 
+  border-top: none; 
+  text-align: center;
+}
+
+.userList {
+	padding: 10px;
+	max-width: 200px;
+	text-align: left;
+}
+
+.userList li {
+	list-style: none;
+	cursor: pointer;
+}
+
+.userDetail {
+	padding: 40px;
+}
+
+.seeAll {
+	font-size: 16px;
+	padding-bottom: 5px;
+}
+
+.mainImg {
+	width: 300px;
+}
+
+.userWritten {
+	padding: 10px;
+	text-align: left;
+}
+
+.genderMale {
+	background-color: #E8ACA0;
+}
+
+.genderFemale {
+	background-color: #FFB1FC;
+}
+
+.genderUnknown {
+	background-color: gray;
+}
