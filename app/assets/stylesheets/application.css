@@ -22,6 +22,9 @@
 	src: url("/assets/CodeLight.otf") format("opentype");
 }
 
+@import url('http://fonts.googleapis.com/css?family=Inika');
+
+
  body {
  	background-image: url('/assets/bullseyes.png');
 	background-repeat: repeat;
@@ -31,6 +34,13 @@
 .codeBold {
 	font-family: CodeBold;
 	margin-left: 10px;
+}
+
+.inika{
+	font-family: Inika;
+	margin-left: 15px;
+	font-size: 18px;
+	line-height: 110%;
 }
 
 .box {
