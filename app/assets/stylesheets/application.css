@@ -34,13 +34,13 @@
 	text-align: left;
 }
 
+.centeredText {
+	text-align: center;
+}
+
 .titleText {
 	text-align: right;
 	font-family: 'Elephant';
-}
-
-.centeredText {
-	text-align: center;
 }
 
 .simple_form div.input {
@@ -85,6 +85,17 @@ div.boolean, .simple_form input[type='submit'] {
 .performance {
 	margin: 5px;
 	border-top: black dotted 3px;
+}
+
+.performanceTitle {
+	margin-top: 4px;
+	font-size: 18px;
+}
+
+.performanceLogistics {
+	font-size: 10px;
+	margin-bottom: 4px;
+	color: #BD5148;
 }
 
 .icon {

@@ -21,8 +21,8 @@
 		</form>
 	</div>
 	<div class="performance" ng-repeat="p in performances">
-		<p class="bold">{{ p.event }}</p>
-		<p>{{ p.time | date:'yyyy-MM-dd'}}, <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a></p>
-		<p class="left">Description: {{ p.description }}</p>
+		<div class="performanceTitle bold">{{ p.event }}</div>
+		<div class="performanceLogistics">{{ p.time | date:'yyyy-MM-dd'}}, <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a></div>
+		<div class="left">{{ p.description }}</div>
 	</div>
 </div>
