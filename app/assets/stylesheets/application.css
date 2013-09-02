@@ -30,13 +30,17 @@
 	padding: 50px;
 }
 
-.titleText {
-	text-align: right;
-	font-family: 'Elephant';
+.left {
+	text-align: left;
 }
 
 .centeredText {
 	text-align: center;
+}
+
+.titleText {
+	text-align: right;
+	font-family: 'Elephant';
 }
 
 .simple_form div.input {
@@ -55,17 +59,11 @@ div.boolean, .simple_form input[type='submit'] {
   margin-left: 120px;
 }
 
-.upcoming{
+.upcoming {
 	width: 250px;
 	min-height: 300px;
-	text-align: center;
 	overflow: scroll;
 	overflow-x: auto;
-	background-color: #FFC5C0;
-}
-
-.upcoming p {
-	text-align: center;
 }
 
 .year {
@@ -80,13 +78,24 @@ div.boolean, .simple_form input[type='submit'] {
 	font-size: 20px;
 }
 
-.eventTitle {
+.bold {
 	font-weight: bold;
 }
 
 .performance {
 	margin: 5px;
 	border-top: black dotted 3px;
+}
+
+.performanceTitle {
+	margin-top: 4px;
+	font-size: 18px;
+}
+
+.performanceLogistics {
+	font-size: 10px;
+	margin-bottom: 4px;
+	color: #BD5148;
 }
 
 .icon {
@@ -101,11 +110,11 @@ div.boolean, .simple_form input[type='submit'] {
 }
 
 .sortable th .asc {
-	background-image: url(/assets/up_arrow.png);  
+	background-image: url(/assets/up_arrow.png);
 }
 
 .sortable th .desc {
-	background-image: url(/assets/down_arrow.png); 
+	background-image: url(/assets/down_arrow.png);
 }
 
 .privileged {
@@ -152,10 +161,6 @@ p {
 
 .headerDiv {
 	position: relative;
-}
-
-.container {
-	text-align: center;
 }
 
 .advertisement {

@@ -28,6 +28,12 @@
 						<% info['awards'].each do |result|%>
 							<p><%=result%></p>
 						<% end %>
+						<% if info['videos'] %>
+							Videos:
+							<% info['videos'].each do |vid|%>
+								<a href="<%=vid%>"><%=vid%></a><br>
+							<% end %>
+						<% end %>
 					</div>
 				</div>
 			<br>
