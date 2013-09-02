@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130831052821) do
+ActiveRecord::Schema.define(:version => 20130902042154) do
 
   create_table "performances", :force => true do |t|
     t.string   "place"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20130831052821) do
     t.boolean  "is_alumni"
     t.boolean  "is_captain"
     t.string   "hometown"
-    t.string   "memory"
+    t.text     "memory"
     t.string   "major"
     t.string   "shirt_size"
     t.boolean  "undergrad"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(:version => 20130831052821) do
     t.integer  "stanfordid",          :limit => 8
     t.date     "birthday"
     t.string   "committee"
+    t.string   "phone"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.text     "quote"
   end
 
   create_table "videos", :force => true do |t|

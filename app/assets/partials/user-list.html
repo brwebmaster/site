@@ -1,4 +1,4 @@
-<div class="box">
+
 <h1>
   Members 2013-14
   <img ng-click="toggleSearch()" alt="Search" class="icon" src="/assets/search_icon.png">
@@ -11,6 +11,7 @@
     <option value="first_name">First Name</option>
     <option value="last_name">Last Name</option>
     <option value="year">Year</option>
+    <option value="gender">Gender</option>
   </select>
 </div>
 
@@ -18,12 +19,10 @@
   <tr ng-repeat="userRow in groupedUsers">
     <td ng-repeat="user in userRow">
       <a href="#/users/{{user.id}}">
-        <!-- <img class="circular" src="{{user.avatar_url}}"></img> -->
-
         <div class="imgWrap">
           <p class="imgDescription">{{user.first_name}}</p>
           <img class="circular" src="{{user.avatar_url}}"></img>
-        </div>
+      </div>
       </a>
     </td>
   </tr>
@@ -45,5 +44,4 @@
     </td>
   </tr>
   </table>
-</div>
 </div>
