@@ -140,14 +140,12 @@ p {
 }
 
 .titleText {
-	position: relative;
-	margin-top: -20px;
-	margin-left: 1000px;
+	position: absolute;
+	top: 80%;
+	left: 80%;
+	/*margin-top: -20px;
+	margin-left: 1000px;*/
 	color: white;
-}
-
-.titleText>a {
-	color: #fff;
 }
 
 .headerDiv {
