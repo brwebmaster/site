@@ -17,17 +17,24 @@
           <img class="icon2" alt="Captain" title="Captain!" src="/assets/star_icon.png">
         </span>
          {{getFullName(user)}}
-         <a href="mailto:{{user.sunet}}@stanford.edu">
-            <img class="icon" alt="Email" src="/assets/email_icon.png">
-         </a>
+         <a href="/users/{{user.id}}/edit"><i ng-show="canEdit" class="icon-pencil"></i></a>
       </h2>
+
+      <div>
+        <span class="bold">Contact:</span>
+        <a href="mailto:{{user.sunet}}@stanford.edu"><img class="icon2" alt="Email" src="/assets/email_icon.png">
+        </a>
+        <a ng-show="user.facebook" href="{{user.facebook}}"><img class="icon2" alt="Facebook" src="/assets/facebook_icon.jpg">
+        </a>
+        <a ng-show="user.twitter" href="{{user.twitter}}"><img class="icon2" alt="Twitter" src="/assets/twitter_icon.jpg">
+        </a>
+      </div>
+
       <p ng-show="user.year"><span class="bold">Year:</span> {{user.year}}</p>
       <p ng-show="user.hometown"><span class="bold">Hometown:</span> {{user.hometown}}</p>
-      <p ng-show="user.bio"><span class="bold">Bio:</span> {{user.bio}}</p>
+      <p ng-show="user.bio"><span class="bold">Short Biography:</span> {{user.bio}}</p>
       <p ng-show="user.memory"><span class="bold">Favorite Raas Memory:</span> {{user.memory}}</p>
-      <div ng-show="canEdit">
-        <a href="/users/{{user.id}}/edit">Edit</a>
-      </div>
+      <p ng-show="user.quote"><span class="bold">Favorite Quote:</span> {{user.quote}}</p>
     </div>
   </div>
 </div>
