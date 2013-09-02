@@ -1,24 +1,20 @@
 <h1>Contact Us!</h1>
 <br />
 <div class="row-fluid">
-<div class="span4">
+<div class="span5 fontNormal">
 <%= simple_form_for ContactForm.new, url: {action: "create"} do |f| %>
 	<%= f.label :Name %><%= f.text_field :name %><br />
 	<%= f.label :Email %><%= f.text_field :email %><br />
-	<%= f.label :Subject %><%= f.select :inquiry, options_for_select(["Performance", "Sponsorship", "Involvement", "Other"])%><br />
-	<%= f.label :Message %><%= f.text_area :message, :cols => "30", :rows => "10" %><br />
+	<%= f.label :Subject %><%= f.select :inquiry, options_for_select(["Performance", "Feedback", "Sponsorship", "Involvement", "Other"]) %><br />
+	<%= f.label :Message %><%= f.text_area :message, :rows => "15", :class => "input-xlarge" %><br />
     <%= f.submit "Submit"%>
 <% end %>
 </div>
-<div class="span8">
-<img alt="Raas Friends and Family" src="/assets/raas_ff.jpg">
+<div class="span7">
+<img class="centeredImage contactImage" alt="Raas Friends and Family" src="/assets/raas_ff.jpg">
 <p>
-Besides competing across the nation, Basmati Raas performs at various on-campus and off-campus events such as weddings, company events, and other occasions. Most recently, the team was the opening act for Ted-Ex Stanford, and was one of the selected student groups for the Bing Concert Hall Student Showcase.
+Besides competing across the nation, Basmati Raas performs at various on-campus and off-campus events such as weddings, company events, and other occasions. Most recently, the team was the opening act for <a href="http://tedx.stanford.edu/2013/">TEDx Stanford</a>, and was one of the selected student groups for the <a href="https://www.facebook.com/events/537701692935092">Bing Concert Hall Student Showcase</a>.
 </p>
-
-<p>As a student group, we receive limited funding from the university which is not enough to cover the yearly expenses associated with performing, such as costumes, props, backdrops, travel, and lodging. Due to the large number of people that we come into contact with throughout the year, we believe that our organization is a great vehicle for a business to reach prospective customers. Please contact us if you are interested in suppporting Basmati Raas, and/or showcasing your organization!</p>
-
-<p> Other Questions? Please enter your information into the form to the left, and our captains will be in touch as soon as possible.</p>
+<p>As a nationally touring student group, our organization is a great vehicle to reach prospective customers. For sponsorship or other inquiries/feedback, please enter your information into the form to the left, and our captains will be in touch as soon as possible.</p>
 </div>
-
 </div>
