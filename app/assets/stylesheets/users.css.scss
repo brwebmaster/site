@@ -69,8 +69,16 @@
 	padding-bottom: 5px;
 }
 
-.mainImg {
+.mainImgM {
 	width: 300px;
+	height: 300px;
+	border-top: 20px solid rgb(199,59,59);
+}
+
+.mainImgF{
+	width: 300px;
+	height: 300px;
+	border-top: 20px solid #8F3BC7;
 }
 
 .userWritten {
@@ -78,7 +86,7 @@
 	text-align: left;
 }
 
-.genderMale {
+/*.genderMale {
 	background-color: #E8ACA0;
 }
 
@@ -88,4 +96,4 @@
 
 .genderUnknown {
 	background-color: gray;
-}
+}*/
