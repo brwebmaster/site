@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= simple_form_for @user do |f| %>
 	<legend>Edit profile for <%= @user.full_name %>:</legend>
 	<table class="table table-bordered">
 		<tr><th>Public</th><th>Public</th><th>Raaster Only</th></tr>
@@ -13,63 +13,44 @@
 		</td>
 
 		<td>
-			<span>If you don't want something to appear <br />in your profile, leave it blank!</span>
-			<div class="control-group">
-		  	<div class="control-label">First name</div>
-		  	<%= f.text_field :first_name, :class => "text_field" %>
-		  </div>
+			<p class="userInstructions">If you don't want something to appear <br />in your profile, leave that field blank.</p>
 
-		  <div class="control-group">
-		  	<div class="control-label">Last name</div>
-		  	<%= f.text_field :last_name, :class => "text_field" %>
-		  </div>
+		  <%= f.label "SUNET ID", "SUNET ID" %> 
+		  <%= f.text_field :sunet, :class => "text_field", disabled: true, :class => "input-xlarge" %><br>
+
+		  <%= f.label "First name" %> 
+		  <%= f.text_field :first_name, :class => "text_field", :class => "input-xlarge" %><br>
+
+	  	<%= f.label "Last name" %>
+	  	<%= f.text_field :last_name, :class => "text_field", :class => "input-xlarge" %><br>
 		  
-		  <div class="control-group">
-		  	<div class="control-label">SUNET ID: <strong><%= @user.sunet %></strong></div>
-		  </div>
 
-		  <div class="control-group">
-		  	<div class="control-label">Graduation Year</div>
-		  	<%= f.text_field :year, :class => "text_field" %>
-		  </div>
+			<%= f.label "Grad Year" %>
+	  	<%= f.text_field :year, :class => "text_field", :class => "input-xlarge" %><br>
 
-		  <div class="control-group">
-		  	<div class="control-label">Hometown</div>
-		  	<%= f.text_field :hometown, :class => "text_field" %>
-		  </div>
+		  <%= f.label "Hometown" %>
+		  <%= f.text_field :hometown, :class => "text_field", :class => "input-xlarge" %><br>
 		  
-		  <div class="control-group">
-		  	<div class="control-label">Gender</div>
-		  	<%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'})%>
-		  </div>
+	    <%= f.label "Gender" %>		
+	  	<%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'}, :class => "input-xlarge")%><br>
 
-		  <div class="control-group">	  	
-		  	Alumni? <%= f.check_box :is_alumni %>
-		  </div>
+	  	<%= f.label "Facebook" %>
+	  	<%= f.text_field :facebook, :class => "text_field", :class => "input-xlarge" %><br>
+		  
+		  <%= f.label "Twitter" %>	  	
+	  	<%= f.text_field :twitter, :class => "text_field", :class => "input-xlarge" %><br>
 
-		  <div class="control-group">
-		  	<div class="control-label">Short Biography</div>
-		  	<%= f.text_area :bio, :rows => 3, :class => "input-xlarge"%>
-		  </div>
+	  	<%= f.label "Short Bio" %>
+		  	<%= f.text_area :bio, :rows => 3, :class => "input-xlarge"%><br>
 
-		  <div class="control-group">
-		  	<div class="control-label">Favorite Raas Memory</div>
-		  	<%= f.text_area :memory, :rows => 2, :class => "input-xlarge"%>
-		  </div>
-		  <div class="control-group">
-		  	<div class="control-label">Favorite Quote</div>
-		  	<%= f.text_area :quote, :rows => 2, :class => "input-xlarge"%>
-		  </div>
-
-		  <div class="control-group">
-		  	<div class="control-label">Facebook Profile</div>
-		  	<%= f.text_field :facebook, :class => "text_field" %>
-		  </div>
-
-		  <div class="control-group">
-		  	<div class="control-label">Twitter Profile</div>
-		  	<%= f.text_field :twitter, :class => "text_field" %>
-		  </div>
+	  	<%= f.label "Favorite Raas Memory" %>
+	  	<%= f.text_area :memory, :rows => 2, :class => "input-xlarge"%><br>
+		  
+	  	<%= f.label "Favorite Quote" %>
+		  <%= f.text_area :quote, :rows => 2, :class => "input-xlarge"%><br>
+		  
+	  	<%= f.label "Alumni?" %>	
+		  <div class="control-group"><%= f.check_box :is_alumni %></div>
 		</td>
 		<!-- Raaster only below here -->
 		<td>		

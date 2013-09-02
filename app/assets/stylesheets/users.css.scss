@@ -75,7 +75,7 @@
 	border-top: 20px solid rgb(199,59,59);
 }
 
-.mainImgF{
+.mainImgF {
 	width: 300px;
 	height: 300px;
 	border-top: 20px solid #8F3BC7;
@@ -96,4 +96,13 @@
 
 .genderUnknown {
 	background-color: gray;
-}*/
+*/
+
+.userInstructions {
+	font-size: 12px;
+	font-style: italic;
+	border: 2px red solid;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+
