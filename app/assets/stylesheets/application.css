@@ -143,8 +143,10 @@ p {
 
 .titleText {
 	position: absolute;
-	margin-top: -20px;
-	margin-left: 1000px;
+	top: 80%;
+	left: 80%;
+	/*margin-top: -20px;
+	margin-left: 1000px;*/
 	color: white;
 }
 
