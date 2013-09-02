@@ -18,11 +18,11 @@
   <tr ng-repeat="userRow in groupedUsers">
     <td ng-repeat="user in userRow">
       <a href="#/users/{{user.id}}">
+        <!-- <img class="circular" src="{{user.avatar_url}}"></img> -->
+
         <div class="imgWrap">
-          <img class="circular" src="{{user.avatar_url}}">
           <p class="imgDescription">{{user.first_name}}</p>
-        </div>
-        
+          <img class="circular" src="{{user.avatar_url}}"></img>
         </div>
       </a>
     </td>

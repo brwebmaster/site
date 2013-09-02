@@ -37,21 +37,25 @@
 
 .imgDescription {
   text-transform: uppercase;
-  font: bold 24px Helvetica;
+  font: bold 22px Helvetica;
   color: black;
   visibility: hidden;
   position: absolute;
-	margin-top: -124px;
-  margin-left: 100px;
+  top: 40%;
+  left: 35%;
+  right: 35%;
+  text-align: center;/*
+  word-wrap: break-word;*/
 }
 
 .imgWrap:hover .circular {
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
-.imgWrap:hover .imgDescription {
+.imgWrap:hover .imgDescription {/*
+.imgWrap .imgDescription {*/
   visibility: visible;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .table th, .table td { 
