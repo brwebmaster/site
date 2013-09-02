@@ -30,6 +30,10 @@
 	padding: 50px;
 }
 
+.left {
+	text-align: left;
+}
+
 .titleText {
 	text-align: right;
 	font-family: 'Elephant';
@@ -55,17 +59,11 @@ div.boolean, .simple_form input[type='submit'] {
   margin-left: 120px;
 }
 
-.upcoming{
+.upcoming {
 	width: 250px;
 	min-height: 300px;
-	text-align: center;
 	overflow: scroll;
 	overflow-x: auto;
-	background-color: #FFC5C0;
-}
-
-.upcoming p {
-	text-align: center;
 }
 
 .year {
@@ -80,7 +78,7 @@ div.boolean, .simple_form input[type='submit'] {
 	font-size: 20px;
 }
 
-.eventTitle {
+.bold {
 	font-weight: bold;
 }
 
@@ -101,11 +99,11 @@ div.boolean, .simple_form input[type='submit'] {
 }
 
 .sortable th .asc {
-	background-image: url(/assets/up_arrow.png);  
+	background-image: url(/assets/up_arrow.png);
 }
 
 .sortable th .desc {
-	background-image: url(/assets/down_arrow.png); 
+	background-image: url(/assets/down_arrow.png);
 }
 
 .privileged {
@@ -154,10 +152,6 @@ p {
 
 .headerDiv {
 	position: relative;
-}
-
-.container {
-	text-align: center;
 }
 
 .advertisement {
