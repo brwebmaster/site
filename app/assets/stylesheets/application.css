@@ -43,6 +43,12 @@
 	line-height: 110%;
 }
 
+.info{
+	font-family: Inika;
+	font-size: 12px;
+	font-style: italic;
+}
+
 .box {
   background-color: white;
 	padding: 10px;
