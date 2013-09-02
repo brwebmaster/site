@@ -11,8 +11,9 @@
 			  <%= f.file_field :avatar %>
 			</div>
 		</td>
-			
+
 		<td>
+			<span>If you don't want something to appear <br />in your profile, leave it blank!</span>
 			<div class="control-group">
 		  	<div class="control-label">First name</div>
 		  	<%= f.text_field :first_name, :class => "text_field" %>
@@ -47,7 +48,7 @@
 		  </div>
 
 		  <div class="control-group">
-		  	<div class="control-label">Biography</div>
+		  	<div class="control-label">Short Biography</div>
 		  	<%= f.text_area :bio, :rows => 3, :class => "input-xlarge"%>
 		  </div>
 
@@ -55,11 +56,30 @@
 		  	<div class="control-label">Favorite Raas Memory</div>
 		  	<%= f.text_area :memory, :rows => 2, :class => "input-xlarge"%>
 		  </div>
+		  <div class="control-group">
+		  	<div class="control-label">Favorite Quote</div>
+		  	<%= f.text_area :quote, :rows => 2, :class => "input-xlarge"%>
+		  </div>
+
+		  <div class="control-group">
+		  	<div class="control-label">Facebook Profile</div>
+		  	<%= f.text_field :facebook, :class => "text_field" %>
+		  </div>
+
+		  <div class="control-group">
+		  	<div class="control-label">Twitter Profile</div>
+		  	<%= f.text_field :twitter, :class => "text_field" %>
+		  </div>
 		</td>
+		<!-- Raaster only below here -->
 		<td>		
 		  <div class="control-group">
 		  	<div class="control-label">Birthday</div>		  	
 		  	<%= f.text_field :birthday, :class => "text_field", :type => "date" %>
+		  </div>		
+		  <div class="control-group">
+		  	<div class="control-label">Phone Number</div>
+		  	<%= f.text_field :phone, :class => "text_field" %>
 		  </div>		
 		  <div class="control-group">
 		  	<div class="control-label">Major</div>
@@ -80,7 +100,7 @@
 		  	<%= f.text_field :food, :class => "text_field" %>
 		  </div>		
 		  <div class="control-group">
-		  	<div class="control-label">Stanford ID</div>
+		  	<div class="control-label">Stanford ID Number</div>
 		  	<%= f.number_field :stanfordid, :class => "number" %>
 		  </div>
 		  <div class="control-group">

@@ -8,7 +8,7 @@ var UserListCtrl = function($scope, $http, $filter) {
   $scope.showSearch = false;
   $scope.showAlumni = false;
   $scope.usersPerRow = 4;
-  $scope.orderProp = 'first_name';
+  $scope.orderProp = 'gender';
   $scope.query = '';
 
   $http.get('/users.json?is_alumni=0').success(function(data) {
