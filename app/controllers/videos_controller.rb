@@ -23,7 +23,9 @@ class VideosController < ApplicationController
   	@video = Video.new(params[:video])
   	if @video.valid?
   		@video.save
-      VideoMailer.video_email(@video).deliver
+      if (params[:sendEmail])
+        VideoMailer.video_email(@video).deliver
+      end
   		respond_to do |format|
   			format.html
   			format.json{ render :json => @video}
