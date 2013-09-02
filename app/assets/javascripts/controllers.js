@@ -122,6 +122,7 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.successStatus = '';
   $scope.errorStatus = '';
   $scope.isUploadable = false;
+  $scope.sendEmail = false;
 
 
   $http.get('/videos.json').success(function(data) {
@@ -131,7 +132,8 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.click = function() {
     var videoData = {
       'description': $scope.description,
-      'link': $scope.link
+      'link': $scope.link,
+      'sendEmail': $scope.sendEmail
     };
     $scope.link = '';
     $scope.description = '';
