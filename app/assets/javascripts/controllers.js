@@ -211,6 +211,11 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
     });
   }
 
+  $scope.cancel = function() {
+    $scope.allowCreate = true;
+    $scope.createNew = false;    
+  }
+
   // Source: http://docs.angularjs.org/cookbook/advancedform
   $scope.isSaveDisabled = function() {
     return $scope.perfForm.$invalid;

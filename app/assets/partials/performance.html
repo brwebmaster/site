@@ -6,11 +6,10 @@
 	<a class="close" data-dismiss="alert">×</a>
 	{{successStatus}}
 </div>
-<div class="upcoming">
-	<h3>Upcoming Performances</h3>
-	<button ng-show="allowCreate" ng-click="showPerfCreation()">
-		Add New Performance
-	</button>
+<div class="upcoming centeredText">
+	<h3>Upcoming Performances
+		<i ng-show="allowCreate" ng-click="showPerfCreation()" class="icon-plus-sign icon"></i>
+	</h3>
 	<div ng-show="createNew">
 		<form name="perfForm">
 			<input type="text" placeholder="Title" ng-model="form.event" required/>
@@ -18,15 +17,12 @@
 			<input type="text" placeholder="Location" ng-model="form.place" required/>
 			<textarea rows="2" placeholder="Description" ng-model="form.description"/>
 			<button ng-click="save()" ng-disabled="isSaveDisabled()">Add</button>
+			<i ng-click="cancel()" class="icon-remove-sign icon"></i>
 		</form>
 	</div>
-	<p class="performance" ng-repeat="p in performances">
-		<span class="eventTitle">{{ p.event }}</span>
-		<br />
-		{{ p.time | date:'yyyy-MM-dd'}}
-		<br />
-		Location: <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a>
-		<br /> 
-		{{ p.description }}
-	</p>
+	<div class="performance" ng-repeat="p in performances">
+		<div class="performanceTitle bold">{{ p.event }}</div>
+		<div class="performanceLogistics">{{ p.time | date:'yyyy-MM-dd'}}, <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a></div>
+		<div class="left">{{ p.description }}</div>
+	</div>
 </div>
