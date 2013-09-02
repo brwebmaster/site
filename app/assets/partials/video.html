@@ -19,13 +19,14 @@
 <div class="vidContainer" ng-repeat="video in videos">
 	<div class="row-fluid">
 		<div class="span8">
-			<iframe class="youtube-player" type="text/html" width="640" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="25"></iframe>
-			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>
+			<iframe class="youtube-player" type="text/html" width="640" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
 		</div>
 		<div class="span4">
-  			<p>Uploaded by: <a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a></p>
-  			<p>{{video.description}}</p>
- 			<p>Added {{video.created_at | fromNow}}</p>
+			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>
+			<div class="videoText">
+  				<p class="videoDescription">{{video.description}}</p>
+  				<p><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
+ 			</div>
  		</div>
  	</div>
  </div>
