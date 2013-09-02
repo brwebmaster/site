@@ -33,6 +33,23 @@ a {
   color: #fff;
 }
 
+/*a:hover:after
+{
+    background: rgb(255,255,255);
+    bottom: 2px;
+    content: attr(title);
+    color: #000;
+    display: block;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;  
+    top: 50%; 
+    margin-top: -15px;  
+}*/
+
+
 div {
   &.field, &.actions {
     margin-bottom: 10px;
