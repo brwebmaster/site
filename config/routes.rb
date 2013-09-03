@@ -19,6 +19,9 @@ Brsite::Application.routes.draw do
   get "users/login_check"
   get "users/raaster"
 
+  get "application/not_found"
+  get "application/server_error"
+
   resources :performances 
 
   resources :users do
