@@ -81,9 +81,9 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.canEdit = false;
   $scope.user = {
     "id": 0,
-    "first_name": "John",
-    "last_name": "Bisbis",
-    "year": "2015",
+    "first_name": " ",
+    "last_name": " ",
+    "year": " ",
     "bio": "I am a member of Basmati Raas",
     "avatar_url": "/assets/defaultRaas.jpg",
     "gender": "M"

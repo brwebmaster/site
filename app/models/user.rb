@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar, 
-  default_url: '/assets/defaultRaas.jpg',
+  default_url: '/assets/StanfordTree.png',
   styles: {
     thumb: '100x100>',
     square: '200x200#',
