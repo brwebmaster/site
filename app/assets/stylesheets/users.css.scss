@@ -72,31 +72,19 @@
 .mainImgM {
 	width: 300px;
 	height: 300px;
-	border-top: 20px solid rgb(199,59,59);
+	border-bottom: 20px solid rgb(199,59,59);
 }
 
 .mainImgF {
 	width: 300px;
 	height: 300px;
-	border-top: 20px solid #8F3BC7;
+	border-bottom: 20px solid #8F3BC7;
 }
 
 .userWritten {
 	padding: 10px;
 	text-align: left;
 }
-
-/*.genderMale {
-	background-color: #E8ACA0;
-}
-
-.genderFemale {
-	background-color: #FFB1FC;
-}
-
-.genderUnknown {
-	background-color: gray;
-*/
 
 .userInstructions {
 	font-size: 12px;
