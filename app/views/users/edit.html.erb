@@ -70,7 +70,7 @@
 		  	<%= f.text_field :major, :class => "text_field" %>
 		  </div>
 		  <div class="control-group">
-		  	Undergrad? <%= f.check_box :undergrad %>
+		  	Undergrad? <%= f.check_box :is_undergrad %>
 		  </div>	
 		  <div class="control-group">
 		  	<%= f.select(:shirt_size, options_for_select([['XS', 'XS'], ['S', 'S'],['M', 'M'],['L', 'L'],['XL', 'XL']]), {:prompt => 'Shirt Size'})%>
