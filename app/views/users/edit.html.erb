@@ -34,8 +34,8 @@
 		  <%= f.label "Hometown" %>
 		  <%= f.text_field :hometown, :class => "text_field", :class => "input-xlarge" %><br>
 		  
-	    <%= f.label "Gender" %>		
-	  	<%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'}, :class => "input-xlarge")%><br>
+	  	<%= f.input :gender, collection: [["Male", "M"], ["Female", "F"]], input_html: { class: "input-xlarge"} %>
+	  	<br>
 
 	  	<%= f.label "Facebook" %>
 	  	<%= f.text_field :facebook, :class => "text_field", :class => "input-xlarge" %><br>
