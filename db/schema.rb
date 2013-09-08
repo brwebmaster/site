@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902042154) do
+ActiveRecord::Schema.define(:version => 20130908121719) do
 
   create_table "performances", :force => true do |t|
     t.string   "place"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20130902042154) do
     t.string   "last_name"
     t.string   "year"
     t.text     "bio"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(:version => 20130902042154) do
     t.text     "memory"
     t.string   "major"
     t.string   "shirt_size"
-    t.boolean  "undergrad"
+    t.boolean  "is_undergrad"
     t.string   "residence"
     t.string   "food"
-    t.integer  "stanfordid",          :limit => 8
+    t.string   "stanfordid"
     t.date     "birthday"
     t.string   "committee"
     t.string   "phone"
