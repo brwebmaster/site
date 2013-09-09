@@ -175,6 +175,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
   $scope.user = false;
   $scope.createNew = false;
   $scope.allowCreate = false;
+  $scope.curPerformance = null;
   $scope.successStatus = '';
   $scope.errorStatus = '';
   // These should match db columns
@@ -202,24 +203,63 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
   $scope.save = function() {
     $scope.allowCreate = true;
     $scope.createNew = false;
-    $http.post('/performances.json', $scope.form).success(function(data) {
-      $scope.successStatus = 'Added performance successfully! (Refresh the page if things look weird)';
-      // TODO: insert in correct place in order
-      $scope.performances.unshift(data);
-    }).error(function(data) {
-      $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
-    });
+    if ($scope.curPerformance) {
+      var index = $scope.performances.indexOf($scope.curPerformance);
+      $http.put('/performances/' + $scope.curPerformance.id + '.json', $scope.form).success(function(data) {
+        $scope.successStatus = 'Edited performance successfully!';
+        $scope.performances.splice(index, 1, data);
+      }).error(function(data) {
+        $scope.errorStatus = 'Could not edit the performance.';
+      });
+    } else {
+      $http.post('/performances.json', $scope.form).success(function(data) {
+        $scope.successStatus = 'Added performance successfully! (Refresh the page if things look weird)';
+        // TODO: insert in correct place in order
+        $scope.performances.unshift(data);
+      }).error(function(data) {
+        $scope.errorStatus = 'Could not add the performance.';
+      });  
+    }
   }
 
   $scope.cancel = function() {
     $scope.allowCreate = true;
-    $scope.createNew = false;    
+    $scope.createNew = false; 
+    $scope.curPerformance = null;
   }
 
   // Source: http://docs.angularjs.org/cookbook/advancedform
   $scope.isSaveDisabled = function() {
     return $scope.perfForm.$invalid;
   };
+
+  $scope.edit = function(performance) {
+    $scope.curPerformance = performance;
+    $scope.showPerfCreation();
+    $scope.form.event = performance.event;
+    $scope.form.time = performance.time;
+    $scope.form.place = performance.place;
+    $scope.form.description = performance.description;
+  }
+
+  $scope.isActivePerf = function(performance) {
+    return performance == $scope.curPerformance;
+  }
+
+  $scope.deletePerf = function(id) {
+    var r = confirm("Are you sure you want to remove this performance?");
+    if (r == true){
+      $http.delete('/performances/' + id).success(function() {
+        $scope.successStatus = 'Deleted video.';
+        for (var i = 0; i < $scope.performances.length; i++) {
+          if ($scope.performances[i].id == id) {
+            // remove element from array
+            $scope.performances.splice(i, 1);
+          }
+        }
+      });
+    }    
+  }
 }
 
 PerformanceCtrl.$inject = ['$scope', '$http', '$filter', 'authService'];
