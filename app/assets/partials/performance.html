@@ -28,7 +28,7 @@
 			<i ng-click="edit(p)" class="icon-pencil"></i>
 			<i ng-click="deletePerf(p.id)" class="icon-ban-circle"></i>
 		</div>
-		<div class="performanceLogistics">{{ p.time | date:'yyyy-MM-dd'}}, <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a></div>
-		<div class="left">{{ p.description }}</div>
+		<div class="performanceLogistics">{{ p.time | date:'yyyy-MM-dd'}}, <a class="linkStyle" href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a></div>
+		<div class="centeredText">{{ p.description }}</div>
 	</div>
 </div>

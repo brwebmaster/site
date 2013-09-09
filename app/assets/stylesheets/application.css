@@ -35,6 +35,11 @@
 	border-top-left-radius: 10px;
 }
 
+.linkStyle{
+	font-style: italic;
+	color: #555;
+}
+
 .auditionBox{
 	position: absolute;
 	color: white;
@@ -61,6 +66,13 @@
 	font-family: sans-serif;
 	margin-left: 15px;
 	font-size: 18px;
+	line-height: 135%;
+}
+
+.performanceText{
+	font-family: sans-serif;
+	margin-left: 15px;
+	font-size: 14px;
 	line-height: 135%;
 }
 
