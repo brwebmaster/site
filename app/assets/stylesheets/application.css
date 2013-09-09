@@ -75,6 +75,10 @@
 	font-family: Inika;
 }
 
+.fontSans{
+	font-family: sans-serif;
+}
+
 .info{
 	font-family: Inika;
 	font-size: 12px;
@@ -377,4 +381,8 @@ iframe{
 
 .genderUnknown {
 	background-color: gray;
+}
+
+.videoInfo{
+	padding-left: 20px;
 }

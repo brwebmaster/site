@@ -7,7 +7,7 @@
 		<div class="row-fluid">
 			<%@years.each do |date, info|%>
 			<div class="span1">
-				<a href="#<%=date%>"><%=date[2..3]+'-'+date[7..8]%></a>
+				<a href="#/performances#<%=date%>"><%=date[2..3]+'-'+date[7..8]%></a>
 			</div>
 			<% end %>
 		</div>
@@ -23,17 +23,19 @@
 							<%= image_tag "/assets/#{info['photo']}", class: "displayed" %>
 						<% end %>
 					</div>
-					<div class="span5 fontInika">
-						<h5>Highlights</h5>
+					<div class="span5 fontSans">
+						<h4>Highlights</h4>
 						<% info['awards'].each do |result|%>
-							<p><%=result%></p>
+							<p class="sans"><%=result%></p>
 						<% end %>
+						<div class="videoInfo">
 						<% if info['videos'] %>
 							Videos:
 							<% info['videos'].each do |vid|%>
 								<a href="<%=vid%>"><%=vid%></a><br>
 							<% end %>
 						<% end %>
+					</div>
 					</div>
 				</div>
 			<br>
