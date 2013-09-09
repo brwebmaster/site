@@ -17,11 +17,12 @@
           <img class="icon2" alt="Captain" title="Captain!" src="/assets/star_icon.png">
         </span>
          {{getFullName(user)}}
-         <a href="/users/{{user.id}}/edit"><i ng-show="canEdit" class="icon-pencil"></i></a><a href="mailto:{{user.sunet}}@stanford.edu"><img class="icon2" alt="Email" src="/assets/email_icon.png">
-        </a>
+         <a href="/users/{{user.id}}/edit"><i ng-show="canEdit" class="icon-pencil"></i></a>
       </h2>
 
       <div>
+        <a href="mailto:{{user.sunet}}@stanford.edu"><img class="icon2" alt="Email" src="/assets/email_icon.png">
+        </a>
         <a ng-show="user.facebook" href="{{user.facebook}}"><img class="icon2" alt="Facebook" src="/assets/facebook_icon.jpg">
         </a>
         <a ng-show="user.twitter" href="{{user.twitter}}"><img class="icon2" alt="Twitter" src="/assets/twitter_icon.jpg">
