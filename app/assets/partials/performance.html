@@ -20,8 +20,14 @@
 			<i ng-click="cancel()" class="icon-remove-sign icon"></i>
 		</form>
 	</div>
-	<div class="performance" ng-repeat="p in performances">
-		<div class="performanceTitle bold">{{ p.event }}</div>
+	<div class="performance" ng-repeat="p in performances" ng-class="{performanceEditing: isActivePerf(p)}">
+		<div class="performanceTitle bold">
+			{{ p.event }}
+		</div>
+		<div class="userActions">
+			<i ng-click="edit(p)" class="icon-pencil"></i>
+			<i ng-click="deletePerf(p.id)" class="icon-ban-circle"></i>
+		</div>
 		<div class="performanceLogistics">{{ p.time | date:'yyyy-MM-dd'}}, <a href='http://maps.google.com/maps?q={{p.place}}'>{{ p.place }}</a></div>
 		<div class="left">{{ p.description }}</div>
 	</div>
