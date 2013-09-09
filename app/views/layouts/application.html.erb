@@ -31,7 +31,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
+<div class="shadow">
 <div class="headerDiv">
 <img class="imageHeader" src="/assets/banner6.jpg"></img>
 <div class="titleText">
@@ -41,8 +41,8 @@
 </div>
 </div>
 
-<div class="navbar-wrapper">
-	<div class = "navbar navbar-inverse">
+<!-- <div class="navbar-wrapper">
+ -->	<div class = "navbar navbar-inverse">
 		<div class="navbar-inner">
 			<div class="nav-collapse">
 				<ul class="nav nav-tabs">
@@ -65,6 +65,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
@@ -72,9 +73,12 @@
     <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   </div>
 <% end %>
-<div class="box">
+<div class="box shadow">
 <%= yield %>
 </div>
+</div>
+</div>
+
 <div class="footer">
 	<div class="fb-like-box" data-href="https://www.facebook.com/basmatiraas" data-width="150" data-show-faces="false" data-header="true" data-stream="false" data-show-border="true"></div>
 	<p class="centeredText"><%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %></p>
