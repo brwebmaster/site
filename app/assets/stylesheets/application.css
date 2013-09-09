@@ -26,21 +26,46 @@
 
 
  body {
- 	background-image: url('/assets/bullseyes.png');
 	background-repeat: repeat;
 	font-family: 'Dancing_Script', Georgia, Times, serif;
  } 
+
+.imageHeader{
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.auditionBox{
+	position: absolute;
+	color: white;
+	font-weight: bold;
+	margin-top: -45%;
+	margin-left: 22%;
+	text-align: center;
+	font-size: 20px;
+	line-height: 110%;
+}
+
+.shadow{
+	-webkit-box-shadow: 0px 5px 10px 5px #ccc;
+ 	box-shadow: 0px 5px 10px 5px #ccc;
+ 	border-radius: 10px;
+}
 
 .codeBold {
 	font-family: CodeBold;
 	margin-left: 10px;
 }
 
-.inika{
-	font-family: Inika;
+.sans{
+	font-family: sans-serif;
 	margin-left: 15px;
 	font-size: 18px;
 	line-height: 135%;
+}
+
+.fontSans{
+	font-family: sans-serif;
 }
 
 .info{
@@ -51,9 +76,14 @@
 
 .box {
   background-color: white;
-	padding: 10px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
+	font-family: sans-serif;
+	margin-top: 20px;
 }
 
 .footer {
@@ -80,8 +110,8 @@
 
 .titleText {
 	text-align: right;
-	font-family: Inika;
-}
+/*	font-family: sans-serif;
+*/}
 
 .simple_form div.input {
   margin-bottom: 10px;
@@ -233,12 +263,13 @@ p {
 .videoText{
 	font-size: 24px;
 	margin-top: 125px;
-	text-align: center;
+	text-align: left;
 }
 
 .videoDescription{
 	font-size: 18px;
 	font-weight: bold;
+	text-align: left;
 }
 
 .videoTime{
@@ -340,4 +371,8 @@ iframe{
 
 .genderUnknown {
 	background-color: gray;
+}
+
+.videoInfo{
+	padding-left: 20px;
 }
