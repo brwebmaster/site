@@ -158,6 +158,19 @@ div.boolean, .simple_form input[type='submit'] {
 	border-top: black dotted 3px;
 }
 
+.performance .userActions {
+	display: none;
+}
+
+.performance:hover .userActions {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.performanceEditing {
+	background-color: #FFF3EE;
+}
+
 .performanceTitle {
 	margin-top: 4px;
 	font-size: 18px;
