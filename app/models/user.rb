@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include ApplicationHelper
 	has_many :photos
-  attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin, :is_captain, :is_alumni, :hometown, :memory, :birthday, :major, :undergrad, :shirt_size, :residence, :food, :stanfordid, :committee, :phone, :twitter, :facebook, :quote
+  attr_accessible :first_name, :last_name, :year, :bio, :avatar, :sunet, :gender, :is_admin, :is_captain, :is_alumni, :hometown, :memory, :birthday, :major, :is_undergrad, :shirt_size, :residence, :food, :stanfordid, :committee, :phone, :twitter, :facebook, :quote
 
   validates :first_name, :last_name, :presence => true
 

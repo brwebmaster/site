@@ -3,9 +3,10 @@
 <div class="row-fluid">
 <div class="span5 fontNormal">
 <%= simple_form_for ContactForm.new, url: {action: "create"} do |f| %>
-	<%= f.label :Name %><%= f.text_field :name %><br />
-	<%= f.label :Email %><%= f.text_field :email %><br />
-	<%= f.label :Subject %><%= f.select :inquiry, options_for_select(["Performance", "Feedback", "Sponsorship", "Involvement", "Other"]) %><br />
+	<%= f.label :Name %><%= f.text_field :name, :class => "input-xlarge" %><br />
+	<%= f.label :Email %><%= f.text_field :email, :class => "input-xlarge" %><br />
+	<%= f.label :Subject %><%= f.select(:inquiry, options_for_select(["Performance", "Feedback", "Sponsorship", "Involvement", "Other"]), :class => "input-xlarge")%><br>
+
 	<%= f.label :Message %><%= f.text_area :message, :rows => "15", :class => "input-xlarge" %><br />
     <%= f.submit "Submit"%>
 <% end %>

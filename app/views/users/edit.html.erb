@@ -34,8 +34,8 @@
 		  <%= f.label "Hometown" %>
 		  <%= f.text_field :hometown, :class => "text_field", :class => "input-xlarge" %><br>
 		  
-	    <%= f.label "Gender" %>		
-	  	<%= f.select(:gender, options_for_select([['Male', 'M'], ['Female', 'F']]), {:prompt => 'Select Gender'}, :class => "input-xlarge")%><br>
+	  	<%= f.input :gender, collection: [["Male", "M"], ["Female", "F"]], input_html: { class: "input-xlarge"} %>
+	  	<br>
 
 	  	<%= f.label "Facebook" %>
 	  	<%= f.text_field :facebook, :class => "text_field", :class => "input-xlarge" %><br>
@@ -70,7 +70,7 @@
 		  	<%= f.text_field :major, :class => "text_field" %>
 		  </div>
 		  <div class="control-group">
-		  	Undergrad? <%= f.check_box :undergrad %>
+		  	Undergrad? <%= f.check_box :is_undergrad %>
 		  </div>	
 		  <div class="control-group">
 		  	<%= f.select(:shirt_size, options_for_select([['XS', 'XS'], ['S', 'S'],['M', 'M'],['L', 'L'],['XL', 'XL']]), {:prompt => 'Shirt Size'})%>
