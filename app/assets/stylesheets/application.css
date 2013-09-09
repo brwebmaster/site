@@ -121,8 +121,8 @@
 
 .titleText {
 	text-align: right;
-	font-family: Inika;
-}
+/*	font-family: sans-serif;
+*/}
 
 .simple_form div.input {
   margin-bottom: 10px;
@@ -274,12 +274,13 @@ p {
 .videoText{
 	font-size: 24px;
 	margin-top: 125px;
-	text-align: center;
+	text-align: left;
 }
 
 .videoDescription{
 	font-size: 18px;
 	font-weight: bold;
+	text-align: left;
 }
 
 .videoTime{

@@ -21,11 +21,11 @@
 		<div class="span8">
 			<iframe class="youtube-player" type="text/html" width="640" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
 		</div>
-		<div class="span4">
+		<div class="span3">
 			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>
 			<div class="videoText">
-  				<p class="videoDescription">{{video.description}}</p>
-  				<p><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
+  				<p class="videoDescription sans">{{video.description}}</p>
+  				<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
  			</div>
  		</div>
  	</div>
