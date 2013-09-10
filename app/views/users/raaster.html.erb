@@ -6,6 +6,7 @@
     <th><%= sortable "gender" %></th>
     <th><%= sortable "year" %></th>
     <th><%= sortable "email" %></th>
+    <th>Phone</th>
     <th><%= sortable "hometown" %></th>
     <th><%= sortable "residence" %></th>
     <th>Shirt Size</th>
@@ -20,7 +21,8 @@
       <td><%= u.gender %></td>
       <td><%= u.year %></td>
 	  	<td><a href="mailto:<%=u.sunet%>@stanford.edu"><%= u.sunet %></a></td>
-	  	<td><%= u.hometown %></td>
+      <td><%= u.phone %></td>
+      <td><%= u.hometown %></td>
 	  	<td><%= u.residence %></td>
 	  	<td><%= u.shirt_size %></td>
 	  	<td><%= u.stanfordid %></td>
