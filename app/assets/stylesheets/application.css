@@ -65,7 +65,7 @@
 .sans{
 	font-family: sans-serif;
 	margin-left: 15px;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 135%;
 }
 
@@ -131,6 +131,7 @@
 }
 
 .simple_form label {
+	font-family: sans-serif;
   float: left;
   width: 100px;
   text-align: right;
@@ -239,7 +240,7 @@ div.boolean, .simple_form input[type='submit'] {
 
 p {
 	padding-top: 10px;
-	font-size: 16px;
+	font-size: 12px;
 }
 
 .icon2 { 
