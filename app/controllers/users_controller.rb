@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def index
     @users = []
     if params[:is_alumni] == '0'
-      puts "not alumni"
       @users = User.where("is_alumni = false")
     elsif params[:is_alumni] == '1'
       @users = User.where("is_alumni = true")

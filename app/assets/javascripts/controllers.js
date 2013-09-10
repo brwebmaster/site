@@ -33,6 +33,7 @@ var UserListCtrl = function($scope, $http, $filter) {
   // Return array of arrays grouping the data 4 at a time
   $scope.getRows = function(query, orderProp) {
     $scope.groupedUsers = $scope.groupArray(query, orderProp, $scope.users);
+    $scope.groupedAlumni = $scope.groupArray(query, orderProp, $scope.alumni);
   }
 
   // private method
@@ -48,7 +49,7 @@ var UserListCtrl = function($scope, $http, $filter) {
       grouped.push([]);
       var numCols = $scope.usersPerRow;
       if (i == numRows - 1) {
-        if (filtered.length % 4 != 0) {
+        if (filtered.length % $scope.usersPerRow != 0) {
           numCols = filtered.length % $scope.usersPerRow
         } else {
           numCols = $scope.usersPerRow;
