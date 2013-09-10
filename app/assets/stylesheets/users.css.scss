@@ -34,12 +34,11 @@
   text-align: center;
 }
 
-.imgWrap:hover .circular {
+.imgWrap:hover .circular{
   opacity: 0.2;
 }
 
-.imgWrap:hover .imgDescription {/*
-.imgWrap .imgDescription {*/
+.imgWrap:hover .imgDescription {
   visibility: visible;
   opacity: 0.9;
 }
