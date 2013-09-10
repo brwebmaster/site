@@ -5,7 +5,7 @@ class VideosController < ApplicationController
   
   def index
     # TODO: implement pagination
-  	@videos = Video.limit(8).order("created_at DESC")
+  	@videos = Video.limit(5).order("created_at DESC")
     respond_to do |format|
       format.html
       format.json { render json: @videos }

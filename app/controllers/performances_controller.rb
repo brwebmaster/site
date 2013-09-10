@@ -3,7 +3,7 @@ class PerformancesController < ApplicationController
 
   def index
   	@performances = Performance
-      .where("time > ?", Time.now)
+      .where("time > ?", 1.days.ago)
       .order('time ASC')
   	@years = {"2012-2013" => {"videoID" => "xDUMIMu7Ojg", "awards" => ["2nd Place - ATown Showdown"]}, 
   			"2011-2012" => {"videoID" => "fA0PSrRdbPk", "awards" => ["1st Place - Raas Rodeo", "3rd Place - Garba with Attitude", "Invitation to Raas All-Stars"]}, 
