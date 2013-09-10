@@ -48,7 +48,7 @@ var UserListCtrl = function($scope, $http, $filter) {
       grouped.push([]);
       var numCols = $scope.usersPerRow;
       if (i == numRows - 1) {
-        if (filtered.length % 4 != 0) {
+        if (filtered.length % $scope.usersPerRow != 0) {
           numCols = filtered.length % $scope.usersPerRow
         } else {
           numCols = $scope.usersPerRow;
