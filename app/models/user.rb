@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     if self.avatar.exists?
       ActionController::Base.helpers.image_tag self.avatar.url(:square)
     else
-      ActionController::Base.helpers.image_tag "defaultRaas.jpg"
+      ActionController::Base.helpers.image_tag "StanfordTree.png"
     end
   end
 

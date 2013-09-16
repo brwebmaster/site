@@ -22,6 +22,8 @@ Brsite::Application.routes.draw do
   get "application/not_found"
   get "application/server_error"
 
+  post "application/create"
+
   resources :performances 
 
   resources :users do
@@ -29,6 +31,8 @@ Brsite::Application.routes.draw do
   end
 
   resources :videos
+
+  resources :interest_email
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -15,8 +15,14 @@
 	<a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
 	<a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
 	<div class="auditionBox">
-<p>Auditions will be held on September 28th and 29th<br>Check here during Week 1 for more details!</p>
-</div>
+		<h5>Enter your email to learn more about Basmati Raas Auditions!</h5>
+<%= form_for InterestEmail.new,  :url => {:controller => "application", 
+                                 :action => "create"} do |f| %>
+	<%= f.text_field :email, :class => "input-xlarge" %>
+    <%= f.submit "Submit"%>
+<%end%>
+<!-- <p>Auditions will be held on September 28th and 29th<br>Check here during Week 1 for more details!</p>
+ --></div>
 </div>
 </div>
 

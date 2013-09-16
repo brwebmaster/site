@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
-  
+
   def require_login
 		if not is_logged_in session
 			flash[:error] = "You must be logged in to do that."
@@ -15,5 +15,18 @@ class ApplicationController < ActionController::Base
 
 	def server_error
 	  raise Exception
+	end
+
+	def create
+		@email = InterestEmail.new(params[:interest_email])
+    	if @email.valid?
+      		@email.save
+      		flash[:notice] = "Thanks! We'll be in touch soon."
+      		redirect_to :controller => :static_pages, :action => :home
+    	else
+      		flash[:alert] = "Sorry! Something went wrong. Please enter your email again."
+      		render :controller => :static_pages, :action => :home
+    	end
+
 	end
 end
