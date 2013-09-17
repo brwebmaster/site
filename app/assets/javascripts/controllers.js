@@ -151,7 +151,7 @@ var VideoCtrl = function($scope, $http, $filter) {
 
   $scope.range = function(len) {
     return _.range(len);
-  }
+  };
 
   $scope.prevPage = function() {
     if ($scope.currentPage > 0) {
@@ -167,7 +167,7 @@ var VideoCtrl = function($scope, $http, $filter) {
 
   $scope.setPage = function() {
     $scope.currentPage = this.n;
-  }
+  };
 
   $scope.click = function() {
     var videoData = {
@@ -201,11 +201,11 @@ var VideoCtrl = function($scope, $http, $filter) {
         }
       });
     }    
-  }
+  };
 
   $scope.showUploader = function() {
     $scope.isUploadable = !$scope.isUploadable;
-  }
+  };
 }
 
 VideoCtrl.$inject = ['$scope', '$http', '$filter'];
@@ -224,7 +224,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
     'time' : '',
     'place' : '',
     'description' : ''
-  }
+  };
 
   $http.get('/performances.json').success(function(data) {
     $scope.performances = data;
@@ -238,7 +238,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
   $scope.showPerfCreation = function() {
     $scope.createNew = true;
     $scope.allowCreate = false;
-  }
+  };
 
   $scope.save = function() {
     $scope.allowCreate = true;
@@ -260,13 +260,13 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
         $scope.errorStatus = 'Could not add the performance.';
       });  
     }
-  }
+  };
 
   $scope.cancel = function() {
     $scope.allowCreate = true;
     $scope.createNew = false; 
     $scope.curPerformance = null;
-  }
+  };
 
   // Source: http://docs.angularjs.org/cookbook/advancedform
   $scope.isSaveDisabled = function() {
@@ -280,11 +280,11 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
     $scope.form.time = performance.time;
     $scope.form.place = performance.place;
     $scope.form.description = performance.description;
-  }
+  };
 
   $scope.isActivePerf = function(performance) {
     return performance == $scope.curPerformance;
-  }
+  };
 
   $scope.deletePerf = function(id) {
     var r = confirm("Are you sure you want to remove this performance?");
@@ -299,7 +299,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
         }
       });
     }    
-  }
+  };
 }
 
 PerformanceCtrl.$inject = ['$scope', '$http', '$filter', 'authService'];
