@@ -80,6 +80,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
   $scope.canEdit = false;
+  $scope.curIndex = 1;
   $scope.user = {
     "id": 0,
     "first_name": " ",
@@ -93,19 +94,38 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
     $scope.user = data;
     $http.get('/users/can_edit.json?sunet=' + $scope.user.sunet).success(function(data) {
-        if (data.can_edit) {
-          $scope.canEdit = true;
+      if (data.can_edit) {
+        $scope.canEdit = true;
+      }
+    });
+    $http.get('/users.json').success(function(data) {
+      $scope.users = data;
+      // indexOf compares using strict equality, so we need to do manual comparison 
+      // $scope.curIndex = $scope.users.indexOf($scope.user); //always returns -1
+      for (var i = 0; i < $scope.users.length; i++) {
+        if ($scope.user.id === $scope.users[i].id) {
+          $scope.curIndex = i;
+          break;
         }
+      }
+    });
+  }).error(function(data) {
+    console.log("Failed to get user data, trying to fetch all users", data);
+    $http.get('/users.json').success(function(data) {
+      $scope.users = data;
     });
   });
 
-  $http.get('/users.json').success(function(data) {
-    $scope.users = data; 
-  });
+  
 
-  $scope.open = function(u) {
-    $location.path('/users/' + u.id);
+  $scope.open = function(u, index) {
+    $scope.curIndex = index;
+    $scope.updateLocation(u.id);
     $scope.user = u;
+  };
+
+  $scope.updateLocation = function(id) {
+    $location.path('/users/' + id);
   };
 
   $scope.getFullName = function(u) {
@@ -113,13 +133,12 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   };
 
   $scope.prevMember = function() {
-    console.log("prev member");
+    $scope.user = $scope.users[--$scope.curIndex];
   };
 
   $scope.nextMember = function() {
-    console.log('next member');
+    $scope.user = $scope.users[++$scope.curIndex];
   };
-
 }
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];

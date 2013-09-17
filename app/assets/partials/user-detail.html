@@ -3,13 +3,20 @@
     <a href="/users">&lsaquo;&lsaquo; See All</a>
   </li>
   <li class="userClick" ng-repeat="u in users">
-  	<div ng-click="open(u)" ng-class="{bold: getFullName(u) == getFullName(user)}">{{getFullName(u)}}</div>
+  	<div ng-click="open(u, $index)" ng-class="{bold: getFullName(u) == getFullName(user)}">{{getFullName(u)}}</div>
   </li>
 </div>
 <div class="row-fluid">
   <div class="span9 userDetail">
     <div class="span6">
       <img ng-class="{mainImgM: user.gender == 'M', mainImgF: user.gender == 'F'}" ng-src="{{user.avatar_url}}">
+
+      <hr>
+      <div>
+        <button ng-show="curIndex > 0" class="leftFloat" ng-click="prevMember()">Previous</button>
+        <button ng-show="curIndex < users.length - 1" class="rightFloat" ng-click="nextMember()">Next</button>
+      </div>
+      
     </div>
     <div class="span6 userWritten" >
       <h2 class="userTitle">
@@ -34,9 +41,9 @@
       <p ng-show="user.bio"><span class="bold">Short Biography:</span> {{user.bio}}</p>
       <p ng-show="user.memory"><span class="bold">Favorite Raas Memory:</span> {{user.memory}}</p>
       <p ng-show="user.quote"><span class="bold">Favorite Quote:</span> {{user.quote}}</p>
-      <hr>      
-      <button class="leftFloat" ng-click="prevMember()">Previous</button>
-      <button class="rightFloat" ng-click="nextMember()">Next</button>
     </div>
   </div>
 </div>
+
+<!-- ng-show="curIndex !== 0"  -->
+<!-- ng-show="curIndex !== users.length - 1" -->
