@@ -16,7 +16,7 @@
 	<button ng-click="click()">Add video!</button>
 </form>
 
-<div class="vidContainer" ng-repeat="video in videos">
+<div class="vidContainer" ng-repeat="video in pagedItems[currentPage]">
 	<div class="row-fluid">
 		<div class="span8">
 			<iframe class="youtube-player" type="text/html" width="640" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
@@ -24,9 +24,25 @@
 		<div class="span3">
 			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>
 			<div class="videoText">
-  				<p class="videoDescription sans">{{video.description}}</p>
-  				<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
+				<p class="videoDescription sans">{{video.description}}</p>
+				<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
  			</div>
  		</div>
  	</div>
  </div>
+
+ <div class="pagination pull-right">
+  <ul>
+    <li ng-class="{disabled: currentPage == 0}">
+      <a href ng-click="prevPage()">« Prev</a>
+    </li>
+    <li ng-repeat="n in range(pagedItems.length)"
+        ng-class="{active: n == currentPage}"
+    		ng-click="setPage()">
+      <a href ng-bind="n + 1">1</a>
+    </li>
+    <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+      <a href ng-click="nextPage()">Next »</a>
+    </li>
+  </ul>
+</div>
