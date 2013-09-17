@@ -105,13 +105,21 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
   $scope.open = function(u) {
     $location.path('/users/' + u.id);
-    console.log(u);
     $scope.user = u;
   };
 
   $scope.getFullName = function(u) {
     return u.first_name + " " + u.last_name;
   };
+
+  $scope.prevMember = function() {
+    console.log("prev member");
+  };
+
+  $scope.nextMember = function() {
+    console.log('next member');
+  };
+
 }
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
