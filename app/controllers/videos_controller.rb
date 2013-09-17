@@ -4,8 +4,8 @@ class VideosController < ApplicationController
   include VideosHelper
   
   def index
-    # TODO: implement pagination
-  	@videos = Video.limit(5).order("created_at DESC")
+    # Fetch all video urls, pagination implemented in angular
+  	@videos = Video.order("created_at DESC")
     respond_to do |format|
       format.html
       format.json { render json: @videos }
