@@ -9,13 +9,14 @@ angular.module('AuthModule', []).
 	  }
 	}]);
 
+// Source for no auto-scrolling: http://stackoverflow.com/questions/14530572/angularjs-how-to-disable-auto-scroll-to-top-of-my-page/14534133#14534133
 angular.module('usersbr', ['AuthModule']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/users', {templateUrl: '/assets/user-list.html',   controller: UserListCtrl}).
       when('/users/:userId', {templateUrl: '/assets/user-detail.html', controller: UserDetailCtrl}).
       otherwise({redirectTo: '/users'});
-}]);
+}]).value('$anchorScroll', angular.noop);
 
 angular.module('videosbr', ['AuthModule']).
   config(['$routeProvider', function($routeProvider) {
