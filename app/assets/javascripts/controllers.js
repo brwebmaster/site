@@ -18,7 +18,7 @@ var UserListCtrl = function($scope, $http, $filter) {
 
   $scope.toggleSearch = function() {    
     $scope.showSearch = !$scope.showSearch;
-  }
+  };
 
   $scope.toggleAlumni = function() {
     $scope.showAlumni = !$scope.showAlumni;
@@ -28,13 +28,13 @@ var UserListCtrl = function($scope, $http, $filter) {
         $scope.groupedAlumni = $scope.groupArray($scope.query, $scope.orderProp, $scope.alumni);
       });
     }
-  }
+  };
 
   // Return array of arrays grouping the data 4 at a time
   $scope.getRows = function(query, orderProp) {
     $scope.groupedUsers = $scope.groupArray(query, orderProp, $scope.users);
     $scope.groupedAlumni = $scope.groupArray(query, orderProp, $scope.alumni);
-  }
+  };
 
   // private method
   $scope.groupArray = function(query, orderProp, arr) {
@@ -60,7 +60,7 @@ var UserListCtrl = function($scope, $http, $filter) {
       }
     }
     return grouped;
-  }
+  };
 
   $scope.userFilter = function(query) {    
     if (query == undefined) {
@@ -71,7 +71,7 @@ var UserListCtrl = function($scope, $http, $filter) {
       return user.first_name.toLowerCase().indexOf(query) != -1
       || user.last_name.toLowerCase().indexOf(query) != -1; 
     }
-  }
+  };
 }
 
 UserListCtrl.$inject = ['$scope', '$http', '$filter'];
@@ -111,7 +111,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
   $scope.getFullName = function(u) {
     return u.first_name + " " + u.last_name;
-  }
+  };
 }
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
@@ -124,7 +124,6 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.errorStatus = '';
   $scope.isUploadable = false;
   $scope.sendEmail = false;
-
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
@@ -147,11 +146,11 @@ var VideoCtrl = function($scope, $http, $filter) {
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
     });
-  }
+  };
 
   $scope.deleteVid = function(id) {
     var r = confirm("Are you sure you want to remove this video?");
-    if (r == true){
+    if (r){
       $http.delete('/videos/' + id).success(function() {
         $scope.successStatus = 'Deleted video.';
         for (var i = 0; i < $scope.videos.length; i++) {
@@ -161,12 +160,12 @@ var VideoCtrl = function($scope, $http, $filter) {
           }
         }
       });
-    }    
-  }
+    }
+  };
 
   $scope.showUploader = function() {
     $scope.isUploadable = !$scope.isUploadable;
-  }
+  };
 }
 
 VideoCtrl.$inject = ['$scope', '$http', '$filter'];
@@ -199,7 +198,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
   $scope.showPerfCreation = function() {
     $scope.createNew = true;
     $scope.allowCreate = false;
-  }
+  };
 
   $scope.save = function() {
     $scope.allowCreate = true;
@@ -221,13 +220,13 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
         $scope.errorStatus = 'Could not add the performance.';
       });  
     }
-  }
+  };
 
   $scope.cancel = function() {
     $scope.allowCreate = true;
     $scope.createNew = false; 
     $scope.curPerformance = null;
-  }
+  };
 
   // Source: http://docs.angularjs.org/cookbook/advancedform
   $scope.isSaveDisabled = function() {
@@ -241,11 +240,11 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
     $scope.form.time = performance.time;
     $scope.form.place = performance.place;
     $scope.form.description = performance.description;
-  }
+  };
 
   $scope.isActivePerf = function(performance) {
     return performance == $scope.curPerformance;
-  }
+  };
 
   $scope.deletePerf = function(id) {
     var r = confirm("Are you sure you want to remove this performance?");
@@ -260,7 +259,7 @@ var PerformanceCtrl = function($scope, $http, $filter, authService) {
         }
       });
     }    
-  }
+  };
 }
 
 PerformanceCtrl.$inject = ['$scope', '$http', '$filter', 'authService'];
