@@ -125,10 +125,49 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.isUploadable = false;
   $scope.sendEmail = false;
 
+  $scope.itemsPerPage = 3;
+  $scope.pagedItems = [];
+  $scope.currentPage = 0;
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
+    $scope.groupToPages();
+    console.log($scope.videos);
+    console.log($scope.pagedItems);
   });
+
+  // Source: http://jsfiddle.net/SAWsA/11/
+  $scope.groupToPages = function() {
+    $scope.pagedItems = [];
+    for (var i = 0; i < $scope.videos.length; i++) {
+      var ind = Math.floor(i / $scope.itemsPerPage);
+      if (i % $scope.itemsPerPage === 0) {
+        $scope.pagedItems[ind] = [ $scope.videos[i] ]
+      } else {
+        $scope.pagedItems[ind].push($scope.videos[i]);
+      }
+    }
+  };
+
+  $scope.range = function(len) {
+    return _.range(len);
+  }
+
+  $scope.prevPage = function() {
+    if ($scope.currentPage > 0) {
+      $scope.currentPage--;
+    }
+  };
+
+  $scope.nextPage = function() {
+    if ($scope.currentPage < $scope.pagedItems.length - 1) {
+      $scope.currentPage++;
+    }
+  };
+
+  $scope.setPage = function() {
+    $scope.currentPage = this.n;
+  }
 
   $scope.click = function() {
     var videoData = {
