@@ -18,7 +18,7 @@ var UserListCtrl = function($scope, $http, $filter) {
 
   $scope.toggleSearch = function() {    
     $scope.showSearch = !$scope.showSearch;
-  }
+  };
 
   $scope.toggleAlumni = function() {
     $scope.showAlumni = !$scope.showAlumni;
@@ -28,13 +28,13 @@ var UserListCtrl = function($scope, $http, $filter) {
         $scope.groupedAlumni = $scope.groupArray($scope.query, $scope.orderProp, $scope.alumni);
       });
     }
-  }
+  };
 
   // Return array of arrays grouping the data 4 at a time
   $scope.getRows = function(query, orderProp) {
     $scope.groupedUsers = $scope.groupArray(query, orderProp, $scope.users);
     $scope.groupedAlumni = $scope.groupArray(query, orderProp, $scope.alumni);
-  }
+  };
 
   // private method
   $scope.groupArray = function(query, orderProp, arr) {
@@ -60,7 +60,7 @@ var UserListCtrl = function($scope, $http, $filter) {
       }
     }
     return grouped;
-  }
+  };
 
   $scope.userFilter = function(query) {    
     if (query == undefined) {
@@ -71,7 +71,7 @@ var UserListCtrl = function($scope, $http, $filter) {
       return user.first_name.toLowerCase().indexOf(query) != -1
       || user.last_name.toLowerCase().indexOf(query) != -1; 
     }
-  }
+  };
 }
 
 UserListCtrl.$inject = ['$scope', '$http', '$filter'];
@@ -80,6 +80,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $scope.userId = $routeParams.userId;
   $scope.users = [];
   $scope.canEdit = false;
+  $scope.curIndex = 1;
   $scope.user = {
     "id": 0,
     "first_name": " ",
@@ -93,25 +94,51 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
   $http.get('/users/' + $scope.userId + '.json').success(function(data) {
     $scope.user = data;
     $http.get('/users/can_edit.json?sunet=' + $scope.user.sunet).success(function(data) {
-        if (data.can_edit) {
-          $scope.canEdit = true;
+      if (data.can_edit) {
+        $scope.canEdit = true;
+      }
+    });
+    $http.get('/users.json').success(function(data) {
+      $scope.users = data;
+      // indexOf compares using strict equality, so we need to do manual comparison 
+      // $scope.curIndex = $scope.users.indexOf($scope.user); //always returns -1
+      for (var i = 0; i < $scope.users.length; i++) {
+        if ($scope.user.id === $scope.users[i].id) {
+          $scope.curIndex = i;
+          break;
         }
+      }
+    });
+  }).error(function(data) {
+    console.log("Failed to get user data, trying to fetch all users", data);
+    $http.get('/users.json').success(function(data) {
+      $scope.users = data;
     });
   });
 
-  $http.get('/users.json').success(function(data) {
-    $scope.users = data; 
-  });
+  
 
-  $scope.open = function(u) {
-    $location.path('/users/' + u.id);
-    console.log(u);
+  $scope.open = function(u, index) {
+    $scope.curIndex = index;
+    $scope.updateLocation(u.id);
     $scope.user = u;
+  };
+
+  $scope.updateLocation = function(id) {
+    $location.path('/users/' + id);
   };
 
   $scope.getFullName = function(u) {
     return u.first_name + " " + u.last_name;
-  }
+  };
+
+  $scope.prevMember = function() {
+    $scope.user = $scope.users[--$scope.curIndex];
+  };
+
+  $scope.nextMember = function() {
+    $scope.user = $scope.users[++$scope.curIndex];
+  };
 }
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
@@ -124,7 +151,6 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.errorStatus = '';
   $scope.isUploadable = false;
   $scope.sendEmail = false;
-
   $scope.itemsPerPage = 3;
   $scope.pagedItems = [];
   $scope.currentPage = 0;
@@ -186,11 +212,11 @@ var VideoCtrl = function($scope, $http, $filter) {
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
     });
-  }
+  };
 
   $scope.deleteVid = function(id) {
     var r = confirm("Are you sure you want to remove this video?");
-    if (r == true){
+    if (r) {
       $http.delete('/videos/' + id).success(function() {
         $scope.successStatus = 'Deleted video.';
         for (var i = 0; i < $scope.videos.length; i++) {
@@ -200,7 +226,7 @@ var VideoCtrl = function($scope, $http, $filter) {
           }
         }
       });
-    }    
+    }
   };
 
   $scope.showUploader = function() {
