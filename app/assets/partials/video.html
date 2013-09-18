@@ -27,6 +27,14 @@
 				<p class="videoDescription sans">{{video.description}}</p>
 				<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
  			</div>
+ 			<div class="commentBox">
+ 				<ul>
+ 					<li ng-repeat="c in comments">
+ 						{{c}}
+ 					</li> 					
+ 				</ul>
+ 				<input type="text" class="input-large"></input>
+ 			</div>
  		</div>
  	</div>
  </div>

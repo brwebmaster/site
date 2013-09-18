@@ -154,6 +154,7 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.itemsPerPage = 3;
   $scope.pagedItems = [];
   $scope.currentPage = 0;
+  $scope.comments = ['I love this video!', 'Me too.', 'As do I.'];
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
