@@ -293,7 +293,7 @@ p {
 
 .videoText{
 	font-size: 24px;
-	margin-top: 125px;
+	margin-top: 50px;
 	text-align: left;
 }
 
@@ -314,4 +314,30 @@ iframe{
 
 .videoInfo{
 	padding-left: 20px;
+}
+
+.commentBox {
+	border: 2px solid black;
+	margin: 0px -50px;
+}
+
+.listStyle {
+	list-style-type: none;
+	margin: 0px;
+}
+
+.listItem {
+	padding: 5px;
+}
+
+.oddListItem {	
+	background-color: #DFE1E7;
+}
+
+.eventListItem {
+	background-color: #EEEFF2;
+}
+
+.inputMargin {
+	margin: 6px;
 }

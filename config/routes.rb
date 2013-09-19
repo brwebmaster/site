@@ -30,7 +30,9 @@ Brsite::Application.routes.draw do
     resources :photos
   end
 
-  resources :videos
+  resources :videos do
+    resources :video_comments
+  end
 
   resources :interest_email
   
