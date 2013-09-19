@@ -218,6 +218,8 @@ var VideoCtrl = function($scope, $http, $filter) {
     $http.post('/videos.json', videoData).success(function(data) {
       $scope.successStatus = 'Added video successfully!';
       $scope.videos.unshift(data);
+      $scope.fetchComments(data.id)
+      $scope.groupToPages();
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
     });
