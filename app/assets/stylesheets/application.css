@@ -317,10 +317,27 @@ iframe{
 }
 
 .commentBox {
-	padding: 10px;
 	border: 2px solid black;
-	margin-left: -40px;
-	border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+	margin: 0px -50px;
+}
+
+.listStyle {
+	list-style-type: none;
+	margin: 0px;
+}
+
+.listItem {
+	padding: 5px;
+}
+
+.oddListItem {	
+	background-color: #DFE1E7;
+}
+
+.eventListItem {
+	background-color: #EEEFF2;
+}
+
+.inputMargin {
+	margin: 6px;
 }

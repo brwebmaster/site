@@ -1,4 +1,4 @@
-<h1 class="codeBold">Team Videos <img ng-click ="showUploader()" class="icon" src="/assets/plus_icon.png"></img></h1>
+<h1 class="codeBold">Team Videos <img ng-click ="showUploadForm()" class="icon" src="/assets/plus_icon.png"></img></h1>
 <br>
 <div ng-show="errorStatus" class="alert alert-error">
 	<a class="close" data-dismiss="alert">×</a>
@@ -9,7 +9,7 @@
 	{{successStatus}}
 </div>
 <form ng-show="isUploadable">
-	<input ng-model="link" type="text" placeholder="Youtube link"></input> <br />
+	<input ng-model="link" type="text" placeholder="Youtube link" required></input> <br />
 	<input ng-model="description" type="text" placeholder="Description"></input> <br />
 	Send Email <input ng-model="sendEmail" type="checkbox"></input> <br />
 	<br></br>
@@ -27,13 +27,20 @@
 				<p class="videoDescription sans">{{video.description}}</p>
 				<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
  			</div>
- 			<div class="commentBox">
- 				<ul>
- 					<li ng-repeat="c in comments">
- 						{{c}}
- 					</li> 					
- 				</ul>
- 				<input type="text" class="input-large"></input>
+ 			<div>
+	 			<button ng-click="markCommentsShown(video.id)" ng-show="!areCommentsShown(video.id)">Comments ({{videoComments[video.id].length}})</button>
+	 			<div class="commentBox" ng-show="areCommentsShown(video.id)">
+	 				<ul class="listStyle">
+	 					<li ng-repeat="c in videoComments[video.id]" ng-class-odd="'oddListItem'" ng-class-even="'evenListItem'" class="listItem">
+	 						{{c.comment}} <br/>
+	 						<span class="videoTime">By <a href="/users/sunet?sunet={{video.uploader}}">{{c.author}}</a> {{c.created_at | fromNow}} </span>
+	 					</li>
+	 				</ul>
+	 				<form name="commentForm">
+						<input type="text" class="input-large inputMargin" placeholder="Comment" ng-model="form.comment" required />
+						<button ng-click="save(video.id)" ng-disabled="isAddDisabled()">Add</button>
+					</form>
+	 			</div>
  			</div>
  		</div>
  	</div>
