@@ -6,8 +6,10 @@
   <body>
     <h3>A New Video Has been Uploaded!</h3>
     <p>
-      <%= @video.description %> <br/>
+      The Description Is: <%= @video.description %> <br/>
     </p>
-    <p> You can access the video at this link: <a href="http://basmatiraas.herokuapp.com/videos#/videos">http://basmatiraas.herokuapp.com/videos#/videos</a></p>
+    <p> You can access the video at this link: <a href="http://www.basmatiraas.com/videos#/videos">http://basmatiraas.herokuapp.com/videos#/videos</a></p>
+    <p> This is the link of the video, if you would like to access it directly: <%= @video.link %>
+    </p>
   </body>
 </html>
