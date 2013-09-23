@@ -155,11 +155,20 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.pagedItems = [];
   $scope.currentPage = 0;
 
+  // Map video id to its comments
+  $scope.videoComments = {};
+  // Map video id to boolean whether we display comments or not
+  $scope.shownComments = {};
+  $scope.form = {
+    'comment' : ''
+  };
+
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
+    for (var i = 0; i < data.length; i++) {
+      $scope.fetchComments(data[i].id);
+    }
     $scope.groupToPages();
-    console.log($scope.videos);
-    console.log($scope.pagedItems);
   });
 
   // Source: http://jsfiddle.net/SAWsA/11/
@@ -209,6 +218,8 @@ var VideoCtrl = function($scope, $http, $filter) {
     $http.post('/videos.json', videoData).success(function(data) {
       $scope.successStatus = 'Added video successfully!';
       $scope.videos.unshift(data);
+      $scope.fetchComments(data.id)
+      $scope.groupToPages();
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the video. Please check that the youtube link is correct.';
     });
@@ -229,8 +240,40 @@ var VideoCtrl = function($scope, $http, $filter) {
     }
   };
 
-  $scope.showUploader = function() {
+  $scope.showUploadForm = function() {
     $scope.isUploadable = !$scope.isUploadable;
+  };
+
+  $scope.isAddDisabled = function() {
+    return $scope.form.comment == undefined || $scope.form.comment === '';
+  };
+
+  $scope.save = function(vid) {
+    params = {
+      video_id: vid,
+      comment: $scope.form.comment
+    };
+    $http.post('/videos/' + vid + '/video_comments.json', params).success(function(data) {
+      $scope.successStatus = 'Added your comment!';
+      $scope.videoComments[vid].push(data);
+      $scope.form.comment = '';
+    }).error(function(data) {
+      $scope.errorStatus = 'Could not add the comment.';
+    });
+  };
+
+  $scope.fetchComments = function(vid) {
+    $http.get('/videos/' + vid + '/video_comments.json').success(function(data) {
+      $scope.videoComments[vid] = data;      
+    });
+  };
+
+  $scope.markCommentsShown = function(vid) {
+    $scope.shownComments[vid] = true;
+  };
+
+  $scope.areCommentsShown = function(vid) {
+    return vid in $scope.shownComments;
   };
 }
 
