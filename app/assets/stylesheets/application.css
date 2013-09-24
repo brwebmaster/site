@@ -293,7 +293,6 @@ p {
 
 .videoText{
 	font-size: 24px;
-	margin-top: 50px;
 	text-align: left;
 }
 
@@ -319,6 +318,8 @@ iframe{
 .commentBox {
 	border: 2px solid black;
 	margin: 0px -50px;
+	max-height: 350px;
+	overflow: auto;
 }
 
 .listStyle {
