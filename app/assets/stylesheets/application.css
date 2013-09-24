@@ -40,6 +40,11 @@
 	color: #555;
 }
 
+.promoVideo{
+	font-style: italic;
+	color: #fff;
+}
+
 .carouselBox{
 	position: relative;
 }
