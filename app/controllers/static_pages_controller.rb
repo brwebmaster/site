@@ -19,6 +19,8 @@ class StaticPagesController < ApplicationController
   def sponsorship
   end
 
+  # source for fetching Stanford info
+  # https://www.stanford.edu/dept/its/communications/webservices/wiki/index.php/Talk:How_to_fill_out_a_person's_name,_email_address_and_SUNetID_on_a_form_behind_WebAuth_with_PHP
   def login
   	if params[:info]
   		user_hash = JSON.parse URI.unescape(params[:info])
