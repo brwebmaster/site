@@ -24,7 +24,7 @@
 		<div class="performanceTitle bold">
 			{{ p.event }}
 		</div>
-		<div class="userActions">
+		<div class="userActions" ng-show="allowCreate">
 			<i ng-click="edit(p)" class="icon-pencil"></i>
 			<i ng-click="deletePerf(p.id)" class="icon-ban-circle"></i>
 		</div>
