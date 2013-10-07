@@ -1,3 +1,4 @@
+<div class="clearfix">
 <h1 class="codeBold">Team Videos <img ng-click ="showUploadForm()" class="icon" src="/assets/plus_icon.png"></img></h1>
 <br>
 <div ng-show="errorStatus" class="alert alert-error">
@@ -33,7 +34,7 @@
 	 				<ul class="listStyle">
 	 					<li ng-repeat="c in videoComments[video.id]" ng-class-odd="'oddListItem'" ng-class-even="'evenListItem'" class="listItem">
 	 						{{c.comment}} <br/>
-	 						<span class="videoTime">By <a href="/users/sunet?sunet={{video.uploader}}">{{c.author}}</a> {{c.created_at | fromNow}} </span>
+	 						<span class="videoTime">By <a href="/users/sunet?sunet={{c.author}}">{{c.author}}</a> {{c.created_at | fromNow}} </span>
 	 					</li>
 	 				</ul>
 	 				<form name="commentForm">
@@ -45,7 +46,7 @@
  		</div>
  	</div>
  </div>
-
+ 
  <div class="pagination pull-right">
   <ul>
     <li ng-class="{disabled: currentPage == 0}">
@@ -60,4 +61,5 @@
       <a href ng-click="nextPage()">Next »</a>
     </li>
   </ul>
+</div>
 </div>
