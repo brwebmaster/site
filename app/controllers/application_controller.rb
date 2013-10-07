@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :get_current_user
   include ApplicationHelper
+
+  def get_current_user
+  	@current_user = User.find(10)
+  end
 
   def require_login
 		if not is_logged_in session
