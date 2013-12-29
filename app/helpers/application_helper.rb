@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def is_logged_in my_session
-		my_session[:user_hash]
+		my_session[:user_hash] and my_session[:user_hash]["username"]
 	end
 
 	def sortable(column, title = nil)

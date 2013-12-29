@@ -55,12 +55,11 @@ class UsersController < ApplicationController
       "rkpandey1234" => "rkpandey",
       "tulsee.doshi" => "tdoshi",
       "vikram.prasad2" => "vprasad2"
-    }  
+    }
     # set the session variables
     sunet = params['username']
     session[:user_hash] = {}
     session[:user_hash]["display_name"] = params['name']
-    session[:user_hash]["username"] = sunet    
     if allowed.has_key?(sunet)
       sunet = allowed[sunet]
       session[:user_hash]["username"] = sunet
