@@ -47,6 +47,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def fb_login    
+    # MAJOR HACK: I hate my life
+    # map fb username => stanford id
+    allowed = {
+      "pooja.desai.353" => "psd",
+      "rkpandey1234" => "rkpandey",
+      "tulsee.doshi" => "tdoshi",
+      "vikram.prasad2" => "vprasad2"
+    }
+    # set the session variables
+    sunet = params['username']
+    session[:user_hash] = {}
+    session[:user_hash]["display_name"] = params['name']
+    if allowed.has_key?(sunet)
+      sunet = allowed[sunet]
+      session[:user_hash]["username"] = sunet
+    end
+    render json: "exists".to_json
+  end
+
   # POST: create a new user
   def create
     @user = User.new(params[:user])
@@ -71,9 +91,11 @@ class UsersController < ApplicationController
 
   def sunet
     @user = User.find_by_sunet(params[:sunet])
-    # do error checking here
-    # TODO: ensure this is safe
-    redirect_to "/users#/users/#{@user.id}"
+    if @user.nil?
+      redirect_to :action => :index
+    else
+      redirect_to "/users#/users/#{@user.id}"
+    end
   end
 
   # return an HTML form for editing a user
