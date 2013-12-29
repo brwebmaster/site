@@ -157,8 +157,6 @@ var VideoCtrl = function($scope, $http, $filter) {
 
   // Map video id to its comments
   $scope.videoComments = {};
-  // Map video id to boolean whether we display comments or not
-  $scope.shownComments = {};
   $scope.form = {
     'comment' : ''
   };
@@ -266,14 +264,6 @@ var VideoCtrl = function($scope, $http, $filter) {
     $http.get('/videos/' + vid + '/video_comments.json').success(function(data) {
       $scope.videoComments[vid] = data;      
     });
-  };
-
-  $scope.markCommentsShown = function(vid) {
-    $scope.shownComments[vid] = true;
-  };
-
-  $scope.areCommentsShown = function(vid) {
-    return vid in $scope.shownComments;
   };
 }
 
