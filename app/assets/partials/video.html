@@ -1,4 +1,35 @@
 <div class="clearfix">
+<h3 class="codeBold">Mix 13-14: 
+	<audio controls>
+	  <source src="BR13-14.mp3" type="audio/mpeg">
+	  <embed height="30" width="100" src="BR13-14.mp3">
+	</audio>
+	<button ng-click="toggleMusicShown()">{{musicButtonText}}</button>
+</h3>
+
+<div ng-show="isMusicShown">
+	<ul>
+		<li>2012-2013 
+			<audio controls>
+			  <source src="BR12-13.mp3" type="audio/mpeg">
+			  <embed height="30" width="100" src="BR12-13.mp3">
+			</audio>
+		</li>
+		<li>2011-2012
+			<audio controls>
+			  <source src="BR11-12.mp3" type="audio/mpeg">
+			  <embed height="30" width="100" src="BR11-12.mp3">
+			</audio>
+		</li>
+		<li>2010-2011
+			<audio controls>
+			  <source src="BR10-11.mp3" type="audio/mpeg">
+			  <embed height="30" width="100" src="BR10-11.mp3">
+			</audio>
+		</li>
+	</ul>
+</div>
+<hr>
 <h1 class="codeBold">Team Videos <img ng-click ="showUploadForm()" class="icon" src="/assets/plus_icon.png"></img></h1>
 <br>
 <div ng-show="errorStatus" class="alert alert-error">

@@ -154,6 +154,8 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.itemsPerPage = 4;
   $scope.pagedItems = [];
   $scope.currentPage = 0;
+  $scope.isMusicShown = false;
+  $scope.musicButtonText = 'More';
 
   // Map video id to its comments
   $scope.videoComments = {};
@@ -264,6 +266,15 @@ var VideoCtrl = function($scope, $http, $filter) {
     $http.get('/videos/' + vid + '/video_comments.json').success(function(data) {
       $scope.videoComments[vid] = data;      
     });
+  };
+
+  $scope.toggleMusicShown = function() {
+    $scope.isMusicShown = !$scope.isMusicShown;
+    if ($scope.isMusicShown) {
+      $scope.musicButtonText = "Less";
+    } else {
+      $scope.musicButtonText = "More";
+    }
   };
 }
 
