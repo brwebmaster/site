@@ -23,6 +23,7 @@ Brsite::Application.routes.draw do
   get "application/server_error"
 
   post "application/create"
+  post "fb_login", to: "users#fb_login"
 
   resources :performances 
 

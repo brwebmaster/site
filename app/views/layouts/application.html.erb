@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:fb="http://ogp.me/ns/fb#">
+      xmlns:fb="http://ogp.me/ns/fb#"
+      lang="en"
+      xml:lang="en">
 <head>
   <title>Basmati Raas</title>
   <link href="http://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" 
@@ -18,6 +20,10 @@
 	<meta property="og:description" content="Basmati Raas: Stanford's nationally competitive 16 person co-ed dance team" />
   <meta name="description" content="Basmati Raas: Stanford's nationally competitive 16 person co-ed dance team">
   <meta name="keywords" content="dance, raas, garba, stanford, co-ed, competitive, national, all-star, bay area, university, patel, shah, auditions, basmati">
+  <meta charset="UTF-8" />
+	<meta name="google" content="notranslate">
+	<meta http-equiv="Content-Language" content="en" />
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -30,6 +36,51 @@
 </script>
 </head>
 <body class="container">
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '<%= FACEBOOK_APP_ID %>',
+    status     : false, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  FB.Event.subscribe('auth.authResponseChange', function(response) {
+    // Here we specify what we do with the response anytime this event occurs. 
+    if (response.status === 'connected') {
+      testAPI();
+    } else {
+      FB.login();
+    }
+  });
+  };
+
+  // Load the SDK asynchronously
+  (function(d){
+   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "//connect.facebook.net/en_US/all.js";
+   ref.parentNode.insertBefore(js, ref);
+  }(document));
+
+  function testAPI() {
+    FB.api('/me', function(response) {
+      console.log('Good to see you, ' + response.name + '.');
+      var posting = $.post("fb_login.json", response);
+      posting.done(function( data ) {
+		    if (data == "exists" || data == "fail") {
+		    	window.location = "/users";
+		    } else {
+		    	window.location = data;
+		    }
+		  });
+		  posting.error(function(data) {
+		  	console.log('error from fb_login');
+		  });
+    });
+  }
+</script>
 <div id="fb-root"></div>
 
 <script>(function(d, s, id) {
@@ -62,13 +113,13 @@
 					<% if is_logged_in(session) %><li class="<%= 'active' if current_page?('/users/raaster') %> dropdown divider-vertical"><%= link_to "Raaster", controller: "users", action: "raaster" %></li> <% end %>
 				</ul>
 				<ul class="nav nav-tabs pull-right">
-					<li class="divider-vertical">
+					
 					<% if is_logged_in(session) %>
-		  			<%= link_to "Logout", controller: "static_pages", action: "logout" %>
+		  			<li class="divider-vertical"><%= link_to "Logout", controller: "static_pages", action: "logout" %></li>						
 					<% else %>  
-			  		<%= link_to "Login", controller: "static_pages", action: "login" %>
+			  		<li class="divider-vertical"><%= link_to "Axess Login", controller: "static_pages", action: "login" %></li>	
+			  		<li class="dropdown divider-vertical"><div class="fb-login-button"></li> 
 					<% end %>
-					</li>				
 				</ul>
 			</div>
 		</div>
@@ -93,5 +144,7 @@
 	<div class="fb-like-box" data-href="https://www.facebook.com/basmatiraas" data-width="150" data-show-faces="false" data-header="true" data-stream="false" data-show-border="true"></div>
 	<p class="centeredText"><%= mail_to "brwebmaster@lists.stanford.edu", "Website Contact" %></p>
 </div>
+
+
 </body>
 </html>

@@ -33,6 +33,7 @@
 Procfile
 # Ignore application configuration
 /config/application.yml
+/config/facebook.yml
 
 # Ignore database configuration
 /config/database.yml
