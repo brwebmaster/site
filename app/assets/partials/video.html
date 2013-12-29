@@ -20,7 +20,7 @@
 <div class="vidContainer" ng-repeat="video in pagedItems[currentPage]">
 	<div class="row-fluid">
 		<div class="span8">
-			<iframe class="youtube-player" type="text/html" width="640" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
+			<iframe class="youtube-player" type="text/html" width="90%" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
 		</div>
 		<div class="span3">
 			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>

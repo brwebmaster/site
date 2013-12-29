@@ -42,23 +42,10 @@
 
 .promoVideo{
 	font-style: italic;
-	color: #fff;
 }
 
 .carouselBox{
 	position: relative;
-}
-
-.auditionBox{
-	position: absolute;
-	color: white;
-	font-weight: bold;
-	top: 8%;
-	left: 30%;
-	right: 30%;
-	text-align: center;
-	font-size: 24px;
-	line-height: 110%;
 }
 
 .shadow{
@@ -238,7 +225,6 @@ div.boolean, .simple_form input[type='submit'] {
 
 .caption-heading {
 	color: #fff;
-	text-shadow: 0 1px 1px rgba{0,0,0,.4};
 }
 
 .title {
@@ -323,7 +309,7 @@ iframe{
 .commentBox {
 	border: 2px solid black;
 	margin: 0px -50px;
-	max-height: 270px;
+	max-height: 350px;
 	overflow: auto;
 }
 

@@ -151,7 +151,7 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.errorStatus = '';
   $scope.isUploadable = false;
   $scope.sendEmail = false;
-  $scope.itemsPerPage = 3;
+  $scope.itemsPerPage = 4;
   $scope.pagedItems = [];
   $scope.currentPage = 0;
 

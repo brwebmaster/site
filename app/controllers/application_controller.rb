@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def get_current_user
-  	@current_user = User.find(10)
+  	# @current_user = User.find(10)
   end
 
   def require_login
