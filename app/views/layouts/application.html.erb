@@ -117,8 +117,10 @@
 					<% if session[:user_hash] %>
 		  			<li class="divider-vertical"><%= link_to "Logout", controller: "static_pages", action: "logout" %></li>						
 					<% else %>  
-			  		<li class="divider-vertical"><%= link_to "Axess Login", controller: "static_pages", action: "login" %></li>	
-			  		<li class="dropdown divider-vertical"><div class="fb-login-button"></li> 
+						<li>Login:</li>
+			  		<li><%= link_to "Axess", controller: "static_pages", action: "login" %></li>	
+			  		<!-- <li class="dropdown divider-vertical"><div class="fb-login-button"></li>  -->
+			  		<li><a style="cursor:pointer;" onclick="FB.login()">Facebook</a></li> 
 					<% end %>
 				</ul>
 			</div>
