@@ -159,9 +159,7 @@ var VideoCtrl = function($scope, $http, $filter) {
 
   // Map video id to its comments
   $scope.videoComments = {};
-  $scope.form = {
-    'comment' : ''
-  };
+  $scope.newVidComment = {};
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
@@ -242,21 +240,22 @@ var VideoCtrl = function($scope, $http, $filter) {
 
   $scope.showUploadForm = function() {
     $scope.isUploadable = !$scope.isUploadable;
+    console.log($scope.newVidComment);
   };
 
-  $scope.isAddDisabled = function() {
-    return $scope.form.comment == undefined || $scope.form.comment === '';
+  $scope.isAddDisabled = function(vid) {
+    return $scope.newVidComment[vid] == undefined || $scope.newVidComment[vid] === '';
   };
 
   $scope.save = function(vid) {
     params = {
       video_id: vid,
-      comment: $scope.form.comment
+      comment: $scope.newVidComment[vid]
     };
     $http.post('/videos/' + vid + '/video_comments.json', params).success(function(data) {
       $scope.successStatus = 'Added your comment!';
       $scope.videoComments[vid].push(data);
-      $scope.form.comment = '';
+      $scope.newVidComment[vid] = '';
     }).error(function(data) {
       $scope.errorStatus = 'Could not add the comment.';
     });

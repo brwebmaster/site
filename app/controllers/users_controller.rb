@@ -69,7 +69,8 @@ class UsersController < ApplicationController
       "taragb" => "taragb",
       "vineethgangaram" => "vineethg",
       "siddharth.damania" => "sdamania",
-      "ankita.patro" => "apatro" 
+      "ankita.patro" => "apatro",
+      "shilpa.sethuraman.9" => "shilpa91"
     }
     # set the session variables
     sunet = params['username']
