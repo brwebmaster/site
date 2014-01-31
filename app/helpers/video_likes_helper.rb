@@ -1,0 +1,2 @@
+module VideoLikesHelper
+end

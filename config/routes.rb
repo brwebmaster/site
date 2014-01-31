@@ -33,6 +33,7 @@ Brsite::Application.routes.draw do
 
   resources :videos do
     resources :video_comments
+    resources :video_likes
   end
 
   resources :interest_email

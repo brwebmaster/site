@@ -1,5 +1,10 @@
 module ApplicationHelper
 	def is_logged_in my_session
+		# To fake login
+		# my_session[:user_hash] = {}
+		# my_session[:user_hash]["username"] = "user3"
+		# my_session[:user_hash]["display_name"] = "User Three"
+		# return true
 		my_session[:user_hash] and my_session[:user_hash]["username"]
 	end
 

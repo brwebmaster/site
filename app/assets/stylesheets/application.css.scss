@@ -276,6 +276,7 @@ p {
 	font-size: 24px;
 	cursor: pointer;
 	float: right;
+	width: 8px;
 }
 
 .vidContainer:hover .delete {
@@ -285,6 +286,7 @@ p {
 .videoText{
 	font-size: 24px;
 	text-align: left;
+	width: 260px;
 }
 
 .videoDescription{
@@ -308,7 +310,6 @@ iframe{
 
 .commentBox {
 	border: 2px solid black;
-	margin: 0px -50px;
 	max-height: 260px;
 	overflow: auto;
 }
@@ -338,4 +339,24 @@ iframe{
 	content: "";
   display: table;
   clear: both;
+}
+
+.pushleft {
+	margin: 0px -50px;
+}
+
+.liked {
+	background-color: #E8BED3;
+}
+
+.likeButton {
+	width: 100px;
+}
+
+.smallFont {
+	font-size: 8px;
+}
+
+.lowHeight {
+	line-height: 8px;
 }
