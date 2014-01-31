@@ -68,8 +68,8 @@
 	 					</li>
 	 				</ul>
 	 				<form name="commentForm">
-						<input type="text" class="input-large inputMargin" placeholder="Comment" ng-model="form.comment" required />
-						<button ng-click="save(video.id)" ng-disabled="isAddDisabled()">Add</button>
+						<input type="text" class="input-large inputMargin" placeholder="Comment" ng-model="newVidComment[video.id]" required />
+						<button ng-click="save(video.id)" ng-disabled="isAddDisabled(video.id)">Add</button>
 					</form>
 	 			</div>
  			</div>
