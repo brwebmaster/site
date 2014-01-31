@@ -161,7 +161,6 @@ var VideoCtrl = function($scope, $http, $filter, authService) {
   $scope.curUser = null;
   var promise = authService.curUser;
   promise.then(function(data) {
-    console.log(data);
     $scope.curUser = data;
   });
 
@@ -251,7 +250,6 @@ var VideoCtrl = function($scope, $http, $filter, authService) {
 
   $scope.showUploadForm = function() {
     $scope.isUploadable = !$scope.isUploadable;
-    console.log($scope.newVidComment);
   };
 
   $scope.isAddDisabled = function(vid) {
@@ -277,7 +275,6 @@ var VideoCtrl = function($scope, $http, $filter, authService) {
       video_id: vid
     };
     $http.post('/videos/' + vid + '/video_likes.json', params).success(function(data) {
-      console.log('like is registered');
       $scope.likeText[vid] = "iLOVEit";
       $scope.disabledLikes[vid] = true;
       $scope.videoLikes[vid].push(data);
@@ -306,8 +303,6 @@ var VideoCtrl = function($scope, $http, $filter, authService) {
   };
 
   $scope.alreadyLiked = function(data, curUser) {
-    console.log(data);
-    console.log(curUser);
     if (curUser == null) return false;
     for (var i = 0; i < data.length; i++) {
       if (data[i].liker == curUser.sunet) return true;

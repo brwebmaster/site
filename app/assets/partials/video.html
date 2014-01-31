@@ -66,9 +66,10 @@
 				<td>
 					<div>
 						<button class="likeButton" ng-class="{liked: isLikeDisabled(video.id)}" ng-click="addLike(video.id)" ng-disabled="isLikeDisabled(video.id)">{{videoLikes[video.id].length}} {{likeText[video.id]}}</button> <br>
-						<span class="smallFont lowHeight" ng-repeat="like in videoLikes[video.id]">
+						<div class="lowHeight"><span class="smallFont" ng-repeat="like in videoLikes[video.id]">
 							<a href="/users/sunet?sunet={{like.liker}}">{{like.liker}}</a>,
-						</span> 
+						</span></div>
+
 					</div>
 				</td>
 			</tr>
