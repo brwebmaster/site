@@ -50,15 +50,30 @@
 
 <div class="vidContainer" ng-repeat="video in pagedItems[currentPage]">
 	<div class="row-fluid">
-		<div class="span8">
-			<iframe class="youtube-player" type="text/html" width="90%" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
+		<div class="span7">
+			<iframe class="youtube-player" type="text/html" width="100%" height="400" src="http://www.youtube.com/embed/{{video.vid}}" allowfullscreen frameborder="1"></iframe>
 		</div>
-		<div class="span3">
+		<div class="span5 pushleft">
 			<img class="delete" ng-click="deleteVid(video.id)" src="/assets/x.png"></img>
-			<div class="videoText">
-				<p class="videoDescription sans">{{video.description}}</p>
-				<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
- 			</div>
+			<table>
+			<tr>
+				<td>
+					<div class="videoText">
+					<p class="videoDescription sans">{{video.description}}</p>
+					<p class="sans"><a href="/users/sunet?sunet={{video.uploader}}">{{video.uploader}}</a><br><span class="videoTime">Added {{video.created_at | fromNow}}</span></p>
+	 				</div>
+				</td>
+				<td>
+					<div>
+						<button class="likeButton" ng-class="{liked: isLikeDisabled(video.id)}" ng-click="addLike(video.id)" ng-disabled="isLikeDisabled(video.id)">{{videoLikes[video.id].length}} {{likeText[video.id]}}</button> <br>
+						<div class="lowHeight"><span class="smallFont" ng-repeat="like in videoLikes[video.id]">
+							<a href="/users/sunet?sunet={{like.liker}}">{{like.liker}}</a>,
+						</span></div>
+
+					</div>
+				</td>
+			</tr>
+			</table>
  			<div>
 	 			<div class="commentBox">
 	 				<ul class="listStyle">

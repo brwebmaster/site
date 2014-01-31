@@ -143,7 +143,7 @@ var UserDetailCtrl = function($scope, $routeParams, $http, $location) {
 
 UserDetailCtrl.$inject = ['$scope', '$routeParams', '$http', '$location'];
 
-var VideoCtrl = function($scope, $http, $filter) {
+var VideoCtrl = function($scope, $http, $filter, authService) {
   $scope.videos = [];
   $scope.link = '';
   $scope.description = '';
@@ -156,15 +156,25 @@ var VideoCtrl = function($scope, $http, $filter) {
   $scope.currentPage = 0;
   $scope.isMusicShown = false;
   $scope.musicButtonText = 'More';
+  $scope.likeText = {};
+  $scope.disabledLikes = {};
+  $scope.curUser = null;
+  var promise = authService.curUser;
+  promise.then(function(data) {
+    $scope.curUser = data;
+  });
 
   // Map video id to its comments
   $scope.videoComments = {};
+  // Map video id to its likes
+  $scope.videoLikes = {};
   $scope.newVidComment = {};
 
   $http.get('/videos.json').success(function(data) {
     $scope.videos = data;
     for (var i = 0; i < data.length; i++) {
       $scope.fetchComments(data[i].id);
+      $scope.fetchLikes(data[i].id);
     }
     $scope.groupToPages();
   });
@@ -240,7 +250,6 @@ var VideoCtrl = function($scope, $http, $filter) {
 
   $scope.showUploadForm = function() {
     $scope.isUploadable = !$scope.isUploadable;
-    console.log($scope.newVidComment);
   };
 
   $scope.isAddDisabled = function(vid) {
@@ -261,10 +270,48 @@ var VideoCtrl = function($scope, $http, $filter) {
     });
   };
 
+  $scope.addLike = function(vid) {
+    params = {
+      video_id: vid
+    };
+    $http.post('/videos/' + vid + '/video_likes.json', params).success(function(data) {
+      $scope.likeText[vid] = "iLOVEit";
+      $scope.disabledLikes[vid] = true;
+      $scope.videoLikes[vid].push(data);
+    }).error(function(data) {
+      $scope.errorStatus = 'Could not add the like.';
+    });
+  };
+
   $scope.fetchComments = function(vid) {
     $http.get('/videos/' + vid + '/video_comments.json').success(function(data) {
-      $scope.videoComments[vid] = data;      
+      $scope.videoComments[vid] = data;
     });
+  };
+
+  $scope.fetchLikes = function(vid) {
+    $http.get('/videos/' + vid + '/video_likes.json').success(function(data) {
+      $scope.videoLikes[vid] = data;
+      if ($scope.alreadyLiked(data, $scope.curUser)) {
+        $scope.likeText[vid] = "iLOVEit";
+        $scope.disabledLikes[vid] = true;
+      } else {
+        $scope.likeText[vid] = "iloveit";
+        $scope.disabledLikes[vid] = false;
+      }      
+    });
+  };
+
+  $scope.alreadyLiked = function(data, curUser) {
+    if (curUser == null) return false;
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].liker == curUser.sunet) return true;
+    }
+    return false;
+  };
+
+  $scope.isLikeDisabled = function(vid) {
+    return $scope.disabledLikes[vid];
   };
 
   $scope.toggleMusicShown = function() {
@@ -277,7 +324,7 @@ var VideoCtrl = function($scope, $http, $filter) {
   };
 }
 
-VideoCtrl.$inject = ['$scope', '$http', '$filter'];
+VideoCtrl.$inject = ['$scope', '$http', '$filter', 'authService'];
 
 var PerformanceCtrl = function($scope, $http, $filter, authService) {
   $scope.performances = [];

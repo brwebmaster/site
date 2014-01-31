@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918070728) do
+ActiveRecord::Schema.define(:version => 20140131062229) do
 
   create_table "interest_emails", :force => true do |t|
     t.string   "email"
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(:version => 20130918070728) do
   create_table "video_comments", :force => true do |t|
     t.text     "comment"
     t.string   "author"
+    t.integer  "video_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "video_likes", :force => true do |t|
+    t.string   "liker"
     t.integer  "video_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
