@@ -23,8 +23,10 @@
         <span ng-show="user.is_captain">
           <img class="icon2" alt="Captain" title="Captain!" src="/assets/star_icon.png">
         </span>
-         {{getFullName(user)}}
-         <a ng-href="/users/{{user.id}}/edit"><i ng-show="canEdit" class="icon-pencil"></i></a>
+          {{getFullName(user)}}
+          <a ng-href="/users/{{user.id}}/edit">
+            <i ng-show="canEdit" class="icon-pencil"></i>
+          </a>
       </h2>
 
       <div>
