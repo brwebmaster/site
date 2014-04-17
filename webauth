@@ -1,0 +1,20 @@
+<?php
+$app_url = $_GET["u"];
+$rand = "<Secret String>";
+$user_info = array(
+  'username' => getenv('WEBAUTH_USER'),
+  'display_name' => getenv('WEBAUTH_LDAP_DISPLAYNAME'),
+  'org' => getenv('WEBAUTH_LDAP_OU'),
+  'street' => getenv('WEBAUTH_LDAP_STREET'),
+  'sn' => getenv('WEBAUTH_LDAP_SN'),
+  'gn' => getenv('WEBAUTH_LDAP_GIVENNAME'),
+  'description' => getenv('WEBAUTH_LDAP_DESCRIPTION'),
+  'phone_number' => getenv('WEBAUTH_LDAP_TELEPHONENUMBER'),
+);
+$hash = md5($user_info['username'] . $rand);
+$user_info['hash'] = $hash;
+$encoded = urlencode(json_encode($user_info));
+$redirect_url = "$app_url?info=$encoded";
+header("Location: $redirect_url");
+exit();
+?>
