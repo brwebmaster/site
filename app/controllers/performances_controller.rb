@@ -5,7 +5,8 @@ class PerformancesController < ApplicationController
   	@performances = Performance
       .where("time > ?", 1.days.ago)
       .order('time ASC')
-  	@years = {"2012-2013" => {"videoID" => "xDUMIMu7Ojg", "awards" => ["2nd Place - ATown Showdown"], "videos" => ["http://www.youtube.com/watch?v=ypDAKsCmUcg"]}, 
+  	@years = {"2013-2014" => {"videoID" => "FPa0YiodJgY", "awards" => ["3rd Place - Raas Rodeo"]},
+        "2012-2013" => {"videoID" => "xDUMIMu7Ojg", "awards" => ["2nd Place - ATown Showdown"], "videos" => ["http://www.youtube.com/watch?v=ypDAKsCmUcg"]}, 
   			"2011-2012" => {"videoID" => "fA0PSrRdbPk", "awards" => ["1st Place - Raas Rodeo", "3rd Place - Garba with Attitude", "Invitation to Raas All-Stars"]}, 
   			"2010-2011" => {"videoID" => "dJV0-jp77P0", "awards" => ["3rd Place - Garba with Attitude"]},
   			"2009-2010" => {"videoID" => false, "awards" => ["1st Place - Garbafest", "3rd Place - Garba with Attitude", "Invitation to Raas All-Stars"], "photo" => "20092010.jpg"},
