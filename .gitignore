@@ -30,7 +30,7 @@
 /config/s3.yml
 
 # Heroku Procfile
-Procfile
+Procfile.dev
 # Ignore application configuration
 /config/application.yml
 
