@@ -32,7 +32,8 @@ class StaticPagesController < ApplicationController
   		redirect_to :controller => :users, :action => :login_check and return
   	end
   	return_url = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
-  	redirect_to "http://www.stanford.edu/~tdoshi/cgi-bin/brprotected/webauth.php?u=" + URI.encode(return_url)
+  	#redirect_to "http://www.stanford.edu/~tdoshi/cgi-bin/brprotected/webauth.php?u=" + URI.encode(return_url)
+    redirect_to "http://web.stanford.edu/group/basmatiraas/cgi-bin/brprotected/webauth.php?u=" + URI.encode(return_url)
   end
 
   def logout
