@@ -36,4 +36,4 @@ Procfile.dev
 
 # Ignore database configuration
 /config/database.yml
-
+.env

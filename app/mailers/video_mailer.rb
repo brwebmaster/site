@@ -4,6 +4,6 @@ class VideoMailer < ActionMailer::Base
   def video_email(video)
     @video = video
     @url  = 'http://example.com/login'
-    mail(to: '1314brdancers@lists.stanford.edu', subject: 'A New Video has been Added')
+    mail(to: '1415brdancers@lists.stanford.edu', subject: 'A New Video has been Added')
   end
 end
