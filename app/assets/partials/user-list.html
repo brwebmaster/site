@@ -19,7 +19,7 @@
     <td ng-repeat="user in userRow">
       <a href="#/users/{{user.id}}">
         <div class="imgWrap">
-          <img class="circular" src="{{user.avatar_url}}"></img>
+          <img class="circular" src="{{user.avatar_url}}" ng-class="{captainHighlight: user.is_captain}"></img>
           <p class="imgDescription">{{user.first_name}}</p>
       </div>
       </a>
@@ -36,7 +36,7 @@
     <td ng-repeat="user in userRow">
       <a href="#/users/{{user.id}}">
         <div class="imgWrap">
-          <img class="circular" src="{{user.avatar_url}}">
+          <img class="circular" src="{{user.avatar_url}}" ng-class="{captainHighlight: user.is_captain}">
           <p class="imgDescription">{{user.first_name}}</p>
         </div>
       </a>

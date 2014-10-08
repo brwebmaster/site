@@ -14,6 +14,7 @@ class ContactFormController < ApplicationController
   		end
   	rescue ScriptError
   		flash[:error] = 'Sorry, this message appears to be spam and was not delivered'
+      redirect_to :action => :new
   	end
 end
 end
