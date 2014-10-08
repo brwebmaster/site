@@ -18,6 +18,10 @@
 	@include shadow(10px);
 }
 
+.captainHighlight {
+	box-shadow: 0px 0px 25px yellow;
+}
+
 .imgWrap {
 	position: relative;
 }

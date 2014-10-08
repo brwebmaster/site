@@ -33,6 +33,6 @@ class User < ActiveRecord::Base
 
   # This is called in the json response so we have access to the file url (stored in Amazon S3). 
   def avatar_url
-    avatar.url
+    avatar.url(:medium)
   end
 end
