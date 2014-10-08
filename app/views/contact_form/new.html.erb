@@ -8,7 +8,12 @@
 	<%= f.label :Subject %><%= f.select(:inquiry, options_for_select(["Performance", "Feedback", "Sponsorship", "Involvement", "Other"]), :class => "input-xlarge")%><br>
 
 	<%= f.label :Message %><%= f.text_area :message, :rows => "15", :class => "input-xlarge" %><br />
+	
+	<div class="hide"><%= f.label :Nickname %><%= f.text_field :nickname, :class => "input-xlarge" %></div>
+	<br />
     <%= f.submit "Submit"%>
+  
+
 <% end %>
 </div>
 <div class="span7">
