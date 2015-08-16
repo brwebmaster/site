@@ -5,7 +5,9 @@ class PerformancesController < ApplicationController
   	@performances = Performance
       .where("time > ?", 1.days.ago)
       .order('time ASC')
-  	@years = {"2013-2014" => {"videoID" => "FPa0YiodJgY", "awards" => ["3rd Place - Raas Rodeo"]},
+  	@years = {
+        "2014-2015" => {"videoID" => "ppItj0Fwplg", "awards" => ["3rd Place - Dandia Dhamaka"]},
+        "2013-2014" => {"videoID" => "FPa0YiodJgY", "awards" => ["3rd Place - Raas Rodeo"]},
         "2012-2013" => {"videoID" => "xDUMIMu7Ojg", "awards" => ["2nd Place - ATown Showdown"], "videos" => ["http://www.youtube.com/watch?v=ypDAKsCmUcg"]}, 
   			"2011-2012" => {"videoID" => "fA0PSrRdbPk", "awards" => ["1st Place - Raas Rodeo", "3rd Place - Garba with Attitude", "Invitation to Raas All-Stars"]}, 
   			"2010-2011" => {"videoID" => "dJV0-jp77P0", "awards" => ["3rd Place - Garba with Attitude"]},
@@ -16,7 +18,7 @@ class PerformancesController < ApplicationController
   			"2005-2006" => {"videoID" => false, "awards" => ["1st Place - Garba with Attitude", "Invitation to Best of the Best 2"], "videos" => ["http://youtube.com/watch?v=13MWKWX_Wsg"], "photo" => "2005-2006.jpg"},
   			"2004-2005" => {"videoID" => false, "awards" => ["1st Place - Garba with Attitude", "Invitation to Best of the Best 1"], "videos" => ["http://youtube.com/watch?v=HxRG2yTNKuM"], "photo" => "2004-2005.jpg"},
   			"2003-2004" => {"videoID" => false, "awards" => ["2nd Place - Garba with Attitude"], "photo" => "2003-2004.jpg"}
-  			}
+  	}
   	respond_to do |format|
       format.html
       format.json { render json: @performances }

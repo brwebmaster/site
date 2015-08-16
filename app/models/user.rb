@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   # These users can edit/delete any profile
   def self.is_power_user(sunet)
-    ["rkpandey", "tdoshi", "deepak2", "sanchayg", "vprasad2"].include? sunet
+    ["rkpandey", "tdoshi", "sanand94", "ssooklal", "jotthek"].include? sunet
   end
 
   def full_name
@@ -24,7 +24,9 @@ class User < ActiveRecord::Base
   end
 
   def get_picture
+    puts "outside"
     if self.avatar.exists?
+      puts "hello"
       ActionController::Base.helpers.image_tag self.avatar.url(:square)
     else
       ActionController::Base.helpers.image_tag "StanfordTree.png"
