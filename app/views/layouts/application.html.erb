@@ -37,22 +37,14 @@
 </head>
 <body class="container">
 <script>
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '<%= ENV["FACEBOOK_APP_ID"] %>',
-    status     : false, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
 
-  FB.Event.subscribe('auth.authResponseChange', function(response) {
-    // Here we specify what we do with the response anytime this event occurs. 
-    if (response.status === 'connected') {
-      testAPI();
-    } else {
-      FB.login();
-    }
-  });
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<%= ENV["FACEBOOK_APP_ID"] %>',
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
   };
 
   // Load the SDK asynchronously
@@ -64,20 +56,29 @@
    ref.parentNode.insertBefore(js, ref);
   }(document));
 
-  function testAPI() {
-    FB.api('/me', function(response) {
-      console.log('Good to see you, ' + response.name + '.');
-      var posting = $.post("fb_login.json", response);
-      posting.done(function( data ) {
-		    if (data == "exists" || data == "fail") {
-		    	window.location = "/users";
-		    } else {
-		    	window.location = data;
-		    }
-		  });
-		  posting.error(function(data) {
-		  	console.log('error from fb_login');
-		  });
+  function br_fb_login() {
+    console.log("hello");
+    FB.login(function(response) {
+      if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+          console.log('Good to see you, ' + response.name + '.');
+          var posting = $.post("fb_login.json", response);
+          // The above call populates the session which effetviely logs you in
+          posting.done(function( data ) {
+            if (data == "exists" || data == "fail") {
+              window.location = "/users";
+            } else {
+              window.location = data;
+            }
+          });
+          posting.error(function(data) {
+            console.log('error from fb_login');
+          });
+       });
+      } else {
+       console.log('User cancelled login or did not fully authorize.');
+      }
     });
   }
 </script>
@@ -120,7 +121,7 @@
 						<li>Login:</li>
 			  		<li><%= link_to "Axess", controller: "static_pages", action: "login" %></li>	
 			  		<!-- <li class="dropdown divider-vertical"><div class="fb-login-button"></li>  -->
-			  		<li><a style="cursor:pointer;" onclick="FB.login()">Facebook</a></li> 
+			  		<li><a style="cursor:pointer;" onclick="br_fb_login()">Facebook</a></li> 
 					<% end %>
 				</ul>
 			</div>

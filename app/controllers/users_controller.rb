@@ -49,31 +49,31 @@ class UsersController < ApplicationController
 
   def fb_login    
     # MAJOR HACK: I hate my life
-    # map fb username => stanford id
+    # map fb id => stanford id
     allowed = {
-      "pooja.desai.353" => "psd",
-      "rkpandey1234" => "rkpandey",
-      "tulsee.doshi" => "tdoshi",
-      "vikram.prasad2" => "vprasad2",
-      "nikita.desai.75286" => "ngdesai",
-      "arushi.raghuvanshi.7" => "arushi",
-      "jotthe.kannapan" => "jotthek",
-      "karthikvrama" => "kvrama",
-      "milan.doshi.16" => "miland",
-      "namir.shah" => "namir",
-      "sanchay.gupta.3" => "sanchayg",
-      "sapna.patel.984" => "patels",
-      "sarita.sooklal" => "ssooklal",
-      "shankara.anand" => "sanand94",
-      "tanvi.jayaraman" => "tanvij",
-      "taragb" => "taragb",
-      "vineethgangaram" => "vineethg",
-      "siddharth.damania" => "sdamania",
-      "ankita.patro" => "apatro",
-      "shilpa.sethuraman.9" => "shilpa91"
+      "609669917" => "psd",
+      "820758840" => "rkpandey",
+      "601475540" => "tdoshi",
+      "576937956" => "vprasad2",
+      "1383953368" => "ngdesai",
+      "535342991" => "arushi",
+      "100001993406905" => "jotthek",
+      "548297052" => "kvrama",
+      "1337483104" => "miland",
+      "765905603" => "namir",
+      "1071310529" => "sanchayg",
+      "506033978" => "patels",
+      "1782727269" => "ssooklal",
+      "1135060252" => "sanand94",
+      "540784154" => "tanvij",
+      "823573679" => "taragb",
+      "535649702" => "vineethg",
+      "1272120332" => "sdamania",
+      "714372101" => "apatro",
+      "638692597" => "shilpa91"
     }
     # set the session variables
-    sunet = params['username']
+    sunet = params['id']
     session[:user_hash] = {}
     session[:user_hash]["display_name"] = params['name']
     if allowed.has_key?(sunet)
