@@ -8,3 +8,5 @@ Authors:
 ---------
 - Rahul Pandey
 - Tulsee Doshi
+- Aneesh Pappu
+- Akshay Ramaswamy
