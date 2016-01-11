@@ -6,5 +6,7 @@ Basmati Raas Website
 
 Authors: 
 ---------
-Rahul Pandey
-Tulsee Doshi
+- Rahul Pandey
+- Tulsee Doshi
+- Aneesh Pappu
+- Akshay Ramaswamy
