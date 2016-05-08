@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   # These users can edit/delete any profile
   def self.is_power_user(sunet)
-    ["rkpandey", "tdoshi", "sanand94", "ssooklal", "jotthek"].include? sunet
+    ["rkpandey", "tdoshi", "anikar", "apappu", "aramaswa"].include? sunet
   end
 
   def full_name
